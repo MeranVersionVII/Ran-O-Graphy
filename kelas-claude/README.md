@@ -66,3 +66,19 @@ const { chromium } = require('playwright');
 ```
 
 Atau buka `slides.html` dalam Chrome → Print → Save as PDF (Background graphics: hidup, Margin: tiada).
+
+---
+
+# Kursus: Dari Zero ke Mesin Cari Prospek (`kursus-prospek/`)
+
+| Fail | Untuk siapa |
+|---|---|
+| `slides.pdf` | Slide untuk ditayang (34 slide) |
+| `nota-penceramah.pdf` | Penceramah — apa nak terangkan setiap slide |
+| `prompt-pack.pdf` / `prompt-pack.txt` | Peserta — 19 prompt siap salin |
+
+Semua kandungan (slide, nota, prompt) ada dalam `content.py`. Selepas edit:
+
+```bash
+cd kelas-claude/kursus-prospek && python3 build.py && node render.js
+```

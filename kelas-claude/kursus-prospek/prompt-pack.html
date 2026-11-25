@@ -1,0 +1,184 @@
+<!doctype html><html lang="ms"><head><meta charset="utf-8"><title>Prompt Pack</title><style>
+@page { size: A4; margin: 16mm 16mm 18mm; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Inter", sans-serif; color: #1d1b18; font-size: 11pt; line-height: 1.5; }
+h1 { font-family: "Inter Display", "Inter", sans-serif; font-size: 28pt; line-height: 1.1; font-weight: 800; letter-spacing: -.01em; }
+h2 { font-size: 15pt; font-weight: 800; margin-bottom: 4pt; }
+.kicker { color: #d9622b; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: 9pt; margin-bottom: 6pt; }
+.muted { color: #6b645a; }
+.cover { height: 250mm; display: flex; flex-direction: column; justify-content: center; page-break-after: always; }
+.cover p { font-size: 13pt; margin-top: 14pt; max-width: 140mm; }
+.legend { margin-top: 26pt; border: 1px solid #e7e0d5; border-radius: 8pt; padding: 12pt 14pt; font-size: 10pt; }
+.legend div { margin-bottom: 4pt; }
+.fill { color: #c0501d; font-weight: 700; }
+.var { color: #2f6fb0; font-weight: 700; }
+/* notes */
+.ns { display: grid; grid-template-columns: 74mm 1fr; gap: 8mm; padding: 6mm 0; border-bottom: 1px solid #e7e0d5; page-break-inside: avoid; }
+.ns img { width: 74mm; border: 1px solid #e7e0d5; border-radius: 4pt; display: block; }
+.ns .no { font-size: 9pt; font-weight: 700; color: #d9622b; letter-spacing: .08em; }
+.ns h2 { font-size: 13pt; }
+.ns ul { padding-left: 14pt; margin-top: 4pt; }
+.ns li { margin-bottom: 3pt; font-size: 10pt; }
+.ns .pr { margin-top: 6pt; font-size: 9pt; color: #6b645a; }
+.ns.sec { background: #faf7f2; }
+/* prompt pack */
+.pp { page-break-inside: avoid; margin-bottom: 9mm; }
+.pp .top { display: flex; align-items: baseline; gap: 8pt; }
+.pp .id { background: #d9622b; color: #fff; font-weight: 800; font-size: 9pt; padding: 2pt 7pt; border-radius: 4pt; }
+.pp .when { font-size: 9.5pt; color: #6b645a; margin: 2pt 0 6pt; }
+.pp pre { font-family: "DejaVu Sans Mono", monospace; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; background: #faf7f2; border: 1px solid #e7e0d5; border-left: 3pt solid #d9622b; border-radius: 4pt; padding: 9pt 11pt; }
+.toc { columns: 2; column-gap: 10mm; font-size: 10pt; margin-top: 10pt; }
+.toc div { margin-bottom: 3pt; break-inside: avoid; }
+.toc b { color: #d9622b; display: inline-block; width: 26pt; }
+</style></head><body><div class="cover"><div class="kicker">Prompt Pack Peserta · Tim Kowe</div><h1>Claude AI: Dari Zero ke Mesin Cari Prospek</h1><p>Kelas hands-on Tim Kowe — dari tak pernah guna AI sampai automation cari prospek di TikTok</p><div class="legend"><div><b>Cara guna</b></div><div>1. Cari nombor prompt yang tertera di bawah slide (cth. P08).</div><div>2. Salin keseluruhan prompt ke dalam Claude.</div><div>3. Ganti teks <span class="fill">[dalam kurungan]</span> dengan maklumat kau sendiri.</div><div>4. Teks <span class="var">{{kurungan berganda}}</span> diisi automatik oleh tool automation — jangan ubah.</div></div><div class="toc"><div><b>P01</b>Kenalkan bisnes kau kepada Claude</div><div><b>P02</b>Template formula P.K.T.F.C</div><div><b>P03</b>Biar Claude tanya dulu</div><div><b>P04</b>Ayat iterasi (baiki jawapan)</div><div><b>P05</b>Brand Brain (arahan Project)</div><div><b>P06</b>Bina profil pelanggan ideal (ICP)</div><div><b>P07</b>Cari lokasi prospek di TikTok</div><div><b>P08</b>Nilai senarai prospek (manual)</div><div><b>P09</b>Mesej DM pertama yang personal</div><div><b>P10</b>Urutan follow-up</div><div><b>P11</b>Balas bantahan prospek</div><div><b>P12</b>Claude sebagai perunding automation</div><div><b>P13</b>Automation pertama: balas borang (dalam modul AI)</div><div><b>P14</b>Kata kunci untuk tapis komen</div><div><b>P15</b>Penilai prospek automatik → JSON (enjin utama)</div><div><b>P16</b>Ringkasan harian ke WhatsApp/Telegram</div><div><b>P17</b>Debug: automation gagal</div><div><b>P18</b>Analisis hasil mingguan</div><div><b>P19</b>BONUS: Content TikTok yang tarik prospek</div></div></div><div class="pp"><div class="top"><span class="id">P01</span><h2>Kenalkan bisnes kau kepada Claude</h2></div><div class="when">Bila guna: Chat pertama. Untuk nampak apa Claude boleh buat untuk bisnes sendiri.</div><pre>Hai Claude. Aku <span class="fill">[nama]</span>, aku jual <span class="fill">[produk/servis]</span> kepada <span class="fill">[siapa pelanggan aku]</span>.
+Aku baru mula guna AI.
+
+Terangkan dalam bahasa mudah 5 cara kau boleh bantu bisnes aku setiap hari.
+Untuk setiap cara, beri satu contoh yang spesifik untuk bisnes aku.</pre></div><div class="pp"><div class="top"><span class="id">P02</span><h2>Template formula P.K.T.F.C</h2></div><div class="when">Bila guna: Asas untuk SEMUA prompt. Salin, isi kurungan, guna.</div><pre>Peranan: Kau ialah <span class="fill">[peranan pakar, cth. copywriter jualan 10 tahun]</span>.
+Konteks: <span class="fill">[Info bisnes, siapa audience, apa situasinya]</span>.
+Tugas: <span class="fill">[Apa sebenarnya yang perlu dibuat]</span>.
+Format: <span class="fill">[Panjang, struktur, bahasa, gaya — cth. max 80 patah perkataan, Bahasa Melayu santai]</span>.
+Contoh: <span class="fill">[1–2 contoh gaya yang kau suka]</span>.</pre></div><div class="pp"><div class="top"><span class="id">P03</span><h2>Biar Claude tanya dulu</h2></div><div class="when">Bila guna: Bila kau sendiri tak pasti nak minta apa, atau tugas tu besar.</div><pre>Aku nak <span class="fill">[matlamat aku]</span>.
+
+Sebelum kau jawab, tanya aku 5 soalan paling penting untuk faham situasi aku.
+Tanya satu soalan pada satu masa, dan tunggu jawapan aku.</pre></div><div class="pp"><div class="top"><span class="id">P04</span><h2>Ayat iterasi (baiki jawapan)</h2></div><div class="when">Bila guna: Lepas Claude beri jawapan pertama. Pilih mana-mana satu.</div><pre>• Pendekkan jadi separuh, kekalkan isi paling penting.
+• Tukar tone jadi lebih santai, macam cakap dengan kawan.
+• Beri 5 versi lain, setiap satu dengan hook yang berbeza.
+• Apa yang paling lemah dalam jawapan kau tadi? Baiki bahagian tu.
+• Tulis semula untuk orang yang tak pernah dengar pasal produk ni.</pre></div><div class="pp"><div class="top"><span class="id">P05</span><h2>Brand Brain (arahan Project)</h2></div><div class="when">Bila guna: Tampal dalam 'Project instructions' supaya Claude ingat bisnes kau setiap kali chat.</div><pre>Kau ialah pembantu bisnes untuk <span class="fill">[nama bisnes]</span>.
+
+TENTANG KAMI
+- Produk/servis: <span class="fill">[apa yang kami jual]</span>
+- Harga: <span class="fill">[julat harga]</span>
+- Kelebihan utama: <span class="fill">[3 sebab orang beli dari kami]</span>
+
+PELANGGAN KAMI
+- Siapa: <span class="fill">[umur, pekerjaan, lokasi]</span>
+- Masalah utama: <span class="fill">[masalah yang produk kami selesaikan]</span>
+
+GAYA BAHASA
+- Bahasa Melayu harian, <span class="fill">[santai / profesional]</span>
+- Panggil pelanggan: <span class="fill">[kau / korang / anda / tuan-puan]</span>
+
+PERATURAN
+- Jangan janji benda yang kami tak tawarkan.
+- Kalau tak pasti, tanya aku dulu sebelum menjawab.</pre></div><div class="pp"><div class="top"><span class="id">P06</span><h2>Bina profil pelanggan ideal (ICP)</h2></div><div class="when">Bila guna: Langkah pertama sebelum cari prospek. Guna dalam Project Brand Brain.</div><pre>Berdasarkan maklumat bisnes dalam project ni, bina profil pelanggan ideal (ICP) aku.
+
+Sertakan:
+1. Demografi (umur, pekerjaan, lokasi, pendapatan)
+2. 3 masalah utama yang mereka hadapi
+3. Apa yang mereka tonton dan cari di TikTok
+4. Ayat yang mereka selalu taip dalam komen bila ada masalah ni
+5. Tanda-tanda mereka dah sedia untuk membeli
+
+Beri dalam bentuk jadual, kemudian ringkaskan ICP dalam 2 ayat.</pre></div><div class="pp"><div class="top"><span class="id">P07</span><h2>Cari lokasi prospek di TikTok</h2></div><div class="when">Bila guna: Lepas ada ICP. Untuk tahu di mana nak cari.</div><pre>Untuk ICP di atas, senaraikan:
+- 15 hashtag TikTok yang prospek aku selalu guna atau tengok
+- 10 jenis akaun/creator yang pengikutnya mungkin prospek aku
+- 10 kata kunci carian TikTok
+
+Untuk setiap satu, terangkan dalam satu ayat kenapa ia sesuai.
+Tandakan 5 yang paling berpotensi dengan ⭐.</pre></div><div class="pp"><div class="top"><span class="id">P08</span><h2>Nilai senarai prospek (manual)</h2></div><div class="when">Bila guna: Lepas kumpul prospek dalam sheet. Tampal beberapa baris sekaligus.</div><pre>Aku akan tampal senarai prospek dari TikTok (username, bio, komen yang mereka tulis).
+
+Untuk setiap prospek, beri:
+- Skor: PANAS / SUAM / SEJUK
+- Sebab (1 ayat)
+- Masalah yang mereka mungkin ada
+
+Guna ICP dalam project ni sebagai rujukan.
+Susun dalam jadual, PANAS di atas sekali.
+
+Senarai:
+<span class="fill">[tampal di sini]</span></pre></div><div class="pp"><div class="top"><span class="id">P09</span><h2>Mesej DM pertama yang personal</h2></div><div class="when">Bila guna: Untuk prospek PANAS dan SUAM.</div><pre>Tulis mesej DM pertama untuk prospek ini:
+Username: <span class="fill">[ ]</span>
+Bio: <span class="fill">[ ]</span>
+Komen mereka: <span class="fill">[ ]</span>
+
+Peraturan:
+- Max 50 patah perkataan
+- Sebut sesuatu yang spesifik dari bio atau komen mereka
+- Jangan terus jual atau letak link
+- Akhiri dengan satu soalan ringan
+
+Beri 3 versi dengan gaya berbeza.</pre></div><div class="pp"><div class="top"><span class="id">P10</span><h2>Urutan follow-up</h2></div><div class="when">Bila guna: Bila prospek tak balas mesej pertama.</div><pre>Prospek ni tak balas mesej pertama aku:
+<span class="fill">[tampal mesej pertama]</span>
+
+Tulis 3 mesej follow-up untuk hari ke-2, ke-5 dan ke-10.
+Setiap mesej mesti beri nilai baru (tip berguna, testimoni ringkas, atau soalan menarik)
+— jangan cuma tanya &quot;dah baca ke?&quot;.
+Max 40 patah perkataan setiap satu.</pre></div><div class="pp"><div class="top"><span class="id">P11</span><h2>Balas bantahan prospek</h2></div><div class="when">Bila guna: Bila prospek kata mahal, nanti dulu, tak perlu, dsb.</div><pre>Prospek balas: &quot;<span class="fill">[tampal balasan mereka, cth. mahal sangat la]</span>&quot;
+
+Beri 3 cara balas yang:
+- jujur dan tak memaksa
+- faham kebimbangan mereka dulu
+- ajak mereka ke langkah kecil seterusnya
+
+Max 60 patah perkataan setiap satu.</pre></div><div class="pp"><div class="top"><span class="id">P12</span><h2>Claude sebagai perunding automation</h2></div><div class="when">Bila guna: Sebelum bina automation. Untuk dapat pelan langkah demi langkah.</div><pre>Aku nak automate kerja ni:
+<span class="fill">[terangkan kerja manual kau langkah demi langkah]</span>
+
+Aku guna <span class="fill">[Zapier / Make / n8n / Google Sheets / lain-lain]</span>.
+
+Pecahkan jadi: TRIGGER → LANGKAH → TINDAKAN.
+Untuk setiap langkah, beritahu modul/aplikasi yang perlu dan apa yang perlu diisi.
+Anggap aku langsung tak tahu code. Guna bahasa mudah.</pre></div><div class="pp"><div class="top"><span class="id">P13</span><h2>Automation pertama: balas borang (dalam modul AI)</h2></div><div class="when">Bila guna: Latihan automation pertama: Google Form → Claude → emel.</div><pre>Kau pembantu untuk <span class="fill">[nama bisnes]</span>.
+Seseorang baru isi borang dengan maklumat ini:
+Nama: <span class="var">{{nama}}</span>
+Minat: <span class="var">{{minat}}</span>
+Mesej: <span class="var">{{mesej}}</span>
+
+Tulis emel balasan dalam Bahasa Melayu santai, max 120 patah perkataan:
+1. Ucap terima kasih dengan nama mereka
+2. Jawab mesej mereka secara ringkas
+3. Ajak mereka <span class="fill">[langkah seterusnya, cth. WhatsApp kami di 01X-XXX XXXX]</span>
+
+Tulis isi emel sahaja, tanpa subjek dan tanpa tandatangan.</pre></div><div class="pp"><div class="top"><span class="id">P14</span><h2>Kata kunci untuk tapis komen</h2></div><div class="when">Bila guna: Untuk langkah 'Tapis' dalam automation, supaya Claude tak proses komen sampah.</div><pre>Senaraikan 30 kata kunci/frasa dalam Bahasa Melayu dan bahasa rojak yang menunjukkan
+seseorang di komen TikTok sedang ada masalah <span class="fill">[masalah utama ICP]</span>
+atau berminat dengan <span class="fill">[produk/servis]</span>.
+
+Kemudian senaraikan 15 kata kunci yang menunjukkan komen TAK relevan
+(spam, promo orang lain, troll).
+
+Beri setiap senarai dalam satu baris, dipisahkan koma, supaya aku boleh tampal terus dalam filter.</pre></div><div class="pp"><div class="top"><span class="id">P15</span><h2>Penilai prospek automatik → JSON (enjin utama)</h2></div><div class="when">Bila guna: Prompt dalam modul Claude/AI di automation. Output JSON supaya boleh dimasukkan terus ke Google Sheets.</div><pre>Kau penilai prospek untuk <span class="fill">[nama bisnes]</span> yang menjual <span class="fill">[produk/servis]</span>
+kepada <span class="fill">[ICP ringkas, cth. ibu bekerja 25–40 yang nak kurus selepas bersalin]</span>.
+
+Nilai prospek TikTok ini:
+Username: <span class="var">{{username}}</span>
+Bio: <span class="var">{{bio}}</span>
+Komen: <span class="var">{{komen}}</span>
+Video sumber: <span class="var">{{video_sumber}}</span>
+
+Kriteria PANAS: <span class="fill">[cth. sebut masalah secara terus, tanya harga, minta cadangan]</span>
+Kriteria SEJUK: <span class="fill">[cth. akaun pesaing, komen tak berkaitan, spam]</span>
+
+Jawab HANYA dalam JSON yang sah, tanpa teks lain:
+{
+  &quot;skor&quot;: &quot;PANAS&quot; atau &quot;SUAM&quot; atau &quot;SEJUK&quot;,
+  &quot;sebab&quot;: &quot;1 ayat&quot;,
+  &quot;masalah&quot;: &quot;masalah utama yang mungkin mereka ada&quot;,
+  &quot;mesej_dm&quot;: &quot;mesej pertama max 50 patah perkataan, personal, tanpa terus jual, akhiri dengan soalan&quot;
+}</pre></div><div class="pp"><div class="top"><span class="id">P16</span><h2>Ringkasan harian ke WhatsApp/Telegram</h2></div><div class="when">Bila guna: Langkah notifikasi di hujung automation.</div><pre>Ini senarai prospek baru hari ini:
+<span class="var">{{senarai_prospek}}</span>
+
+Tulis ringkasan untuk aku baca di telefon:
+- Jumlah PANAS / SUAM / SEJUK
+- 3 prospek PANAS teratas, dengan sebab ringkas
+- Satu cadangan tindakan untuk hari ini
+
+Max 100 patah perkataan. Guna emoji secukupnya supaya mudah dibaca.</pre></div><div class="pp"><div class="top"><span class="id">P17</span><h2>Debug: automation gagal</h2></div><div class="when">Bila guna: Bila ada langkah automation yang merah / error.</div><pre>Automation aku gagal.
+Tool: <span class="fill">[Zapier / Make / n8n]</span>
+Langkah yang gagal: <span class="fill">[nama langkah]</span>
+Mesej ralat: <span class="fill">[tampal mesej ralat penuh]</span>
+Setting langkah tu: <span class="fill">[tampal atau terangkan]</span>
+
+Terangkan dalam bahasa mudah apa puncanya,
+dan beri langkah demi langkah untuk betulkan.</pre></div><div class="pp"><div class="top"><span class="id">P18</span><h2>Analisis hasil mingguan</h2></div><div class="when">Bila guna: Setiap minggu. Tampal data dari Google Sheets.</div><pre>Ini data prospek minggu ni dari Google Sheets:
+<span class="fill">[tampal data — termasuk kolum Skor dan Status]</span>
+
+1. Kira kadar balas dan kadar closing ikut skor (PANAS / SUAM / SEJUK).
+2. Apa corak yang kau nampak? (jenis komen, jenis mesej, hari/masa)
+3. Beri 3 cadangan spesifik untuk tingkatkan kadar balas minggu depan.</pre></div><div class="pp"><div class="top"><span class="id">P19</span><h2>BONUS: Content TikTok yang tarik prospek</h2></div><div class="when">Bila guna: Supaya prospek datang sendiri ke ruang komen kau.</div><pre>Berdasarkan 3 masalah utama ICP aku, beri 10 idea video TikTok
+yang akan buat prospek ideal aku komen.
+
+Untuk setiap idea:
+- Hook 3 saat pertama
+- Isi ringkas (3 poin)
+- Soalan CTA yang dorong orang komen (cth. &quot;Komen &#x27;NAK&#x27; kalau kau pun ...&quot;)</pre></div></body></html>

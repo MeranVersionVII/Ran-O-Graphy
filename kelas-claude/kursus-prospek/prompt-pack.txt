@@ -1,0 +1,287 @@
+Claude AI: Dari Zero ke Mesin Cari Prospek
+PROMPT PACK PESERTA
+============================================================
+
+P01 — Kenalkan bisnes kau kepada Claude
+Bila guna: Chat pertama. Untuk nampak apa Claude boleh buat untuk bisnes sendiri.
+------------------------------------------------------------
+Hai Claude. Aku [nama], aku jual [produk/servis] kepada [siapa pelanggan aku].
+Aku baru mula guna AI.
+
+Terangkan dalam bahasa mudah 5 cara kau boleh bantu bisnes aku setiap hari.
+Untuk setiap cara, beri satu contoh yang spesifik untuk bisnes aku.
+
+============================================================
+
+P02 — Template formula P.K.T.F.C
+Bila guna: Asas untuk SEMUA prompt. Salin, isi kurungan, guna.
+------------------------------------------------------------
+Peranan: Kau ialah [peranan pakar, cth. copywriter jualan 10 tahun].
+Konteks: [Info bisnes, siapa audience, apa situasinya].
+Tugas: [Apa sebenarnya yang perlu dibuat].
+Format: [Panjang, struktur, bahasa, gaya — cth. max 80 patah perkataan, Bahasa Melayu santai].
+Contoh: [1–2 contoh gaya yang kau suka].
+
+============================================================
+
+P03 — Biar Claude tanya dulu
+Bila guna: Bila kau sendiri tak pasti nak minta apa, atau tugas tu besar.
+------------------------------------------------------------
+Aku nak [matlamat aku].
+
+Sebelum kau jawab, tanya aku 5 soalan paling penting untuk faham situasi aku.
+Tanya satu soalan pada satu masa, dan tunggu jawapan aku.
+
+============================================================
+
+P04 — Ayat iterasi (baiki jawapan)
+Bila guna: Lepas Claude beri jawapan pertama. Pilih mana-mana satu.
+------------------------------------------------------------
+• Pendekkan jadi separuh, kekalkan isi paling penting.
+• Tukar tone jadi lebih santai, macam cakap dengan kawan.
+• Beri 5 versi lain, setiap satu dengan hook yang berbeza.
+• Apa yang paling lemah dalam jawapan kau tadi? Baiki bahagian tu.
+• Tulis semula untuk orang yang tak pernah dengar pasal produk ni.
+
+============================================================
+
+P05 — Brand Brain (arahan Project)
+Bila guna: Tampal dalam 'Project instructions' supaya Claude ingat bisnes kau setiap kali chat.
+------------------------------------------------------------
+Kau ialah pembantu bisnes untuk [nama bisnes].
+
+TENTANG KAMI
+- Produk/servis: [apa yang kami jual]
+- Harga: [julat harga]
+- Kelebihan utama: [3 sebab orang beli dari kami]
+
+PELANGGAN KAMI
+- Siapa: [umur, pekerjaan, lokasi]
+- Masalah utama: [masalah yang produk kami selesaikan]
+
+GAYA BAHASA
+- Bahasa Melayu harian, [santai / profesional]
+- Panggil pelanggan: [kau / korang / anda / tuan-puan]
+
+PERATURAN
+- Jangan janji benda yang kami tak tawarkan.
+- Kalau tak pasti, tanya aku dulu sebelum menjawab.
+
+============================================================
+
+P06 — Bina profil pelanggan ideal (ICP)
+Bila guna: Langkah pertama sebelum cari prospek. Guna dalam Project Brand Brain.
+------------------------------------------------------------
+Berdasarkan maklumat bisnes dalam project ni, bina profil pelanggan ideal (ICP) aku.
+
+Sertakan:
+1. Demografi (umur, pekerjaan, lokasi, pendapatan)
+2. 3 masalah utama yang mereka hadapi
+3. Apa yang mereka tonton dan cari di TikTok
+4. Ayat yang mereka selalu taip dalam komen bila ada masalah ni
+5. Tanda-tanda mereka dah sedia untuk membeli
+
+Beri dalam bentuk jadual, kemudian ringkaskan ICP dalam 2 ayat.
+
+============================================================
+
+P07 — Cari lokasi prospek di TikTok
+Bila guna: Lepas ada ICP. Untuk tahu di mana nak cari.
+------------------------------------------------------------
+Untuk ICP di atas, senaraikan:
+- 15 hashtag TikTok yang prospek aku selalu guna atau tengok
+- 10 jenis akaun/creator yang pengikutnya mungkin prospek aku
+- 10 kata kunci carian TikTok
+
+Untuk setiap satu, terangkan dalam satu ayat kenapa ia sesuai.
+Tandakan 5 yang paling berpotensi dengan ⭐.
+
+============================================================
+
+P08 — Nilai senarai prospek (manual)
+Bila guna: Lepas kumpul prospek dalam sheet. Tampal beberapa baris sekaligus.
+------------------------------------------------------------
+Aku akan tampal senarai prospek dari TikTok (username, bio, komen yang mereka tulis).
+
+Untuk setiap prospek, beri:
+- Skor: PANAS / SUAM / SEJUK
+- Sebab (1 ayat)
+- Masalah yang mereka mungkin ada
+
+Guna ICP dalam project ni sebagai rujukan.
+Susun dalam jadual, PANAS di atas sekali.
+
+Senarai:
+[tampal di sini]
+
+============================================================
+
+P09 — Mesej DM pertama yang personal
+Bila guna: Untuk prospek PANAS dan SUAM.
+------------------------------------------------------------
+Tulis mesej DM pertama untuk prospek ini:
+Username: [ ]
+Bio: [ ]
+Komen mereka: [ ]
+
+Peraturan:
+- Max 50 patah perkataan
+- Sebut sesuatu yang spesifik dari bio atau komen mereka
+- Jangan terus jual atau letak link
+- Akhiri dengan satu soalan ringan
+
+Beri 3 versi dengan gaya berbeza.
+
+============================================================
+
+P10 — Urutan follow-up
+Bila guna: Bila prospek tak balas mesej pertama.
+------------------------------------------------------------
+Prospek ni tak balas mesej pertama aku:
+[tampal mesej pertama]
+
+Tulis 3 mesej follow-up untuk hari ke-2, ke-5 dan ke-10.
+Setiap mesej mesti beri nilai baru (tip berguna, testimoni ringkas, atau soalan menarik)
+— jangan cuma tanya "dah baca ke?".
+Max 40 patah perkataan setiap satu.
+
+============================================================
+
+P11 — Balas bantahan prospek
+Bila guna: Bila prospek kata mahal, nanti dulu, tak perlu, dsb.
+------------------------------------------------------------
+Prospek balas: "[tampal balasan mereka, cth. mahal sangat la]"
+
+Beri 3 cara balas yang:
+- jujur dan tak memaksa
+- faham kebimbangan mereka dulu
+- ajak mereka ke langkah kecil seterusnya
+
+Max 60 patah perkataan setiap satu.
+
+============================================================
+
+P12 — Claude sebagai perunding automation
+Bila guna: Sebelum bina automation. Untuk dapat pelan langkah demi langkah.
+------------------------------------------------------------
+Aku nak automate kerja ni:
+[terangkan kerja manual kau langkah demi langkah]
+
+Aku guna [Zapier / Make / n8n / Google Sheets / lain-lain].
+
+Pecahkan jadi: TRIGGER → LANGKAH → TINDAKAN.
+Untuk setiap langkah, beritahu modul/aplikasi yang perlu dan apa yang perlu diisi.
+Anggap aku langsung tak tahu code. Guna bahasa mudah.
+
+============================================================
+
+P13 — Automation pertama: balas borang (dalam modul AI)
+Bila guna: Latihan automation pertama: Google Form → Claude → emel.
+------------------------------------------------------------
+Kau pembantu untuk [nama bisnes].
+Seseorang baru isi borang dengan maklumat ini:
+Nama: {{nama}}
+Minat: {{minat}}
+Mesej: {{mesej}}
+
+Tulis emel balasan dalam Bahasa Melayu santai, max 120 patah perkataan:
+1. Ucap terima kasih dengan nama mereka
+2. Jawab mesej mereka secara ringkas
+3. Ajak mereka [langkah seterusnya, cth. WhatsApp kami di 01X-XXX XXXX]
+
+Tulis isi emel sahaja, tanpa subjek dan tanpa tandatangan.
+
+============================================================
+
+P14 — Kata kunci untuk tapis komen
+Bila guna: Untuk langkah 'Tapis' dalam automation, supaya Claude tak proses komen sampah.
+------------------------------------------------------------
+Senaraikan 30 kata kunci/frasa dalam Bahasa Melayu dan bahasa rojak yang menunjukkan
+seseorang di komen TikTok sedang ada masalah [masalah utama ICP]
+atau berminat dengan [produk/servis].
+
+Kemudian senaraikan 15 kata kunci yang menunjukkan komen TAK relevan
+(spam, promo orang lain, troll).
+
+Beri setiap senarai dalam satu baris, dipisahkan koma, supaya aku boleh tampal terus dalam filter.
+
+============================================================
+
+P15 — Penilai prospek automatik → JSON (enjin utama)
+Bila guna: Prompt dalam modul Claude/AI di automation. Output JSON supaya boleh dimasukkan terus ke Google Sheets.
+------------------------------------------------------------
+Kau penilai prospek untuk [nama bisnes] yang menjual [produk/servis]
+kepada [ICP ringkas, cth. ibu bekerja 25–40 yang nak kurus selepas bersalin].
+
+Nilai prospek TikTok ini:
+Username: {{username}}
+Bio: {{bio}}
+Komen: {{komen}}
+Video sumber: {{video_sumber}}
+
+Kriteria PANAS: [cth. sebut masalah secara terus, tanya harga, minta cadangan]
+Kriteria SEJUK: [cth. akaun pesaing, komen tak berkaitan, spam]
+
+Jawab HANYA dalam JSON yang sah, tanpa teks lain:
+{
+  "skor": "PANAS" atau "SUAM" atau "SEJUK",
+  "sebab": "1 ayat",
+  "masalah": "masalah utama yang mungkin mereka ada",
+  "mesej_dm": "mesej pertama max 50 patah perkataan, personal, tanpa terus jual, akhiri dengan soalan"
+}
+
+============================================================
+
+P16 — Ringkasan harian ke WhatsApp/Telegram
+Bila guna: Langkah notifikasi di hujung automation.
+------------------------------------------------------------
+Ini senarai prospek baru hari ini:
+{{senarai_prospek}}
+
+Tulis ringkasan untuk aku baca di telefon:
+- Jumlah PANAS / SUAM / SEJUK
+- 3 prospek PANAS teratas, dengan sebab ringkas
+- Satu cadangan tindakan untuk hari ini
+
+Max 100 patah perkataan. Guna emoji secukupnya supaya mudah dibaca.
+
+============================================================
+
+P17 — Debug: automation gagal
+Bila guna: Bila ada langkah automation yang merah / error.
+------------------------------------------------------------
+Automation aku gagal.
+Tool: [Zapier / Make / n8n]
+Langkah yang gagal: [nama langkah]
+Mesej ralat: [tampal mesej ralat penuh]
+Setting langkah tu: [tampal atau terangkan]
+
+Terangkan dalam bahasa mudah apa puncanya,
+dan beri langkah demi langkah untuk betulkan.
+
+============================================================
+
+P18 — Analisis hasil mingguan
+Bila guna: Setiap minggu. Tampal data dari Google Sheets.
+------------------------------------------------------------
+Ini data prospek minggu ni dari Google Sheets:
+[tampal data — termasuk kolum Skor dan Status]
+
+1. Kira kadar balas dan kadar closing ikut skor (PANAS / SUAM / SEJUK).
+2. Apa corak yang kau nampak? (jenis komen, jenis mesej, hari/masa)
+3. Beri 3 cadangan spesifik untuk tingkatkan kadar balas minggu depan.
+
+============================================================
+
+P19 — BONUS: Content TikTok yang tarik prospek
+Bila guna: Supaya prospek datang sendiri ke ruang komen kau.
+------------------------------------------------------------
+Berdasarkan 3 masalah utama ICP aku, beri 10 idea video TikTok
+yang akan buat prospek ideal aku komen.
+
+Untuk setiap idea:
+- Hook 3 saat pertama
+- Isi ringkas (3 poin)
+- Soalan CTA yang dorong orang komen (cth. "Komen 'NAK' kalau kau pun ...")
+
+============================================================

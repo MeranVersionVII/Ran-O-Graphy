@@ -1,0 +1,231 @@
+<!doctype html><html lang="ms"><head><meta charset="utf-8"><title>Claude AI: Dari Zero ke Mesin Cari Prospek</title><style>@page { size: 1280px 720px; margin: 0; }
+:root {
+  --ink: #1d1b18; --muted: #6b645a; --paper: #faf7f2; --card: #ffffff; --line: #e7e0d5;
+  --accent: #d9622b; --accent-soft: #fbe6da; --deep: #22201c;
+  --hot: #c2412a; --warm: #d9962b; --cold: #5b7fa6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #ccc; font-family: "Inter", sans-serif; color: var(--ink); }
+.slide { width: 1280px; height: 720px; background: var(--paper); position: relative; overflow: hidden;
+  page-break-after: always; padding: 54px 72px 70px; display: flex; flex-direction: column; }
+.slide.dark { background: var(--deep); color: #f4efe7; }
+.slide.accent { background: var(--accent); color: #fff; }
+.kicker { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+.dark .kicker { color: #f0915f; } .accent .kicker { color: #ffe1cf; }
+h1 { font-family: "Inter Display", "Inter", sans-serif; font-size: 72px; line-height: 1.03; font-weight: 800; letter-spacing: -.02em; }
+h2 { font-family: "Inter Display", "Inter", sans-serif; font-size: 42px; line-height: 1.08; font-weight: 800; letter-spacing: -.015em; margin-bottom: 24px; }
+h3 { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
+p, li { font-size: 19px; line-height: 1.5; }
+.small, .small li { font-size: 16px; }
+.muted { color: var(--muted); }
+.dark .muted { color: #b5ab9c; }
+.lead { font-size: 22px; line-height: 1.45; }
+.lead-d { font-size: 22px; color: #cfc6b8; margin-top: 20px; max-width: 760px; }
+.lead-l { font-size: 22px; color: #ffe9dc; margin-top: 28px; }
+.big { font-family: "Inter Display", sans-serif; font-size: 46px; font-weight: 800; line-height: 1.15; letter-spacing: -.01em; max-width: 1060px; }
+.body { flex: 1; min-height: 0; }
+
+/* cover & section */
+.cover-in { margin-top: auto; margin-bottom: 30px; position: relative; max-width: 820px; }
+.blob { position: absolute; border-radius: 50%; background: var(--accent); }
+.b1 { width: 520px; height: 520px; right: -150px; top: -130px; }
+.b2 { width: 200px; height: 200px; right: 320px; bottom: -70px; background: #f0915f; opacity: .5; }
+.b3 { width: 380px; height: 380px; right: -90px; bottom: -120px; opacity: .14; }
+.section { justify-content: center; }
+.sec-in { position: relative; }
+.section h1 { font-size: 88px; margin-bottom: 18px; }
+.section .kicker { font-size: 18px; }
+
+ul.clean { list-style: none; }
+ul.clean li { padding-left: 28px; position: relative; margin-bottom: 10px; }
+ul.clean li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+ul.clean.small li::before { top: 9px; }
+ul.clean.light li { font-size: 23px; margin-bottom: 14px; }
+ul.clean.light li::before { background: #fff; top: 13px; }
+
+.grid { display: grid; gap: 18px; }
+.g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); }
+.g2c { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
+.card p { font-size: 16px; }
+.card.soft { background: var(--accent-soft); border-color: #f3cdb6; }
+.dark .card { background: #2e2b26; border-color: #3d3932; }
+.num { font-family: "Inter Display", sans-serif; font-size: 34px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+.flow { display: flex; align-items: stretch; gap: 10px; }
+.flow .card { flex: 1; }
+.fcard.big { padding: 28px; } .fcard.big .num { font-size: 44px; } .fcard.big h3 { font-size: 24px; } .fcard.big p { font-size: 18px; font-weight: 400; }
+.arrow { align-self: center; font-size: 28px; color: var(--accent); font-weight: 800; }
+
+table { border-collapse: collapse; width: 100%; font-size: 17px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+table.small { font-size: 14px; } table.small td { padding: 8px 10px; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: .85em; background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; }
+
+.note { margin-top: 18px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 16px; font-size: 17px; }
+.dark .note { background: #3a261b; }
+
+/* prompt box */
+.pbox { background: #1f1d1a; color: #f2ebdf; border-radius: 14px; padding: 16px 20px; }
+.phead { font-size: 14px; font-weight: 700; color: #f0915f; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.pid { background: var(--accent); color: #fff; border-radius: 6px; padding: 2px 8px; font-size: 13px; font-weight: 800; }
+.ptext { font-family: "DejaVu Sans Mono", monospace; font-size: 16px; line-height: 1.55; white-space: pre-wrap; }
+.pbox.compact .ptext { font-size: 15px; line-height: 1.5; }
+.fill { color: #ffb48a; }
+.var { color: #8fc1f2; }
+.pref { background: var(--card); border: 1px dashed var(--accent); border-radius: 12px; padding: 12px 16px; font-size: 16px; font-weight: 600; display: flex; gap: 10px; align-items: center; }
+
+.lbl { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #fff; border-radius: 99px; padding: 3px 10px; margin-bottom: 10px; }
+.lbl.bad { background: #8f8677; } .lbl.good { background: #3f8f5a; }
+.pmini { font-family: "DejaVu Sans Mono", monospace; font-size: 15px; line-height: 1.55; background: #1f1d1a; color: #f2ebdf; border-radius: 10px; padding: 14px 16px; }
+
+.score { border-radius: 12px; padding: 14px 18px; color: #fff; font-weight: 800; font-size: 22px; margin-bottom: 12px; }
+.score span { display: block; font-weight: 500; font-size: 15px; opacity: .92; }
+.score.hot { background: var(--hot); } .score.warm { background: var(--warm); } .score.cold { background: var(--cold); }
+
+.foot { position: absolute; left: 72px; right: 72px; bottom: 26px; display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+.dark .foot { color: #8f8677; } .accent .foot { color: #ffd9c4; }
+@media print { html, body { background: none; } }
+</style></head><body><section class="slide dark cover"><div class="blob b1"></div><div class="blob b2"></div><div class="cover-in"><div class="kicker">Kelas Eksklusif · Tim Kowe</div><h1>Claude AI: Dari Zero ke Mesin Cari Prospek</h1><p class="lead-d">Kelas hands-on Tim Kowe — dari tak pernah guna AI sampai automation cari prospek di TikTok</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>01 / 34</span></div></section>
+<section class="slide "><div class="kicker">Kenapa kelas ni</div><h2>Cari prospek cara lama</h2><div class="body"><div class="grid g2"><div class="card"><h3>Scroll berjam-jam</h3><p class="muted">Buka TikTok, cari komen, salin nama satu-satu.</p></div><div class="card"><h3>DM yang sama</h3><p class="muted">Copy-paste mesej sama kepada semua orang. Kadar balas rendah.</p></div><div class="card"><h3>Lupa follow-up</h3><p class="muted">Prospek panas jadi sejuk sebab tak ada sistem.</p></div><div class="card"><h3>Tak tahu mana berkesan</h3><p class="muted">Tak ada data — tak tahu apa yang perlu diperbaiki.</p></div></div></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>02 / 34</span></div></section>
+<section class="slide accent"><div class="kicker">Demo hasil akhir</div><h2>Ini yang korang akan bina</h2><div class="body"><div class="big">Prospek masuk sendiri → Claude nilai &amp; tulis DM → tersusun dalam Google Sheets → ringkasan sampai ke telefon.</div><p class="lead-l">DEMO LIVE: tunjuk automation kau berjalan.</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>03 / 34</span></div></section>
+<section class="slide "><div class="kicker">Peta perjalanan</div><h2>5 bahagian, dari zero ke automation</h2><div class="body"><table class=""><tr><th>Bahagian</th><th>Topik</th><th>Hasil</th></tr><tr><td>1</td><td><b>Kenal Claude</b> — akaun, skrin, chat pertama</td><td>Akaun siap &amp; chat pertama</td></tr><tr><td>2</td><td><b>Seni Prompting</b> — formula, iterasi, Projects</td><td>Project 'Brand Brain'</td></tr><tr><td>3</td><td><b>Kenal &amp; nilai prospek</b> — ICP, skor, DM</td><td>10 prospek dinilai + DM</td></tr><tr><td>4</td><td><b>Asas automation</b> — Trigger → Claude → Tindakan</td><td>Automation pertama jalan</td></tr><tr><td>5</td><td><b>Mesin cari prospek</b> — bina 5 blok</td><td>Automation prospek sendiri</td></tr></table></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>04 / 34</span></div></section>
+<section class="slide section"><div class="blob b3"></div><div class="sec-in"><div class="kicker">Bahagian 1</div><h1>Kenal Claude</h1><p class="lead">Dari tak pernah guna AI ke chat pertama</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>05 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 1 · Konsep</div><h2>Apa itu Claude?</h2><div class="body"><div class="g2c"><div><ul class="clean"><li>Pembantu AI dari syarikat Anthropic</li><li>Faham dan tulis dalam Bahasa Melayu &amp; rojak</li><li>Kuat menulis, berfikir, analisis fail &amp; gambar</li><li>Boleh disambung ke Gmail, Drive, Sheets &amp; tool lain</li></ul></div><div class="card soft"><h3>Analogi mudah</h3><p>Claude macam <b>pekerja baru yang sangat pandai</b> — tapi hari pertama kerja, dia tak kenal bisnes kau langsung.</p><p style="margin-top:10px">Makin banyak kau terangkan, makin bagus kerja dia.</p></div></div></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>06 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 1 · Hands-on</div><h2>Buka akaun &amp; kenal skrin</h2><div class="body"><div class="flow"><div class="card fcard"><div class="num">1</div><h3>Pergi ke claude.ai</h3><p class="muted">Daftar guna emel atau akaun Google.</p></div><div class="arrow">→</div><div class="card fcard"><div class="num">2</div><h3>Kotak chat</h3><p class="muted">Tempat taip arahan (prompt).</p></div><div class="arrow">→</div><div class="card fcard"><div class="num">3</div><h3>Butang +</h3><p class="muted">Upload fail, gambar, PDF, screenshot.</p></div><div class="arrow">→</div><div class="card fcard"><div class="num">4</div><h3>Projects</h3><p class="muted">Folder kerja yang Claude 'ingat'.</p></div></div></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>07 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 1 · Konsep</div><h2>Free atau berbayar?</h2><div class="body"><table class=""><tr><th></th><th>Free</th><th>Pro / Max (berbayar)</th></tr><tr><td>Untuk siapa</td><td>Cuba-cuba, guna sekali-sekala</td><td>Guna setiap hari untuk bisnes</td></tr><tr><td>Had penggunaan</td><td>Rendah — cepat habis</td><td>Jauh lebih tinggi</td></tr><tr><td>Projects &amp; connectors</td><td>Terhad</td><td>Penuh</td></tr><tr><td>Untuk automation</td><td>Tak sesuai</td><td>Disyorkan</td></tr></table><p class="small muted" style="margin-top:16px">Harga &amp; ciri berubah dari masa ke masa — semak claude.ai/pricing.</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>08 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 1 · Latihan</div><h2>Chat pertama</h2><div class="body"><div class="pbox" style=""><div class="phead"><span class="pid">P01</span>Kenalkan bisnes kau kepada Claude</div><div class="ptext">Hai Claude. Aku <span class="fill">[nama]</span>, aku jual <span class="fill">[produk/servis]</span> kepada <span class="fill">[siapa pelanggan aku]</span>.
+Aku baru mula guna AI.
+
+Terangkan dalam bahasa mudah 5 cara kau boleh bantu bisnes aku setiap hari.
+Untuk setiap cara, beri satu contoh yang spesifik untuk bisnes aku.</div></div><div class="note">Latihan 5 minit: salin P01, isi kurungan, hantar. Baca jawapan Claude.</div></div><div class="foot"><span>Prompt Pack: P01</span><span>09 / 34</span></div></section>
+<section class="slide section"><div class="blob b3"></div><div class="sec-in"><div class="kicker">Bahagian 2</div><h1>Seni Prompting</h1><p class="lead">Cara bagi arahan supaya hasil tak hambar</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>10 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 2 · Konsep</div><h2>Kenapa output AI selalu hambar?</h2><div class="body"><div class="g2c"><div class="card"><div class="lbl bad">Prompt lemah</div><div class="pmini">Tulis caption untuk produk aku.</div><p class="muted small" style="margin-top:12px">Claude terpaksa meneka semuanya → jawapan generik.</p></div><div class="card"><div class="lbl good">Prompt kuat</div><div class="pmini">Kau copywriter F&amp;B. Tulis 3 caption IG untuk sambal bilis premium, audience ibu bekerja 25–40, promo 11.11. Bahasa santai, max 80 patah perkataan, hook kuat di baris pertama, CTA di hujung.</div></div></div><p class="lead" style="margin-top:22px">Sampah masuk, sampah keluar. <b>Konteks</b> masuk, <b>hasil</b> keluar.</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>11 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 2 · Formula</div><h2>Formula P.K.T.F.C</h2><div class="body"><div class="g2c" style="grid-template-columns:1fr 1.2fr"><ul class="clean"><li><b>P</b>eranan — siapa Claude patut jadi</li><li><b>K</b>onteks — bisnes, audience, situasi</li><li><b>T</b>ugas — apa sebenarnya nak dibuat</li><li><b>F</b>ormat — panjang, struktur, bahasa</li><li><b>C</b>ontoh — gaya yang kau suka</li></ul><div class="pbox compact" style=""><div class="phead"><span class="pid">P02</span>Template formula P.K.T.F.C</div><div class="ptext">Peranan: Kau ialah <span class="fill">[peranan pakar, cth. copywriter jualan 10 tahun]</span>.
+Konteks: <span class="fill">[Info bisnes, siapa audience, apa situasinya]</span>.
+Tugas: <span class="fill">[Apa sebenarnya yang perlu dibuat]</span>.
+Format: <span class="fill">[Panjang, struktur, bahasa, gaya — cth. max 80 patah perkataan, Bahasa Melayu santai]</span>.
+Contoh: <span class="fill">[1–2 contoh gaya yang kau suka]</span>.</div></div></div></div><div class="foot"><span>Prompt Pack: P02</span><span>12 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 2 · Teknik</div><h2>Rahsia sebenar: iterasi</h2><div class="body"><div class="g2c"><div class="pbox compact" style=""><div class="phead"><span class="pid">P03</span>Biar Claude tanya dulu</div><div class="ptext">Aku nak <span class="fill">[matlamat aku]</span>.
+
+Sebelum kau jawab, tanya aku 5 soalan paling penting untuk faham situasi aku.
+Tanya satu soalan pada satu masa, dan tunggu jawapan aku.</div></div><div class="pbox compact" style=""><div class="phead"><span class="pid">P04</span>Ayat iterasi (baiki jawapan)</div><div class="ptext">• Pendekkan jadi separuh, kekalkan isi paling penting.
+• Tukar tone jadi lebih santai, macam cakap dengan kawan.
+• Beri 5 versi lain, setiap satu dengan hook yang berbeza.
+• Apa yang paling lemah dalam jawapan kau tadi? Baiki bahagian tu.
+• Tulis semula untuk orang yang tak pernah dengar pasal produk ni.</div></div></div></div><div class="foot"><span>Prompt Pack: P03, P04</span><span>13 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 2 · Hands-on</div><h2>Projects: 'Brand Brain' bisnes kau</h2><div class="body"><div class="g2c" style="grid-template-columns:1fr 1.25fr"><div><ul class="clean"><li>Klik <b>Projects → Create project</b></li><li>Namakan: <i>[Nama bisnes] Brand Brain</i></li><li>Tampal P05 dalam <b>Project instructions</b></li><li>Upload fail: katalog, senarai harga, FAQ</li><li>Semua chat dalam project ni = Claude dah kenal bisnes kau</li></ul></div><div class="pbox compact" style=""><div class="phead"><span class="pid">P05</span>Brand Brain (arahan Project)</div><div class="ptext">Kau ialah pembantu bisnes untuk <span class="fill">[nama bisnes]</span>.
+
+TENTANG KAMI
+- Produk/servis: <span class="fill">[apa yang kami jual]</span>
+- Harga: <span class="fill">[julat harga]</span>
+- Kelebihan utama: <span class="fill">[3 sebab orang beli dari kami]</span>
+
+PELANGGAN KAMI
+- Siapa: <span class="fill">[umur, pekerjaan, lokasi]</span>
+- Masalah utama: <span class="fill">[masalah yang produk kami selesaikan]</span>
+
+GAYA BAHASA
+- Bahasa Melayu harian, <span class="fill">[santai / profesional]</span>
+- Panggil pelanggan: <span class="fill">[kau / korang / anda / tuan-puan]</span>
+
+PERATURAN
+- Jangan janji benda yang kami tak tawarkan.
+- Kalau tak pasti, tanya aku dulu sebelum menjawab.</div></div></div></div><div class="foot"><span>Prompt Pack: P05</span><span>14 / 34</span></div></section>
+<section class="slide section"><div class="blob b3"></div><div class="sec-in"><div class="kicker">Bahagian 3</div><h1>Kenal &amp; Nilai Prospek</h1><p class="lead">Buat secara manual dulu — baru kita automate</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>15 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 3 · Langkah 1</div><h2>Siapa prospek ideal kau (ICP)?</h2><div class="body"><div class="g2c" style="grid-template-columns:1fr 1.25fr"><div><p class="lead">ICP = <b>Ideal Customer Profile</b>.<br>Kalau tak tahu siapa yang dicari, automation pun tak tahu.</p><ul class="clean"><li>Demografi</li><li>3 masalah utama</li><li>Apa mereka tengok di TikTok</li><li>Ayat yang mereka taip dalam komen</li><li>Tanda sedia membeli</li></ul></div><div class="pbox compact" style=""><div class="phead"><span class="pid">P06</span>Bina profil pelanggan ideal (ICP)</div><div class="ptext">Berdasarkan maklumat bisnes dalam project ni, bina profil pelanggan ideal (ICP) aku.
+
+Sertakan:
+1. Demografi (umur, pekerjaan, lokasi, pendapatan)
+2. 3 masalah utama yang mereka hadapi
+3. Apa yang mereka tonton dan cari di TikTok
+4. Ayat yang mereka selalu taip dalam komen bila ada masalah ni
+5. Tanda-tanda mereka dah sedia untuk membeli
+
+Beri dalam bentuk jadual, kemudian ringkaskan ICP dalam 2 ayat.</div></div></div></div><div class="foot"><span>Prompt Pack: P06</span><span>16 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 3 · Langkah 2</div><h2>Di mana prospek berada di TikTok?</h2><div class="body"><div class="grid g4"><div class="card"><h3>💬 Ruang komen</h3><p class="muted">Komen di video yang bincang masalah ICP kau.</p></div><div class="card"><h3>#️⃣ Hashtag</h3><p class="muted">Hashtag niche yang ICP selalu tonton.</p></div><div class="card"><h3>🎯 Akaun pesaing</h3><p class="muted">Orang yang tanya soalan di video pesaing.</p></div><div class="card"><h3>🔴 LIVE</h3><p class="muted">Penonton yang aktif bertanya semasa live.</p></div></div><div class="pbox compact" style="margin-top:20px"><div class="phead"><span class="pid">P07</span>Cari lokasi prospek di TikTok</div><div class="ptext">Untuk ICP di atas, senaraikan:
+- 15 hashtag TikTok yang prospek aku selalu guna atau tengok
+- 10 jenis akaun/creator yang pengikutnya mungkin prospek aku
+- 10 kata kunci carian TikTok
+
+Untuk setiap satu, terangkan dalam satu ayat kenapa ia sesuai.
+Tandakan 5 yang paling berpotensi dengan ⭐.</div></div></div><div class="foot"><span>Prompt Pack: P07</span><span>17 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 3 · Langkah 3</div><h2>Kumpul prospek dalam Google Sheets</h2><div class="body"><table class="small"><tr><th>Tarikh</th><th>Username</th><th>Bio</th><th>Komen</th><th>Video sumber</th><th>Skor</th><th>Mesej DM</th><th>Status</th></tr><tr><td>25/11</td><td>@kak_ani</td><td>Ibu 2 anak, KL</td><td>Macam mana nak turun 5kg ni 😭</td><td>link</td><td></td><td></td><td>Belum DM</td></tr><tr><td>25/11</td><td>@miza.h</td><td>Cikgu | Johor</td><td>Berapa harga set ni?</td><td>link</td><td></td><td></td><td>Belum DM</td></tr><tr><td>…</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table><div class="note">Latihan: kumpul 10 prospek secara manual (15 minit). Biarkan kolum Skor &amp; Mesej DM kosong.</div></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>18 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 3 · Langkah 4</div><h2>Claude nilai prospek</h2><div class="body"><div class="g2c" style="grid-template-columns:1fr 1.3fr"><div><div class="score hot">PANAS<span>Sebut masalah terus / tanya harga</span></div><div class="score warm">SUAM<span>Ada minat, belum ada niat jelas</span></div><div class="score cold">SEJUK<span>Tak berkaitan / spam / pesaing</span></div></div><div class="pbox compact" style=""><div class="phead"><span class="pid">P08</span>Nilai senarai prospek (manual)</div><div class="ptext">Aku akan tampal senarai prospek dari TikTok (username, bio, komen yang mereka tulis).
+
+Untuk setiap prospek, beri:
+- Skor: PANAS / SUAM / SEJUK
+- Sebab (1 ayat)
+- Masalah yang mereka mungkin ada
+
+Guna ICP dalam project ni sebagai rujukan.
+Susun dalam jadual, PANAS di atas sekali.
+
+Senarai:
+<span class="fill">[tampal di sini]</span></div></div></div></div><div class="foot"><span>Prompt Pack: P08</span><span>19 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 3 · Langkah 5</div><h2>Claude tulis DM yang personal</h2><div class="body"><div class="g2c"><div class="pbox compact" style=""><div class="phead"><span class="pid">P09</span>Mesej DM pertama yang personal</div><div class="ptext">Tulis mesej DM pertama untuk prospek ini:
+Username: <span class="fill">[ ]</span>
+Bio: <span class="fill">[ ]</span>
+Komen mereka: <span class="fill">[ ]</span>
+
+Peraturan:
+- Max 50 patah perkataan
+- Sebut sesuatu yang spesifik dari bio atau komen mereka
+- Jangan terus jual atau letak link
+- Akhiri dengan satu soalan ringan
+
+Beri 3 versi dengan gaya berbeza.</div></div><div><div class="pbox compact" style=""><div class="phead"><span class="pid">P10</span>Urutan follow-up</div><div class="ptext">Prospek ni tak balas mesej pertama aku:
+<span class="fill">[tampal mesej pertama]</span>
+
+Tulis 3 mesej follow-up untuk hari ke-2, ke-5 dan ke-10.
+Setiap mesej mesti beri nilai baru (tip berguna, testimoni ringkas, atau soalan menarik)
+— jangan cuma tanya &quot;dah baca ke?&quot;.
+Max 40 patah perkataan setiap satu.</div></div><div class="pref" style="margin-top:14px"><span class="pid">P11</span>Balas bantahan prospek <span class="muted">— salin dari Prompt Pack</span></div></div></div></div><div class="foot"><span>Prompt Pack: P09, P10, P11</span><span>20 / 34</span></div></section>
+<section class="slide section"><div class="blob b3"></div><div class="sec-in"><div class="kicker">Bahagian 4</div><h1>Asas Automation</h1><p class="lead">Satu konsep yang buka semua pintu</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>21 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 4 · Konsep</div><h2>Trigger → Claude → Tindakan</h2><div class="body"><div class="flow"><div class="card fcard big"><div class="num">⚡</div><h3>TRIGGER</h3><p class="muted">Sesuatu berlaku. Cth: borang baru diisi, baris baru di Sheets, jadual setiap pagi.</p></div><div class="arrow">→</div><div class="card fcard big"><div class="num">🧠</div><h3>CLAUDE</h3><p class="muted">Berfikir &amp; menulis. Cth: nilai, ringkaskan, tulis balasan.</p></div><div class="arrow">→</div><div class="card fcard big"><div class="num">✅</div><h3>TINDAKAN</h3><p class="muted">Hasil dihantar. Cth: hantar emel, isi Sheets, notifikasi Telegram.</p></div></div><p class="lead" style="margin-top:28px">Semua automation — dari yang paling mudah sampai yang paling canggih — ikut corak ni.</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>22 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 4 · Tool</div><h2>Pilih tool automation</h2><div class="body"><table class=""><tr><th>Tool</th><th>Kelebihan</th><th>Sesuai untuk</th></tr><tr><td><b>Zapier</b></td><td>Paling mudah, banyak integrasi</td><td>Pemula yang nak cepat</td></tr><tr><td><b>Make</b></td><td>Visual, lebih murah untuk volume tinggi</td><td>Aliran yang ada banyak langkah</td></tr><tr><td><b>n8n</b></td><td>Paling fleksibel, boleh self-host</td><td>Yang nak kawalan penuh</td></tr><tr><td><b>Cowork</b></td><td>Dalam app desktop Claude, tanpa setup integrasi</td><td>Kerja pada fail &amp; folder komputer</td></tr><tr><td><b>Claude Code</b></td><td>Paling berkuasa, Claude bina skrip sendiri</td><td>Yang selesa sedikit teknikal</td></tr></table><div class="note">Dalam kelas ni kita guna: <b>[tool yang kau guna]</b></div></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>23 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 4 · Latihan</div><h2>Automation pertama: balas borang</h2><div class="body"><div class="flow"><div class="card fcard"><div class="num">1</div><h3>Google Form</h3><p class="muted">Pelanggan isi nama, minat, mesej.</p></div><div class="arrow">→</div><div class="card fcard"><div class="num">2</div><h3>Claude (P13)</h3><p class="muted">Tulis emel balasan personal.</p></div><div class="arrow">→</div><div class="card fcard"><div class="num">3</div><h3>Gmail</h3><p class="muted">Emel dihantar automatik.</p></div></div><div class="pbox compact" style="margin-top:20px"><div class="phead"><span class="pid">P13</span>Automation pertama: balas borang (dalam modul AI)</div><div class="ptext">Kau pembantu untuk <span class="fill">[nama bisnes]</span>.
+Seseorang baru isi borang dengan maklumat ini:
+Nama: <span class="var">{{nama}}</span>
+Minat: <span class="var">{{minat}}</span>
+Mesej: <span class="var">{{mesej}}</span>
+
+Tulis emel balasan dalam Bahasa Melayu santai, max 120 patah perkataan:
+1. Ucap terima kasih dengan nama mereka
+2. Jawab mesej mereka secara ringkas
+3. Ajak mereka <span class="fill">[langkah seterusnya, cth. WhatsApp kami di 01X-XXX XXXX]</span>
+
+Tulis isi emel sahaja, tanpa subjek dan tanpa tandatangan.</div></div></div><div class="foot"><span>Prompt Pack: P13</span><span>24 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 4 · Konsep</div><h2>Prompt untuk automation ≠ prompt untuk chat</h2><div class="body"><table class=""><tr><th></th><th>Prompt chat</th><th>Prompt automation</th></tr><tr><td>Siapa baca output</td><td>Manusia</td><td>Mesin (Sheets, Zapier, dll.)</td></tr><tr><td>Format jawapan</td><td>Bebas</td><td><b>Tetap &amp; ketat</b> — selalunya JSON</td></tr><tr><td>Boleh tanya balik?</td><td>Ya</td><td>Tak — mesti lengkap sekali jalan</td></tr><tr><td>Data</td><td>Ditaip sendiri</td><td>Pembolehubah <code>{{username}}</code></td></tr></table><p class="lead" style="margin-top:20px">Peraturan: suruh Claude jawab <b>HANYA dalam format yang ditetapkan</b>.</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>25 / 34</span></div></section>
+<section class="slide section"><div class="blob b3"></div><div class="sec-in"><div class="kicker">Bahagian 5</div><h1>Mesin Cari Prospek</h1><p class="lead">Gabungkan semua yang dah dipelajari</p></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>26 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 5 · Senibina</div><h2>5 blok mesin cari prospek</h2><div class="body"><div class="flow"><div class="card fcard"><div class="num">1</div><h3>Ambil data</h3><p class="muted">Komen/prospek dari TikTok masuk ke sistem.</p></div><div class="arrow">→</div><div class="card fcard"><div class="num">2</div><h3>Tapis</h3><p class="muted">Buang spam &amp; komen tak relevan.</p></div><div class="arrow">→</div><div class="card fcard"><div class="num">3</div><h3>Claude nilai</h3><p class="muted">Skor + sebab + DM (P15).</p></div><div class="arrow">→</div><div class="card fcard"><div class="num">4</div><h3>Simpan</h3><p class="muted">Satu baris baru di Google Sheets.</p></div><div class="arrow">→</div><div class="card fcard"><div class="num">5</div><h3>Notifikasi</h3><p class="muted">Ringkasan ke telefon (P16).</p></div></div></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>27 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 5 · Blok 1–2</div><h2>Ambil data &amp; tapis</h2><div class="body"><div class="g2c"><div class="card"><h3>Blok 1 · Ambil data</h3><ul class="clean small"><li><b>[Terangkan sumber data dalam automation kau]</b></li><li>Pilihan: senarai manual di Sheets, borang, atau tool pengumpul data</li><li>Setiap prospek = 1 rekod: username, bio, komen, video</li></ul></div><div class="card"><h3>Blok 2 · Tapis</h3><ul class="clean small"><li>Tapis guna kata kunci (P14)</li><li>Buang komen terlalu pendek / emoji sahaja</li><li>Buang duplikat (prospek yang sama)</li><li>Jimat kos — Claude hanya proses yang berpotensi</li></ul></div></div><div class="pref" style="margin-top:18px"><span class="pid">P14</span>Kata kunci untuk tapis komen <span class="muted">— salin dari Prompt Pack</span></div></div><div class="foot"><span>Prompt Pack: P14</span><span>28 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 5 · Blok 3</div><h2>Enjin utama: Claude nilai &amp; tulis DM</h2><div class="body"><div class="pbox compact" style=""><div class="phead"><span class="pid">P15</span>Penilai prospek automatik → JSON (enjin utama)</div><div class="ptext">Kau penilai prospek untuk <span class="fill">[nama bisnes]</span> yang menjual <span class="fill">[produk/servis]</span>
+kepada <span class="fill">[ICP ringkas, cth. ibu bekerja 25–40 yang nak kurus selepas bersalin]</span>.
+
+Nilai prospek TikTok ini:
+Username: <span class="var">{{username}}</span>
+Bio: <span class="var">{{bio}}</span>
+Komen: <span class="var">{{komen}}</span>
+Video sumber: <span class="var">{{video_sumber}}</span>
+
+Kriteria PANAS: <span class="fill">[cth. sebut masalah secara terus, tanya harga, minta cadangan]</span>
+Kriteria SEJUK: <span class="fill">[cth. akaun pesaing, komen tak berkaitan, spam]</span>
+
+Jawab HANYA dalam JSON yang sah, tanpa teks lain:
+{
+  &quot;skor&quot;: &quot;PANAS&quot; atau &quot;SUAM&quot; atau &quot;SEJUK&quot;,
+  &quot;sebab&quot;: &quot;1 ayat&quot;,
+  &quot;masalah&quot;: &quot;masalah utama yang mungkin mereka ada&quot;,
+  &quot;mesej_dm&quot;: &quot;mesej pertama max 50 patah perkataan, personal, tanpa terus jual, akhiri dengan soalan&quot;
+}</div></div></div><div class="foot"><span>Prompt Pack: P15</span><span>29 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 5 · Blok 4–5</div><h2>Simpan &amp; notifikasi</h2><div class="body"><div class="g2c"><div class="card"><h3>Blok 4 · Google Sheets</h3><ul class="clean small"><li>Tambah baris baru untuk setiap prospek</li><li>Skor, Sebab, Mesej DM diisi dari JSON</li><li>Status mula dengan 'Belum DM'</li><li>Susun/tapis ikut PANAS</li></ul></div><div class="card"><h3>Blok 5 · Notifikasi</h3><ul class="clean small"><li>Sekali sehari (cth. 9 pagi)</li><li>Claude ringkaskan prospek baru (P16)</li><li>Hantar ke Telegram / emel / WhatsApp</li><li>Kau buka telefon → terus tahu siapa nak DM</li></ul></div></div><div class="pref" style="margin-top:18px"><span class="pid">P16</span>Ringkasan harian ke WhatsApp/Telegram <span class="muted">— salin dari Prompt Pack</span></div></div><div class="foot"><span>Prompt Pack: P16</span><span>30 / 34</span></div></section>
+<section class="slide accent"><div class="kicker">Demo &amp; build</div><h2>Jom bina sama-sama</h2><div class="body"><div class="big">Bina 5 blok dalam [tool kau], langkah demi langkah.</div><p class="lead-l">Uji dengan 5 prospek sebenar → semak Sheets → betulkan dengan P17.</p></div><div class="foot"><span>Prompt Pack: P17</span><span>31 / 34</span></div></section>
+<section class="slide dark"><div class="kicker">Penting</div><h2>Etika &amp; keselamatan akaun</h2><div class="body"><div class="grid g2"><div class="card"><h3>Ikut terma platform</h3><p class="muted">Jangan guna kaedah ambil data yang dilarang TikTok — akaun boleh disekat.</p></div><div class="card"><h3>Hantar DM secara manual</h3><p class="muted">Claude tulis draf; manusia hantar. Had DM sehari supaya tak dianggap spam.</p></div><div class="card"><h3>Personal, bukan spam</h3><p class="muted">Setiap mesej mesti relevan dengan komen orang tu.</p></div><div class="card"><h3>Lindungi data (PDPA)</h3><p class="muted">Simpan data dengan selamat, guna untuk tujuan jualan sahaja, padam bila diminta.</p></div></div></div><div class="foot"><span>KELAS CLAUDE AI · TIM KOWE</span><span>32 / 34</span></div></section>
+<section class="slide "><div class="kicker">Bahagian 5 · Ukur</div><h2>Ukur hasil setiap minggu</h2><div class="body"><div class="grid g4"><div class="card"><h3>Prospek baru</h3><p class="muted">Berapa yang masuk seminggu?</p></div><div class="card"><h3>% PANAS</h3><p class="muted">Kualiti sumber data kau.</p></div><div class="card"><h3>Kadar balas</h3><p class="muted">Berapa % balas DM?</p></div><div class="card"><h3>Kadar closing</h3><p class="muted">Berapa % jadi pelanggan?</p></div></div><div class="pbox compact" style="margin-top:20px"><div class="phead"><span class="pid">P18</span>Analisis hasil mingguan</div><div class="ptext">Ini data prospek minggu ni dari Google Sheets:
+<span class="fill">[tampal data — termasuk kolum Skor dan Status]</span>
+
+1. Kira kadar balas dan kadar closing ikut skor (PANAS / SUAM / SEJUK).
+2. Apa corak yang kau nampak? (jenis komen, jenis mesej, hari/masa)
+3. Beri 3 cadangan spesifik untuk tingkatkan kadar balas minggu depan.</div></div></div><div class="foot"><span>Prompt Pack: P18</span><span>33 / 34</span></div></section>
+<section class="slide accent"><div class="kicker">Penutup</div><h2>Tugasan 7 hari</h2><div class="body"><ul class="clean light"><li>Hari 1: Lengkapkan Project Brand Brain (P05, P06)</li><li>Hari 2–3: Jalankan mesin cari prospek setiap hari</li><li>Hari 4–6: DM 5 prospek PANAS sehari + follow-up (P09, P10)</li><li>Hari 7: Analisis hasil (P18) &amp; kongsi dalam group</li><li>BONUS: Buat content yang tarik prospek (P19)</li></ul></div><div class="foot"><span>Prompt Pack: P19</span><span>34 / 34</span></div></section></body></html>
