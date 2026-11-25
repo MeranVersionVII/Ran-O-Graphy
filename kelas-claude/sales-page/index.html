@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelas Claude AI — Tim Kowe</title>
+<meta name="description" content="Kelas Claude AI dari Basic sampai Advance: gambar, posting social media, bank content, automation dan video.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1d1b18; --muted: #6b645a; --bg: #faf7f2; --card: #ffffff; --line: #e7e0d5;
+    --accent: #d9622b; --accent-ink: #ffffff; --accent-soft: #fbe6da; --deep: #22201c; --deep-ink: #f4efe7;
+    --ok: #3f8f5a; --mid: #d9962b; --adv: #b7412a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #f1ece4; --muted: #b0a698; --bg: #181613; --card: #23201c; --line: #37322b;
+      --accent-soft: #3a261b; --deep: #0f0e0c;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: "Inter", system-ui, sans-serif; line-height: 1.6; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 72px 0; }
+  h1 { font-size: clamp(36px, 7vw, 68px); line-height: 1.05; letter-spacing: -.02em; font-weight: 800; }
+  h2 { font-size: clamp(28px, 4.5vw, 42px); line-height: 1.1; letter-spacing: -.015em; font-weight: 800; margin-bottom: 18px; }
+  h3 { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
+  .kicker { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .muted { color: var(--muted); }
+  .btn { display: inline-block; background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 17px; padding: 16px 28px; border-radius: 12px; text-decoration: none; border: 0; cursor: pointer; font-family: inherit; }
+  .btn:hover { filter: brightness(1.07); }
+  .btn.ghost { background: transparent; color: inherit; border: 2px solid currentColor; }
+  .grid { display: grid; gap: 18px; }
+  @media (min-width: 720px) { .g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: repeat(3, 1fr); } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+
+  /* hero */
+  .hero { background: var(--deep); color: var(--deep-ink); padding: 88px 0 80px; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; background: var(--accent); right: -140px; top: -140px; opacity: .9; }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero p.lead { font-size: 20px; color: #cfc6b8; max-width: 640px; margin: 20px 0 30px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+  .pills span { border: 1px solid #4a443b; border-radius: 99px; padding: 6px 14px; font-size: 14px; color: #e5dccf; }
+  .hero .meta { margin-top: 22px; font-size: 15px; color: #b5ab9c; }
+
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; color: #fff; margin-bottom: 10px; }
+  .t-basic { background: var(--ok); } .t-mid { background: var(--mid); } .t-adv { background: var(--adv); }
+  .module { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .module .n { font-size: 30px; font-weight: 800; color: var(--accent); line-height: 1.1; }
+  ul.check { list-style: none; }
+  ul.check li { padding-left: 30px; position: relative; margin-bottom: 10px; }
+  ul.check li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+
+  /* pricing */
+  .price-card { border: 2px solid var(--accent); text-align: center; padding: 34px 24px; max-width: 520px; margin: 0 auto; }
+  .price-old { text-decoration: line-through; color: var(--muted); font-size: 22px; }
+  .price-now { font-size: 64px; font-weight: 800; line-height: 1.1; }
+  .countdown { display: flex; justify-content: center; gap: 10px; margin: 18px 0 24px; }
+  .countdown div { background: var(--accent-soft); border-radius: 10px; padding: 8px 12px; min-width: 64px; }
+  .countdown b { display: block; font-size: 24px; }
+  .countdown small { font-size: 12px; color: var(--muted); }
+
+  /* form */
+  form .field { margin-bottom: 16px; }
+  label { display: block; font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+  input, select, textarea { width: 100%; font: inherit; font-size: 16px; padding: 13px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .pay-opt { display: flex; gap: 12px; align-items: flex-start; border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 10px; cursor: pointer; }
+  .pay-opt input { width: auto; margin-top: 5px; }
+  .pay-opt:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+  #done { display: none; }
+  .bank { background: var(--accent-soft); border-radius: 12px; padding: 18px; margin: 16px 0; }
+  .bank dt { font-size: 13px; color: var(--muted); } .bank dd { font-weight: 700; margin-bottom: 8px; }
+
+  details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+  summary { font-weight: 700; cursor: pointer; font-size: 17px; }
+  details p { margin-top: 8px; }
+  footer { padding: 40px 0; text-align: center; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
+  .sticky { position: fixed; left: 0; right: 0; bottom: 0; padding: 12px 20px; background: var(--card); border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 12px; z-index: 5; }
+  @media (min-width: 720px) { .sticky { display: none; } }
+  body { padding-bottom: 76px; } @media (min-width: 720px) { body { padding-bottom: 0; } }
+</style>
+</head>
+<body>
+
+<script>
+/* ============================================================
+   TETAPAN — UBAH DI SINI SAHAJA
+   ============================================================ */
+const CONFIG = {
+  namaKelas:      "Kelas Claude AI: Basic sampai Advance",
+  penganjur:      "Tim Kowe",
+  hargaBiasa:     497,
+  hargaEarlyBird: 297,
+  tarikhTutupEarlyBird: "2026-12-15T23:59:00+08:00",
+  tarikhKelas:    "Sabtu & Ahad, 20–21 & 27–28 Disember 2026",
+  lokasi:         "Online (Zoom) — rakaman disediakan",
+  kuotaTempat:    40,
+
+  // Link bayaran online (ToyyibPay / Billplz / Stripe Payment Link / dsb).
+  // Biarkan "" jika belum ada — pilihan bayaran online akan disembunyikan.
+  linkBayaranOnline: "",
+
+  // Akaun bank untuk pindahan manual
+  bank: { nama: "Maybank", noAkaun: "0000 0000 0000", namaAkaun: "NAMA AKAUN ANDA" },
+
+  // Nombor WhatsApp untuk hantar resit (format antarabangsa, tanpa +)
+  whatsapp: "60123456789",
+
+  // (Pilihan) URL Google Apps Script Web App untuk simpan pendaftaran ke Google Sheets.
+  // Lihat README.md untuk cara setup. Biarkan "" jika tak guna.
+  googleSheetWebhook: "",
+};
+</script>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker" style="color:#f0915f" data-k="penganjur"></div>
+    <h1>Kuasai Claude AI.<br>Dari Basic sampai Advance.</h1>
+    <p class="lead">Kelas hands-on untuk tim yang nak hasilkan gambar, posting social media, bank content 30 hari, automation dan video — lebih laju, lebih konsisten, tanpa burnout.</p>
+    <div class="pills"><span>🎨 Gambar</span><span>📱 Social Media</span><span>🗂️ Bank Content</span><span>⚙️ Automation</span><span>🎬 Video</span></div>
+    <a class="btn" href="#daftar">Daftar sekarang — <span data-k="hargaEarlyBirdRM"></span></a>
+    <p class="meta">📅 <span data-k="tarikhKelas"></span> · 📍 <span data-k="lokasi"></span></p>
+  </div>
+</header>
+
+<!-- MASALAH -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Kenal tak situasi ni?</div>
+    <h2>Content selalu tertangguh, kerja berulang makan masa.</h2>
+    <div class="grid g2" style="margin-top:20px;">
+      <div class="card"><h3>😩 Idea habis</h3><p class="muted">Tiap pagi fikir "hari ni nak post apa?" — akhirnya tak post langsung.</p></div>
+      <div class="card"><h3>⏳ Masa tak cukup</h3><p class="muted">Caption, design, skrip video, balas mesej — semua manual.</p></div>
+      <div class="card"><h3>🤖 Output AI hambar</h3><p class="muted">Dah cuba AI, tapi hasilnya generik dan tak bunyi macam brand sendiri.</p></div>
+      <div class="card"><h3>🧩 Tool terlalu banyak</h3><p class="muted">Tak tahu tool mana patut guna, dan macam mana nak sambungkan semuanya.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HASIL -->
+<section style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap grid g2" style="align-items:center;">
+    <div>
+      <div class="kicker">Hasil selepas kelas</div>
+      <h2>Balik dengan hasil kerja sebenar — bukan sekadar nota.</h2>
+    </div>
+    <ul class="check">
+      <li>Workspace Claude "Brand Brain" yang faham bisnes anda</li>
+      <li>50+ prompt template siap guna dalam Bahasa Melayu</li>
+      <li>10 posting social media sedia publish</li>
+      <li>Kalendar bank content 30 hari dalam spreadsheet</li>
+      <li>Sekurang-kurangnya 1 automation yang jalan sendiri</li>
+      <li>1 video pendek — dari skrip sampai siap edit</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SILIBUS -->
+<section id="silibus">
+  <div class="wrap">
+    <div class="kicker">Silibus</div>
+    <h2>7 modul, 3 tahap</h2>
+    <div class="module"><div class="n">01</div><div><span class="tag t-basic">Basic</span><h3>Kenali Claude</h3><p class="muted">Akaun & plan, Projects, Artifacts, upload fail, Styles. Bina "Brand Brain" untuk tim.</p></div></div>
+    <div class="module"><div class="n">02</div><div><span class="tag t-basic">Basic</span><h3>Seni Prompting</h3><p class="muted">Formula P.K.T.F.C, teknik iterasi, dan cara buat Claude menulis ikut suara brand anda.</p></div></div>
+    <div class="module"><div class="n">03</div><div><span class="tag t-mid">Intermediate</span><h3>Gambar & Visual</h3><p class="muted">Claude sebagai art director: prompt untuk AI gambar, poster & infografik melalui Artifacts, analisis design.</p></div></div>
+    <div class="module"><div class="n">04</div><div><span class="tag t-mid">Intermediate</span><h3>Posting Social Media</h3><p class="muted">Hook, caption ikut platform, carousel, balasan komen & FAQ.</p></div></div>
+    <div class="module"><div class="n">05</div><div><span class="tag t-mid">Intermediate</span><h3>Bank Content</h3><p class="muted">Content pillar, 100 idea, kalendar 30 hari, dan teknik repurpose 1 content jadi 5.</p></div></div>
+    <div class="module"><div class="n">06</div><div><span class="tag t-adv">Advance</span><h3>Automation</h3><p class="muted">Connectors (Gmail, Calendar, Drive), Zapier / Make / n8n, pengenalan Claude Code & tugasan berjadual.</p></div></div>
+    <div class="module" style="border:0"><div class="n">07</div><div><span class="tag t-adv">Advance</span><h3>Video</h3><p class="muted">Skrip Reels/TikTok, storyboard, prompt untuk AI video, subtitle — dan video template berasaskan code untuk yang advance.</p></div></div>
+  </div>
+</section>
+
+<!-- UNTUK SIAPA -->
+<section style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap grid g2">
+    <div class="card" style="background:var(--bg)"><h3>✅ Sesuai untuk</h3><ul class="check" style="margin-top:10px;"><li>Ahli tim marketing & content</li><li>Usahawan & pemilik bisnes kecil</li><li>Admin yang urus social media</li><li>Sesiapa yang nak guna AI dengan betul</li></ul></div>
+    <div class="card" style="background:var(--bg)"><h3>📦 Apa yang anda dapat</h3><ul class="check" style="margin-top:10px;"><li>4 sesi live (2–3 jam setiap sesi)</li><li>Rakaman semua sesi</li><li>Slide & library prompt (PDF)</li><li>30 hari support dalam group</li><li>Sijil penyertaan</li></ul></div>
+  </div>
+</section>
+
+<!-- HARGA -->
+<section id="harga">
+  <div class="wrap">
+    <div style="text-align:center"><div class="kicker">Yuran</div><h2>Harga early bird</h2></div>
+    <div class="card price-card">
+      <div class="price-old" data-k="hargaBiasaRM"></div>
+      <div class="price-now" data-k="hargaEarlyBirdRM"></div>
+      <p class="muted">Sehingga <span id="tarikhTutup"></span> · Tempat terhad (<span data-k="kuotaTempat"></span> orang)</p>
+      <div class="countdown" id="cd"></div>
+      <a class="btn" href="#daftar">Saya nak daftar</a>
+    </div>
+  </div>
+</section>
+
+<!-- DAFTAR -->
+<section id="daftar" style="background:var(--card);border-top:1px solid var(--line);">
+  <div class="wrap" style="max-width:640px;">
+    <div id="formWrap">
+      <div class="kicker">Pendaftaran</div>
+      <h2>Daftar & bayar</h2>
+      <p class="muted" style="margin-bottom:24px;">Isi maklumat di bawah. Selepas hantar, anda akan dibawa ke langkah bayaran.</p>
+      <form id="regForm" novalidate>
+        <div class="field"><label for="nama">Nama penuh</label><input id="nama" name="nama" required autocomplete="name"></div>
+        <div class="field"><label for="emel">Emel</label><input id="emel" name="emel" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="telefon">No. telefon (WhatsApp)</label><input id="telefon" name="telefon" type="tel" required placeholder="012-345 6789" autocomplete="tel"></div>
+        <div class="field"><label for="tahap">Tahap penggunaan AI sekarang</label>
+          <select id="tahap" name="tahap"><option>Belum pernah guna</option><option>Pernah cuba sikit-sikit</option><option>Guna setiap hari</option></select></div>
+        <div class="field"><label for="matlamat">Apa yang anda paling nak capai? (pilihan)</label><textarea id="matlamat" name="matlamat" rows="3"></textarea></div>
+        <div class="field">
+          <label>Kaedah bayaran</label>
+          <label class="pay-opt" id="optOnline"><input type="radio" name="bayaran" value="online"><span><b>Bayaran online</b><br><span class="muted" style="font-size:14px;">FPX / kad — terus ke halaman bayaran selamat</span></span></label>
+          <label class="pay-opt"><input type="radio" name="bayaran" value="bank"><span><b>Pindahan bank / DuitNow</b><br><span class="muted" style="font-size:14px;">Bayar manual & hantar resit melalui WhatsApp</span></span></label>
+        </div>
+        <p id="err" style="color:var(--adv);font-weight:600;margin-bottom:12px;"></p>
+        <button class="btn" type="submit" style="width:100%">Hantar & teruskan ke bayaran — <span data-k="hargaSemasaRM"></span></button>
+        <p class="muted" style="font-size:13px;margin-top:10px;text-align:center;">Maklumat anda hanya digunakan untuk urusan kelas ini.</p>
+      </form>
+    </div>
+
+    <div id="done">
+      <div class="kicker">Hampir siap!</div>
+      <h2>Terima kasih, <span id="doneNama"></span> 🎉</h2>
+      <p>Pendaftaran anda telah direkod. Langkah terakhir: buat bayaran <b data-k="hargaSemasaRM"></b> ke akaun di bawah.</p>
+      <dl class="bank">
+        <dt>Bank</dt><dd data-k="bank.nama"></dd>
+        <dt>No. akaun</dt><dd data-k="bank.noAkaun"></dd>
+        <dt>Nama akaun</dt><dd data-k="bank.namaAkaun"></dd>
+        <dt>Rujukan</dt><dd id="rujukan"></dd>
+      </dl>
+      <a class="btn" id="waBtn" target="_blank" rel="noopener">Hantar resit melalui WhatsApp</a>
+      <p class="muted" style="margin-top:14px;font-size:14px;">Link kelas & group support akan dihantar selepas bayaran disahkan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap" style="max-width:760px;">
+    <div class="kicker">Soalan lazim</div>
+    <h2>FAQ</h2>
+    <details><summary>Saya langsung tak pernah guna AI. Boleh ikut?</summary><p class="muted">Boleh. Modul 01–02 bermula dari asas sepenuhnya — buka akaun, tulis prompt pertama, dan seterusnya.</p></details>
+    <details><summary>Perlu ada Claude berbayar (Pro)?</summary><p class="muted">Tak wajib untuk mula. Versi percuma cukup untuk modul asas. Untuk modul automation & advance, plan berbayar disyorkan — kami terangkan pilihan dalam kelas.</p></details>
+    <details><summary>Perlu laptop?</summary><p class="muted">Ya, laptop sangat digalakkan untuk latihan hands-on. Telefon boleh guna untuk ikut sesi.</p></details>
+    <details><summary>Kalau terlepas sesi live?</summary><p class="muted">Rakaman setiap sesi akan dikongsi dalam group kelas.</p></details>
+    <details><summary>Ada refund?</summary><p class="muted">Refund penuh jika dimaklumkan sekurang-kurangnya 7 hari sebelum sesi pertama.</p></details>
+  </div>
+</section>
+
+<footer><span data-k="namaKelas"></span> · Anjuran <span data-k="penganjur"></span></footer>
+
+<div class="sticky"><span><b data-k="hargaSemasaRM"></b> <span class="muted" style="font-size:13px;">· tempat terhad</span></span><a class="btn" href="#daftar" style="padding:12px 20px;font-size:15px;">Daftar</a></div>
+
+<script>
+(function () {
+  const C = CONFIG;
+  const tutup = new Date(C.tarikhTutupEarlyBird);
+  const earlyBird = Date.now() < tutup.getTime();
+  const hargaSemasa = earlyBird ? C.hargaEarlyBird : C.hargaBiasa;
+  const vals = {
+    ...C,
+    hargaBiasaRM: "RM" + C.hargaBiasa,
+    hargaEarlyBirdRM: "RM" + C.hargaEarlyBird,
+    hargaSemasaRM: "RM" + hargaSemasa,
+    "bank.nama": C.bank.nama, "bank.noAkaun": C.bank.noAkaun, "bank.namaAkaun": C.bank.namaAkaun,
+  };
+  document.querySelectorAll("[data-k]").forEach(el => { el.textContent = vals[el.dataset.k] ?? ""; });
+  document.getElementById("tarikhTutup").textContent =
+    tutup.toLocaleDateString("ms-MY", { day: "numeric", month: "long", year: "numeric" });
+
+  // Countdown
+  const cd = document.getElementById("cd");
+  function tick() {
+    let s = Math.max(0, Math.floor((tutup - Date.now()) / 1000));
+    if (s === 0) { cd.innerHTML = "<small>Early bird telah tamat</small>"; return; }
+    const d = Math.floor(s / 86400); s %= 86400;
+    const h = Math.floor(s / 3600); s %= 3600;
+    const m = Math.floor(s / 60);
+    cd.innerHTML = [[d, "hari"], [h, "jam"], [m, "minit"]].map(([v, l]) => `<div><b>${v}</b><small>${l}</small></div>`).join("");
+  }
+  tick(); setInterval(tick, 30000);
+
+  // Payment options
+  const optOnline = document.getElementById("optOnline");
+  if (!C.linkBayaranOnline) optOnline.style.display = "none";
+  const defaultOpt = document.querySelector(`input[name=bayaran][value=${C.linkBayaranOnline ? "online" : "bank"}]`);
+  defaultOpt.checked = true;
+
+  // Submit
+  const form = document.getElementById("regForm");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const err = document.getElementById("err");
+    const d = Object.fromEntries(new FormData(form));
+    if (!d.nama.trim() || !/^\S+@\S+\.\S+$/.test(d.emel) || d.telefon.replace(/\D/g, "").length < 9) {
+      err.textContent = "Sila isi nama, emel dan no. telefon yang sah."; return;
+    }
+    err.textContent = "";
+    const rujukan = "KOWE-" + Date.now().toString(36).toUpperCase().slice(-6);
+    const payload = { ...d, rujukan, harga: hargaSemasa, masa: new Date().toISOString() };
+
+    const btn = form.querySelector("button");
+    btn.disabled = true; btn.textContent = "Sedang menghantar…";
+    if (C.googleSheetWebhook) {
+      try {
+        await fetch(C.googleSheetWebhook, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload) });
+      } catch (_) { /* teruskan walaupun gagal — WhatsApp jadi backup */ }
+    }
+
+    if (d.bayaran === "online" && C.linkBayaranOnline) {
+      const url = new URL(C.linkBayaranOnline);
+      url.searchParams.set("ref", rujukan);
+      window.location.href = url.toString();
+      return;
+    }
+
+    document.getElementById("formWrap").style.display = "none";
+    document.getElementById("done").style.display = "block";
+    document.getElementById("doneNama").textContent = d.nama.split(" ")[0];
+    document.getElementById("rujukan").textContent = rujukan;
+    const msg = `Salam, saya dah daftar ${C.namaKelas}.\n\nNama: ${d.nama}\nEmel: ${d.emel}\nTelefon: ${d.telefon}\nRujukan: ${rujukan}\nJumlah: RM${hargaSemasa}\n\nBerikut resit bayaran saya:`;
+    document.getElementById("waBtn").href = `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(msg)}`;
+    document.getElementById("daftar").scrollIntoView({ behavior: "smooth" });
+  });
+})();
+</script>
+</body>
+</html>

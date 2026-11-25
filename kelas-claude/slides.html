@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>Kelas Claude AI — Tim Kowe</title>
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  :root {
+    --ink: #1d1b18;
+    --muted: #6b645a;
+    --paper: #faf7f2;
+    --card: #ffffff;
+    --accent: #d9622b;
+    --accent-soft: #fbe6da;
+    --deep: #22201c;
+    --line: #e7e0d5;
+    --basic: #3f8f5a;
+    --mid: #d9962b;
+    --adv: #b7412a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #ccc; font-family: "Inter", "Inter Display", system-ui, sans-serif; color: var(--ink); }
+  .slide {
+    width: 1280px; height: 720px; background: var(--paper);
+    position: relative; overflow: hidden; page-break-after: always;
+    padding: 64px 80px; display: flex; flex-direction: column;
+  }
+  .slide.dark { background: var(--deep); color: #f4efe7; }
+  .slide.dark .muted { color: #b5ab9c; }
+  .slide.accent { background: var(--accent); color: #fff; }
+  .kicker { font-size: 15px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
+  .dark .kicker { color: #f0915f; }
+  .accent .kicker { color: #ffe1cf; }
+  h1 { font-family: "Inter Display", "Inter", sans-serif; font-size: 76px; line-height: 1.02; font-weight: 800; letter-spacing: -.02em; }
+  h2 { font-family: "Inter Display", "Inter", sans-serif; font-size: 48px; line-height: 1.08; font-weight: 800; letter-spacing: -.015em; margin-bottom: 28px; }
+  h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  p, li { font-size: 21px; line-height: 1.5; }
+  .muted { color: var(--muted); }
+  ul.clean { list-style: none; }
+  ul.clean li { padding-left: 30px; position: relative; margin-bottom: 12px; }
+  ul.clean li::before { content: ""; position: absolute; left: 4px; top: 12px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+  .grid { display: grid; gap: 20px; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px 26px; }
+  .card p, .card li { font-size: 17px; }
+  .dark .card { background: #2e2b26; border-color: #3d3932; }
+  .num { font-family: "Inter Display", sans-serif; font-size: 44px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 10px; }
+  .foot { position: absolute; left: 80px; right: 80px; bottom: 30px; display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+  .dark .foot { color: #8f8677; }
+  .accent .foot { color: #ffd9c4; }
+  .tag { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; color: #fff; margin-bottom: 14px; }
+  .t-basic { background: var(--basic); } .t-mid { background: var(--mid); } .t-adv { background: var(--adv); }
+  .prompt { font-family: "DejaVu Sans Mono", monospace; font-size: 16px; line-height: 1.6; background: #1f1d1a; color: #f2ebdf; border-radius: 14px; padding: 22px 26px; white-space: pre-wrap; }
+  .prompt b { color: #f0915f; font-weight: 700; }
+  .big-quote { font-family: "Inter Display", sans-serif; font-size: 54px; font-weight: 800; line-height: 1.12; letter-spacing: -.015em; }
+  .blob { position: absolute; border-radius: 50%; background: var(--accent); opacity: .9; }
+  table { border-collapse: collapse; width: 100%; font-size: 17px; }
+  .tight td { padding:8px 14px; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .flow { display: flex; align-items: stretch; gap: 14px; }
+  .flow .card { flex: 1; }
+  .arrow { align-self: center; font-size: 30px; color: var(--accent); font-weight: 800; }
+  @media print { html, body { background: none; } }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="slide dark">
+  <div class="blob" style="width:520px;height:520px;right:-140px;top:-120px;"></div>
+  <div class="blob" style="width:200px;height:200px;right:300px;bottom:-60px;background:#f0915f;opacity:.5"></div>
+  <div style="margin-top:auto; position:relative; max-width:760px;">
+    <div class="kicker">Kelas Eksklusif · Tim Kowe</div>
+    <h1>Claude AI:<br>Basic sampai Advance</h1>
+    <p class="muted" style="margin-top:22px;font-size:24px;">Gambar · Posting Social Media · Bank Content · Automation · Video</p>
+  </div>
+  <div class="foot"><span>KELAS CLAUDE AI</span><span>Tim Kowe · 2026</span></div>
+</section>
+
+<!-- 2. MASALAH -->
+<section class="slide">
+  <div class="kicker">Kenapa kelas ni wujud</div>
+  <h2>Masalah yang kita semua hadap</h2>
+  <div class="grid g2" style="margin-top:8px;">
+    <div class="card"><h3>Content tak konsisten</h3><p class="muted">Hari ni posting, minggu depan senyap. Idea habis, masa tak cukup.</p></div>
+    <div class="card"><h3>Kerja berulang makan masa</h3><p class="muted">Tulis caption, balas mesej, susun laporan — benda sama tiap-tiap hari.</p></div>
+    <div class="card"><h3>Guna AI, tapi hasil "hambar"</h3><p class="muted">Dah cuba ChatGPT/Claude, tapi output generik dan bunyi macam robot.</p></div>
+    <div class="card"><h3>Tak tahu nak mula dari mana</h3><p class="muted">Terlalu banyak tool. Gambar, video, automation — semua nampak rumit.</p></div>
+  </div>
+  <div class="foot"><span>KELAS CLAUDE AI</span><span>02</span></div>
+</section>
+
+<!-- 3. JANJI -->
+<section class="slide accent">
+  <div class="kicker">Hasil selepas kelas</div>
+  <div class="big-quote" style="max-width:1000px;margin-top:40px;">Habis kelas, Tim Kowe ada <u>sistem content 30 hari</u> yang siap, dan sekurang-kurangnya <u>satu automation</u> yang jalan sendiri.</div>
+  <p style="margin-top:36px;font-size:22px;color:#ffe9dc;max-width:900px;">Bukan teori. Setiap modul ada latihan hands-on, dan semua orang balik dengan hasil kerja sebenar.</p>
+  <div class="foot"><span>KELAS CLAUDE AI</span><span>03</span></div>
+</section>
+
+<!-- 4. PELAN KELAS -->
+<section class="slide">
+  <div class="kicker">Peta perjalanan</div>
+  <h2>7 modul, 3 tahap</h2>
+  <table>
+    <tr><th style="width:140px">Tahap</th><th style="width:90px">Modul</th><th>Topik</th><th style="width:330px">Hasil</th></tr>
+    <tr><td><span class="tag t-basic" style="margin:0">Basic</span></td><td>01</td><td><b>Kenali Claude</b> — akaun, plan, Projects, Artifacts</td><td class="muted">Workspace Claude siap untuk tim</td></tr>
+    <tr><td><span class="tag t-basic" style="margin:0">Basic</span></td><td>02</td><td><b>Seni Prompting</b> — formula, iterasi, brand voice</td><td class="muted">Prompt template peribadi</td></tr>
+    <tr><td><span class="tag t-mid" style="margin:0">Inter</span></td><td>03</td><td><b>Gambar & Visual</b> — Claude sebagai art director</td><td class="muted">5 visual untuk posting</td></tr>
+    <tr><td><span class="tag t-mid" style="margin:0">Inter</span></td><td>04</td><td><b>Posting Social Media</b> — hook, caption, carousel</td><td class="muted">10 posting sedia publish</td></tr>
+    <tr><td><span class="tag t-mid" style="margin:0">Inter</span></td><td>05</td><td><b>Bank Content</b> — pillar, kalendar, repurpose</td><td class="muted">Kalendar content 30 hari</td></tr>
+    <tr><td><span class="tag t-adv" style="margin:0">Advance</span></td><td>06</td><td><b>Automation</b> — connectors, Zapier/Make/n8n, Claude Code</td><td class="muted">1 workflow automasi yang jalan</td></tr>
+    <tr><td><span class="tag t-adv" style="margin:0">Advance</span></td><td>07</td><td><b>Video</b> — skrip, storyboard, prompt video AI</td><td class="muted">1 video pendek siap edit</td></tr>
+  </table>
+  <div class="foot"><span>KELAS CLAUDE AI</span><span>04</span></div>
+</section>
+
+<!-- 5. MODUL 1 -->
+<section class="slide">
+  <span class="tag t-basic">Modul 01 · Basic</span>
+  <h2>Kenali Claude</h2>
+  <div class="grid g3">
+    <div class="card"><h3>Apa itu Claude</h3><p class="muted">Pembantu AI dari Anthropic. Kuat menulis, berfikir, analisis dokumen & gambar, tulis code.</p></div>
+    <div class="card"><h3>Pilih plan</h3><p class="muted">Free untuk cuba. Pro/Max untuk kerja harian — had lebih tinggi, Projects, connectors, model terbaru.</p></div>
+    <div class="card"><h3>Projects</h3><p class="muted">"Otak" tim: masukkan info bisnes, produk, tone suara. Claude ingat setiap kali chat dalam project.</p></div>
+    <div class="card"><h3>Artifacts</h3><p class="muted">Claude hasilkan dokumen, page, chart, poster HTML yang boleh dilihat & dikongsi terus.</p></div>
+    <div class="card"><h3>Upload fail</h3><p class="muted">PDF, gambar, spreadsheet — Claude boleh baca, ringkaskan, dan ekstrak data.</p></div>
+    <div class="card"><h3>Styles & Memory</h3><p class="muted">Set gaya tulisan tetap supaya output selari dengan brand Tim Kowe.</p></div>
+  </div>
+  <div class="foot"><span>LATIHAN: Bina Project "Tim Kowe Brand Brain"</span><span>05</span></div>
+</section>
+
+<!-- 6. MODUL 2 -->
+<section class="slide">
+  <span class="tag t-basic">Modul 02 · Basic</span>
+  <h2>Formula prompt P.K.T.F.C</h2>
+  <div class="grid g2" style="grid-template-columns: 1fr 1.25fr; align-items:start;">
+    <ul class="clean">
+      <li><b>P</b>eranan — "Kau copywriter F&B 10 tahun"</li>
+      <li><b>K</b>onteks — siapa audience, produk, matlamat</li>
+      <li><b>T</b>ugas — apa sebenarnya yang perlu dibuat</li>
+      <li><b>F</b>ormat — panjang, struktur, bahasa, emoji</li>
+      <li><b>C</b>ontoh — beri 1–2 contoh gaya yang kau suka</li>
+    </ul>
+    <div class="prompt"><b>Peranan:</b> Kau copywriter social media untuk bisnes kecil Malaysia.
+<b>Konteks:</b> Produk kami sambal bilis premium, audience ibu bekerja 25–40.
+<b>Tugas:</b> Tulis 3 caption Instagram untuk promo 11.11.
+<b>Format:</b> Bahasa santai, max 80 patah perkataan, 1 hook kuat di baris pertama, CTA di hujung.
+<b>Contoh gaya:</b> "Lauk tak sempat masak? Sambal ni selamatkan makan malam kau."</div>
+  </div>
+  <p class="muted" style="margin-top:22px;">Rahsia sebenar: <b style="color:var(--ink)">iterasi</b>. Prompt pertama jarang sempurna — minta Claude perbaiki, ubah tone, atau beri 5 versi lain.</p>
+  <div class="foot"><span>LATIHAN: Tulis 3 prompt template untuk kerja harian</span><span>06</span></div>
+</section>
+
+<!-- 7. MODUL 3 -->
+<section class="slide">
+  <span class="tag t-mid">Modul 03 · Intermediate</span>
+  <h2>Gambar & Visual</h2>
+  <p class="muted" style="margin-top:-14px;margin-bottom:24px;">Claude jadi <b style="color:var(--ink)">art director</b> kau — dia rancang, tulis prompt, dan bina visual berasaskan design.</p>
+  <div class="grid g3">
+    <div class="card"><div class="num">A</div><h3>Prompt untuk AI gambar</h3><p class="muted">Claude tulis prompt terperinci untuk tool penjana gambar (cth. Midjourney, Ideogram, Gemini, ChatGPT image).</p></div>
+    <div class="card"><div class="num">B</div><h3>Poster & infografik</h3><p class="muted">Guna Artifacts untuk bina poster, quote card, infografik dalam HTML/SVG — tukar teks, saiz, warna terus.</p></div>
+    <div class="card"><div class="num">C</div><h3>Analisis visual</h3><p class="muted">Upload gambar competitor / draf design — Claude beri komen layout, warna, dan cadangan penambahbaikan.</p></div>
+  </div>
+  <div class="card" style="margin-top:20px;background:var(--accent-soft);border-color:#f3cdb6;"><p style="font-size:17px;"><b>Nota jujur:</b> Claude sendiri tak lukis gambar foto-realistik. Kekuatannya ialah idea, prompt, dan design berstruktur — gabungkan dengan tool gambar untuk hasil terbaik.</p></div>
+  <div class="foot"><span>LATIHAN: 5 visual untuk 5 posting minggu ni</span><span>07</span></div>
+</section>
+
+<!-- 8. MODUL 4 -->
+<section class="slide">
+  <span class="tag t-mid">Modul 04 · Intermediate</span>
+  <h2>Posting Social Media</h2>
+  <div class="grid g4">
+    <div class="card"><h3>Hook</h3><p class="muted">20 hook ikut format: soalan, kontroversi, angka, cerita.</p></div>
+    <div class="card"><h3>Caption</h3><p class="muted">Ikut platform: IG, TikTok, FB, Threads, LinkedIn.</p></div>
+    <div class="card"><h3>Carousel</h3><p class="muted">Struktur slaid demi slaid, teks + arahan visual.</p></div>
+    <div class="card"><h3>Balas komen</h3><p class="muted">Template balasan & soalan lazim (FAQ).</p></div>
+  </div>
+  <div class="prompt" style="margin-top:24px;"><b>Prompt:</b> Berdasarkan maklumat produk dalam project ni, tulis 1 carousel Instagram 7 slaid bertajuk
+"5 Silap Orang Buat Bila ___". Untuk setiap slaid beri: (1) tajuk besar max 8 patah, (2) teks sokongan
+max 20 patah, (3) cadangan visual. Slaid terakhir mesti ada CTA ke link bio.</div>
+  <div class="foot"><span>LATIHAN: 10 posting siap publish</span><span>08</span></div>
+</section>
+
+<!-- 9. MODUL 5 -->
+<section class="slide">
+  <span class="tag t-mid">Modul 05 · Intermediate</span>
+  <h2>Bank Content 30 hari</h2>
+  <div class="flow">
+    <div class="card"><div class="num">1</div><h3>Content pillar</h3><p class="muted">4–5 tema utama: edukasi, testimoni, behind-the-scenes, promo, hiburan.</p></div>
+    <div class="arrow">→</div>
+    <div class="card"><div class="num">2</div><h3>100 idea</h3><p class="muted">Claude jana idea ikut pillar dan persona pelanggan.</p></div>
+    <div class="arrow">→</div>
+    <div class="card"><div class="num">3</div><h3>Kalendar</h3><p class="muted">Susun dalam jadual (tarikh, platform, format, caption) — export ke Excel/Sheets.</p></div>
+    <div class="arrow">→</div>
+    <div class="card"><div class="num">4</div><h3>Repurpose</h3><p class="muted">1 video → 1 carousel → 3 tweet → 1 newsletter.</p></div>
+  </div>
+  <p class="muted" style="margin-top:28px;">Satu sesi kerja 2 jam = content untuk sebulan. Tim cuma perlu fokus pada <b style="color:var(--ink)">shooting & publish</b>.</p>
+  <div class="foot"><span>LATIHAN: Kalendar content 30 hari dalam spreadsheet</span><span>09</span></div>
+</section>
+
+<!-- 10. MODUL 6 -->
+<section class="slide dark">
+  <span class="tag t-adv">Modul 06 · Advance</span>
+  <h2>Automation</h2>
+  <div class="grid g3">
+    <div class="card"><h3>Connectors</h3><p class="muted">Sambung Claude ke Gmail, Google Calendar, Drive, Notion dan lain-lain — Claude baca & bertindak terus.</p></div>
+    <div class="card"><h3>Zapier / Make / n8n</h3><p class="muted">Trigger → Claude → tindakan. Cth: borang baru masuk → Claude tulis balasan → hantar emel.</p></div>
+    <div class="card"><h3>Claude Code & tugasan berjadual</h3><p class="muted">Untuk yang nak lebih jauh: Claude buat kerja berulang ikut jadual, bina skrip & tool kecil.</p></div>
+  </div>
+  <div class="flow" style="margin-top:26px;">
+    <div class="card"><p><b>Trigger</b><br><span class="muted">Order baru di Google Form</span></p></div><div class="arrow">→</div>
+    <div class="card"><p><b>Claude</b><br><span class="muted">Tulis mesej terima kasih + upsell</span></p></div><div class="arrow">→</div>
+    <div class="card"><p><b>Tindakan</b><br><span class="muted">Hantar emel & update Sheets</span></p></div>
+  </div>
+  <div class="foot"><span>LATIHAN: Bina 1 workflow automasi yang jalan sendiri</span><span>10</span></div>
+</section>
+
+<!-- 11. MODUL 7 -->
+<section class="slide">
+  <span class="tag t-adv">Modul 07 · Advance</span>
+  <h2>Video</h2>
+  <div class="grid g2">
+    <div>
+      <ul class="clean">
+        <li><b>Skrip</b> — hook 3 saat pertama, isi, CTA (Reels/TikTok/YouTube)</li>
+        <li><b>Storyboard</b> — shot list, sudut kamera, B-roll, teks atas skrin</li>
+        <li><b>Prompt video AI</b> — untuk tool seperti Veo, Kling, Runway</li>
+        <li><b>Subtitle & caption</b> — transkrip, terjemah, potong klip</li>
+        <li><b>Advance:</b> video template berasaskan code (cth. Remotion) dibina dengan Claude Code</li>
+      </ul>
+    </div>
+    <div class="prompt"><b>Prompt:</b> Tulis skrip TikTok 30 saat untuk produk kami.
+Format jadual: [Masa] | [Visual] | [Dialog] | [Teks skrin].
+0–3s mesti hook yang buat orang berhenti scroll.
+Akhiri dengan CTA "komen NAK".
+Beri juga 3 variasi hook untuk A/B test.</div>
+  </div>
+  <div class="foot"><span>LATIHAN: 1 video pendek dari skrip sampai siap edit</span><span>11</span></div>
+</section>
+
+<!-- 12. FORMAT -->
+<section class="slide">
+  <div class="kicker">Format kelas</div>
+  <h2>Macam mana kelas berjalan</h2>
+  <div class="grid g4" style="margin-top:-8px">
+    <div class="card"><div class="num">4</div><h3>Sesi live</h3><p class="muted">2–3 jam setiap sesi, online (Zoom/Meet) atau fizikal.</p></div>
+    <div class="card"><div class="num">7</div><h3>Modul</h3><p class="muted">Basic → Intermediate → Advance, setiap satu ada latihan.</p></div>
+    <div class="card"><div class="num">50+</div><h3>Prompt template</h3><p class="muted">Library prompt siap guna dalam Bahasa Melayu.</p></div>
+    <div class="card"><div class="num">30</div><h3>Hari support</h3><p class="muted">Group WhatsApp/Telegram untuk soal jawab.</p></div>
+  </div>
+  <table style="margin-top:18px;font-size:16px;" class="tight">
+    <tr><th>Sesi</th><th>Modul</th></tr>
+    <tr><td>Sesi 1</td><td>Modul 01 + 02 — Asas Claude & Prompting</td></tr>
+    <tr><td>Sesi 2</td><td>Modul 03 + 04 — Gambar & Posting Social Media</td></tr>
+    <tr><td>Sesi 3</td><td>Modul 05 + 06 — Bank Content & Automation</td></tr>
+    <tr><td>Sesi 4</td><td>Modul 07 + Projek Akhir — Video & pembentangan</td></tr>
+  </table>
+  <div class="foot"><span>KELAS CLAUDE AI</span><span>12</span></div>
+</section>
+
+<!-- 13. HARGA -->
+<section class="slide dark">
+  <div class="kicker">Pelaburan</div>
+  <h2>Yuran kelas</h2>
+  <div class="grid g2" style="max-width:980px;">
+    <div class="card"><p class="muted" style="font-size:16px;letter-spacing:.08em;text-transform:uppercase;">Harga biasa</p><div style="font-size:64px;font-weight:800;margin:6px 0;text-decoration:line-through;color:#8f8677;">RM497</div><p class="muted">Selepas tarikh early bird</p></div>
+    <div class="card" style="border:2px solid var(--accent);"><p style="font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:#f0915f;font-weight:700;">Early bird</p><div style="font-size:64px;font-weight:800;margin:6px 0;color:#fff;">RM297</div><p class="muted">Tempat terhad · Bayar sebelum tarikh tutup</p></div>
+  </div>
+  <p style="margin-top:28px;font-size:22px;">Daftar & bayar di sales page → terima link kelas + group support.</p>
+  <div class="foot"><span>Harga & tarikh boleh diubah dalam sales page</span><span>13</span></div>
+</section>
+
+<!-- 14. CTA -->
+<section class="slide accent">
+  <div style="margin:auto 0;">
+    <div class="kicker">Langkah seterusnya</div>
+    <h1 style="max-width:980px;">Jom daftar sekarang.</h1>
+    <p style="font-size:26px;margin-top:24px;color:#fff3ea;">Imbas QR / klik link sales page → isi borang → bayar → masuk group kelas.</p>
+  </div>
+  <div class="foot"><span>KELAS CLAUDE AI · Tim Kowe</span><span>14</span></div>
+</section>
+
+</body>
+</html>
