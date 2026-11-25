@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ms"><head><meta charset="utf-8">
+<style>
+:root { --ink:#1d1b18; --muted:#6b645a; --paper:#faf7f2; --card:#fff; --line:#e7e0d5; --accent:#d9622b; --soft:#fbe6da; --deep:#22201c; --hot:#c2412a; --warm:#d9962b; --teal:#0f7c8c; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { width:1920px; height:1080px; overflow:hidden; background:var(--paper); font-family:"Inter",sans-serif; color:var(--ink); }
+.scene { position:absolute; inset:0; padding:110px 150px; display:flex; flex-direction:column; justify-content:center; opacity:0; }
+.dark { background:var(--deep); color:#f4efe7; }
+.accent { background:var(--accent); color:#fff; }
+.k { font-size:30px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:24px; }
+.dark .k { color:#f0915f; } .accent .k { color:#ffe1cf; }
+h1 { font-family:"Inter Display","Inter",sans-serif; font-size:124px; line-height:1.02; font-weight:800; letter-spacing:-.02em; }
+h2 { font-family:"Inter Display","Inter",sans-serif; font-size:84px; line-height:1.06; font-weight:800; letter-spacing:-.015em; margin-bottom:40px; }
+.lead { font-size:42px; line-height:1.4; color:#cfc6b8; margin-top:34px; max-width:1300px; }
+.it { opacity:0; }
+.blob { position:absolute; border-radius:50%; background:var(--accent); }
+.prob { font-size:64px; font-weight:700; margin:18px 0; display:flex; gap:28px; align-items:center; }
+.prob s { color:#8f8677; text-decoration-thickness:6px; }
+/* telegram */
+.tg { width:1050px; background:#dfe7ee; border-radius:32px; padding:28px; display:flex; flex-direction:column; gap:16px; }
+.msg { background:#fff; border-radius:22px 22px 22px 8px; padding:18px 24px; font-size:28px; line-height:1.45; color:#1d1b18; }
+.msg.r { background:#effdde; font-style:italic; }
+.row { display:flex; gap:70px; align-items:center; }
+.side { flex:1; }
+.side p { font-size:44px; line-height:1.35; font-weight:600; margin-bottom:26px; }
+.side p span { color:var(--accent); }
+/* hub */
+.hub { width:1050px; background:#f4f7f8; border-radius:28px; padding:28px; border:2px solid #d6e0e4; display:flex; flex-direction:column; gap:16px; }
+.hub .hd { display:flex; justify-content:space-between; align-items:center; font-family:"Inter Display"; font-size:34px; font-weight:800; color:#142126; }
+.hub .tabs { font-size:22px; background:#eaf0f2; border-radius:12px; padding:6px; display:flex; gap:6px; font-family:"Inter"; font-weight:600; }
+.hub .tabs b { background:#fff; padding:6px 14px; border-radius:8px; } .hub .tabs i { padding:6px 14px; font-style:normal; color:#5a6d74; }
+.lc { background:#fff; border:1px solid #d6e0e4; border-left:8px solid var(--hot); border-radius:16px; padding:18px 22px; font-size:24px; color:#142126; display:flex; flex-direction:column; gap:10px; }
+.lc.w { border-left-color:var(--warm); }
+.pill { display:inline-block; font-size:18px; font-weight:700; border-radius:99px; padding:3px 12px; background:#eaf0f2; margin-left:8px; }
+.pill.h { background:var(--hot); color:#fff; } .pill.m { background:var(--warm); color:#fff; }
+.rp { background:#dcf0f2; border-radius:12px; padding:12px 16px; font-size:22px; }
+.btn { display:inline-block; background:var(--teal); color:#fff; font-weight:700; font-size:22px; border-radius:10px; padding:8px 16px; }
+/* modules */
+.mods { display:flex; flex-direction:column; gap:22px; }
+.mod { display:grid; grid-template-columns:120px 1fr; gap:30px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:24px; padding:22px 34px; }
+.mod .n { font-family:"Inter Display"; font-size:64px; font-weight:800; color:var(--accent); }
+.mod h3 { font-size:40px; font-weight:800; }
+.mod p { font-size:28px; color:var(--muted); margin-top:4px; }
+.tag { display:inline-block; font-size:20px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#fff; border-radius:99px; padding:4px 14px; margin-left:14px; vertical-align:middle; }
+.tb { background:#3f8f5a; } .tm { background:#d9962b; } .ta { background:#b7412a; }
+.check { font-size:52px; font-weight:700; margin:16px 0; display:flex; gap:26px; align-items:center; }
+.check::before { content:"✓"; color:#fff; background:var(--accent); width:70px; height:70px; border-radius:50%; display:grid; place-items:center; font-size:40px; flex:none; }
+.prods { display:flex; gap:26px; margin-top:20px; }
+.prod { background:var(--card); border:1px solid var(--line); border-radius:22px; padding:22px 26px; font-size:30px; font-weight:700; text-align:center; flex:1; }
+.prod div { font-size:64px; margin-bottom:8px; }
+.flow { display:flex; align-items:center; gap:24px; }
+.fc { flex:1; background:#2e2b26; border:1px solid #3d3932; border-radius:26px; padding:36px; }
+.fc .e { font-size:76px; } .fc h3 { font-size:44px; font-weight:800; margin:12px 0 8px; } .fc p { font-size:28px; color:#b5ab9c; }
+.arr { font-size:64px; color:var(--accent); font-weight:800; }
+.foot { position:absolute; left:150px; right:150px; bottom:50px; display:flex; justify-content:space-between; font-size:24px; color:var(--muted); letter-spacing:.04em; }
+.dark .foot { color:#8f8677; } .accent .foot { color:#ffd9c4; }
+.prog { position:absolute; left:0; bottom:0; height:8px; background:var(--accent); }
+</style></head><body>
+
+<!-- S1 0-6 -->
+<section class="scene dark" data-s="0" data-e="6">
+  <div class="blob" style="width:800px;height:800px;right:-220px;top:-200px"></div>
+  <div class="blob" style="width:300px;height:300px;right:480px;bottom:-110px;background:#f0915f;opacity:.5"></div>
+  <div style="position:relative;max-width:1250px">
+    <div class="k it" data-in="0.2">Kelas Eksklusif · Tim Coway</div>
+    <h1 class="it" data-in="0.6">Claude AI untuk Ejen Coway</h1>
+    <p class="lead it" data-in="1.4">Dari zero ke mesin cari prospek Threads — dalam satu kelas.</p>
+  </div>
+</section>
+
+<!-- S2 6-12 -->
+<section class="scene" data-s="6" data-e="12">
+  <div class="k it" data-in="0.1">Kenal tak situasi ni?</div>
+  <div class="prob it" data-in="0.5">😩 Post iklan — <s>tiada siapa tanya</s></div>
+  <div class="prob it" data-in="1.4">⏳ Scroll berjam-jam cari prospek</div>
+  <div class="prob it" data-in="2.3">🤖 Reply "PM untuk harga" — orang terus scroll</div>
+  <div class="prob it" data-in="3.4" style="color:var(--accent)"><span>Prospek ada setiap hari. Yang tiada ialah <u>sistem</u>.</span></div>
+</section>
+
+<!-- S3 12-20 -->
+<section class="scene" data-s="12" data-e="20">
+  <div class="row">
+    <div class="side">
+      <div class="k it" data-in="0.1">Bayangkan setiap pagi…</div>
+      <p class="it" data-in="0.4"><span>9:00 pagi</span> — Claude dah cari di Threads untuk korang.</p>
+      <p class="it" data-in="1.6">Prospek ditapis, dinilai 🔥, dan draf reply siap ditulis.</p>
+      <p class="it" data-in="2.8">Korang cuma buka Telegram → salin → reply.</p>
+    </div>
+    <div class="tg">
+      <div class="msg it" data-in="0.8"><b>🔎 Lead Threads: 26 Nov (3 lead) - Sesi Pagi</b></div>
+      <div class="msg it" data-in="1.8">🔥 1. @contoh_ibu2anak · Shah Alam · Penapis air<br>Baru pindah rumah, air paip keruh, minta recommend water filter.<br>🔗 threads.com/… &nbsp;👇 Reply:</div>
+      <div class="msg r it" data-in="2.8">Hi! Air keruh lepas pindah memang selalu jadi sebab paip lama. Saya ejen Coway area Shah Alam, boleh DM kalau nak tengok pilihan yang sesuai 🙂</div>
+      <div class="msg it" data-in="3.8">🟡 2. @contoh_pasanganbaru · Tilam …</div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 20-27 -->
+<section class="scene" data-s="20" data-e="27">
+  <div class="row">
+    <div class="hub">
+      <div class="hd it" data-in="0.2">Hub Prospek Ejen <span class="tabs"><b>Prospek</b><i>Bank Content</i></span></div>
+      <div class="lc it" data-in="0.8"><div><b>@contoh_bujang_kl</b><span class="pill h">🔥 Kuat</span><span class="pill">Aircon</span></div><div>Aircon bilik tak sejuk, tanya baiki atau beli baru.</div><div class="rp">Kalau aircon dah lama dan selalu kena servis…</div><div><span class="btn">Salin reply</span></div></div>
+      <div class="lc w it" data-in="1.6"><div><b>@contoh_pasanganbaru</b><span class="pill m">🟡 Sederhana</span><span class="pill">Tilam</span></div><div>Tilam dah 10 tahun, bangun sakit belakang.</div></div>
+    </div>
+    <div class="side">
+      <div class="k it" data-in="0.1">Dan di fon korang</div>
+      <p class="it" data-in="0.6">Semua lead dalam satu <span>web app</span>.</p>
+      <p class="it" data-in="1.8">Tanda: dah reply → dapat DM → <span>closing</span>.</p>
+      <p class="it" data-in="3.0">Bank idea content untuk post setiap hari.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S5 27-31 -->
+<section class="scene accent" data-s="27" data-e="31">
+  <div class="k it" data-in="0.1">Dalam kelas ni</div>
+  <h1 class="it" data-in="0.4" style="max-width:1500px">Apa yang korang akan belajar</h1>
+</section>
+
+<!-- S6 31-45 modules -->
+<section class="scene" data-s="31" data-e="45">
+  <div class="mods">
+    <div class="mod it" data-in="0.2"><div class="n">1</div><div><h3>Kenal Claude <span class="tag tb">Basic</span></h3><p>Akaun, app desktop, chat pertama</p></div></div>
+    <div class="mod it" data-in="2.2"><div class="n">2</div><div><h3>Seni Prompting <span class="tag tb">Basic</span></h3><p>Formula P.K.T.F.C &amp; "Brand Brain" ejen Coway</p></div></div>
+    <div class="mod it" data-in="4.6"><div class="n">3</div><div><h3>Kenal Prospek Coway <span class="tag tm">Inter</span></h3><p>5 produk, keyword Threads, reply yang bantu — bukan spam</p></div></div>
+    <div class="mod it" data-in="7.2"><div class="n">4</div><div><h3>Asas Automation <span class="tag ta">Advance</span></h3><p>Trigger → Claude → Tindakan</p></div></div>
+    <div class="mod it" data-in="9.8"><div class="n">5</div><div><h3>Bina Mesin Cari Prospek <span class="tag ta">Advance</span></h3><p>6 langkah: Telegram, Threads, RUNBOOK, jadual pagi &amp; malam</p></div></div>
+  </div>
+</section>
+
+<!-- S7 45-51 products -->
+<section class="scene" data-s="45" data-e="51">
+  <div class="k it" data-in="0.1">Khusus untuk produk korang</div>
+  <h2 class="it" data-in="0.3">Prompt &amp; workflow untuk 5 produk</h2>
+  <div class="prods">
+    <div class="prod it" data-in="0.9"><div>💧</div>Penapis air</div>
+    <div class="prod it" data-in="1.3"><div>🌬️</div>Penapis udara</div>
+    <div class="prod it" data-in="1.7"><div>🛏️</div>Tilam</div>
+    <div class="prod it" data-in="2.1"><div>🧺</div>Mesin basuh</div>
+    <div class="prod it" data-in="2.5"><div>❄️</div>Aircon</div>
+  </div>
+</section>
+
+<!-- S8 51-58 flow -->
+<section class="scene dark" data-s="51" data-e="58">
+  <div class="k it" data-in="0.1">Satu konsep yang buka semua pintu</div>
+  <div class="flow">
+    <div class="fc it" data-in="0.5"><div class="e">⏰</div><h3>Trigger</h3><p>9 pagi &amp; 9 malam</p></div>
+    <div class="arr it" data-in="1.2">→</div>
+    <div class="fc it" data-in="1.5"><div class="e">🧠</div><h3>Claude</h3><p>Cari, tapis, tulis reply</p></div>
+    <div class="arr it" data-in="2.2">→</div>
+    <div class="fc it" data-in="2.5"><div class="e">📲</div><h3>Tindakan</h3><p>Telegram &amp; web app</p></div>
+  </div>
+  <p class="lead it" data-in="3.6">Tak perlu tahu code. Korang cuma bercakap dengan Claude.</p>
+</section>
+
+<!-- S9 58-66 outcomes -->
+<section class="scene" data-s="58" data-e="66">
+  <div class="k it" data-in="0.1">Balik dari kelas dengan</div>
+  <div class="check it" data-in="0.5">"Brand Brain" Claude yang kenal bisnes korang</div>
+  <div class="check it" data-in="1.5">21 prompt siap salin dalam Bahasa Melayu</div>
+  <div class="check it" data-in="2.5">Sistem cari prospek Threads — jalan sendiri pagi &amp; malam</div>
+  <div class="check it" data-in="3.5">Hub Prospek &amp; Bank Content di fon</div>
+</section>
+
+<!-- S10 66-72 CTA -->
+<section class="scene accent" data-s="66" data-e="72">
+  <div class="k it" data-in="0.1">Kelas Claude AI · Tim Coway</div>
+  <h1 class="it" data-in="0.4">Jom bina mesin prospek korang.</h1>
+  <p class="lead it" data-in="1.4" style="color:#fff3ea">Bawa laptop. Kita mula dari kosong.</p>
+  <div class="foot"><span>Bahan latihan bebas untuk ejen. Bukan bahan rasmi Coway.</span><span></span></div>
+</section>
+
+<div class="prog" id="prog"></div>
+<script>
+const TOTAL = 72, XF = 0.45, D = 0.55;
+const ease = x => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(1 - x, 3);
+const scenes = [...document.querySelectorAll('.scene')].map(el => ({ el, s: +el.dataset.s, e: +el.dataset.e, its: [...el.querySelectorAll('.it')].map(i => ({ i, t: +i.dataset.in })) }));
+window.render = function (t) {
+  for (const sc of scenes) {
+    let o = 0;
+    if (t >= sc.s - XF && t <= sc.e + XF) {
+      const a = sc.s === 0 ? 1 : ease((t - sc.s + XF) / (2 * XF));
+      const b = sc.e >= TOTAL ? 1 : 1 - ease((t - sc.e + XF) / (2 * XF));
+      o = Math.min(a, b);
+    }
+    sc.el.style.opacity = o;
+    sc.el.style.visibility = o > 0 ? 'visible' : 'hidden';
+    if (o > 0) for (const { i, t: ti } of sc.its) {
+      const p = ease((t - sc.s - ti) / D);
+      i.style.opacity = p;
+      i.style.transform = `translateY(${(1 - p) * 40}px)`;
+    }
+  }
+  document.getElementById('prog').style.width = (t / TOTAL * 100) + '%';
+};
+window.TOTAL = TOTAL;
+render(0);
+</script>
+</body></html>
