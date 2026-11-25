@@ -31,7 +31,7 @@ const path = require('path');
     await q.goto('file://' + path.join(dir, f + '.html'));
     await q.pdf({ path: path.join(dir, f + '.pdf'), format: 'A4', printBackground: true,
       displayHeaderFooter: true, headerTemplate: '<span></span>',
-      footerTemplate: '<div style="font-size:8px;color:#8f8677;width:100%;text-align:center;font-family:Inter">Kelas Claude AI · Tim Kowe · <span class="pageNumber"></span>/<span class="totalPages"></span></div>',
+      footerTemplate: '<div style="font-size:8px;color:#8f8677;width:100%;text-align:center;font-family:Inter">Kelas Claude AI · Tim Coway · <span class="pageNumber"></span>/<span class="totalPages"></span></div>',
       margin: { top: '16mm', bottom: '18mm', left: '16mm', right: '16mm' } });
   }
   console.log('Siap:', slides.length, 'slide');

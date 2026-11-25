@@ -86,3 +86,7 @@ code { font-family: "DejaVu Sans Mono", monospace; font-size: .85em; background:
 .foot { position: absolute; left: 72px; right: 72px; bottom: 26px; display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); letter-spacing: .04em; }
 .dark .foot { color: #8f8677; } .accent .foot { color: #ffd9c4; }
 @media print { html, body { background: none; } }
+/* telegram mock */
+.tgwrap { background: #dfe7ee; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.tg { background: #fff; border-radius: 12px 12px 12px 4px; padding: 9px 13px; font-size: 13.5px; line-height: 1.45; max-width: 95%; box-shadow: 0 1px 1px rgba(0,0,0,.08); }
+.tg.reply { background: #effdde; font-style: italic; }

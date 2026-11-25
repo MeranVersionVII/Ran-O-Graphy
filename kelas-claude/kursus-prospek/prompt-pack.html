@@ -30,155 +30,201 @@ h2 { font-size: 15pt; font-weight: 800; margin-bottom: 4pt; }
 .toc { columns: 2; column-gap: 10mm; font-size: 10pt; margin-top: 10pt; }
 .toc div { margin-bottom: 3pt; break-inside: avoid; }
 .toc b { color: #d9622b; display: inline-block; width: 26pt; }
-</style></head><body><div class="cover"><div class="kicker">Prompt Pack Peserta · Tim Kowe</div><h1>Claude AI: Dari Zero ke Mesin Cari Prospek</h1><p>Kelas hands-on Tim Kowe — dari tak pernah guna AI sampai automation cari prospek di Threads</p><div class="legend"><div><b>Cara guna</b></div><div>1. Cari nombor prompt yang tertera di bawah slide (cth. P08).</div><div>2. Salin keseluruhan prompt ke dalam Claude.</div><div>3. Ganti teks <span class="fill">[dalam kurungan]</span> dengan maklumat kau sendiri.</div><div>4. Teks <span class="var">{{kurungan berganda}}</span> diisi automatik oleh tool automation — jangan ubah.</div></div><div class="toc"><div><b>P01</b>Kenalkan bisnes kau kepada Claude</div><div><b>P02</b>Template formula P.K.T.F.C</div><div><b>P03</b>Biar Claude tanya dulu</div><div><b>P04</b>Ayat iterasi (baiki jawapan)</div><div><b>P05</b>Brand Brain (arahan Project)</div><div><b>P06</b>Bina profil pelanggan ideal (ICP)</div><div><b>P07</b>Cari lokasi prospek di Threads</div><div><b>P08</b>Nilai senarai prospek (manual)</div><div><b>P09</b>Mesej DM pertama yang personal</div><div><b>P10</b>Urutan follow-up</div><div><b>P11</b>Balas bantahan prospek</div><div><b>P12</b>Claude sebagai perunding automation</div><div><b>P13</b>Automation pertama: balas borang (dalam modul AI)</div><div><b>P14</b>Kata kunci untuk tapis post & reply</div><div><b>P15</b>Penilai prospek automatik → JSON (enjin utama)</div><div><b>P16</b>Ringkasan harian ke WhatsApp/Telegram</div><div><b>P17</b>Debug: automation gagal</div><div><b>P18</b>Analisis hasil mingguan</div><div><b>P19</b>BONUS: Post Threads yang tarik prospek</div></div></div><div class="pp"><div class="top"><span class="id">P01</span><h2>Kenalkan bisnes kau kepada Claude</h2></div><div class="when">Bila guna: Chat pertama. Untuk nampak apa Claude boleh buat untuk bisnes sendiri.</div><pre>Hai Claude. Aku <span class="fill">[nama]</span>, aku jual <span class="fill">[produk/servis]</span> kepada <span class="fill">[siapa pelanggan aku]</span>.
+</style></head><body><div class="cover"><div class="kicker">Prompt Pack Peserta · Tim Coway</div><h1>Claude AI untuk Ejen Coway: Dari Zero ke Mesin Cari Prospek Threads</h1><p>Kelas hands-on untuk ejen jualan Coway — dari tak pernah guna AI sampai ada sistem automatik yang cari prospek penapis air, penapis udara, tilam, mesin basuh dan aircon di Threads.</p><div class="legend"><div><b>Cara guna</b></div><div>1. Cari nombor prompt yang tertera di bawah slide (cth. P08).</div><div>2. Salin keseluruhan prompt ke dalam Claude.</div><div>3. Ganti teks <span class="fill">[dalam kurungan]</span> dengan maklumat kau sendiri.</div><div>4. P01–P11: guna di claude.ai (dalam Project Brand Brain). P12–P21: guna dalam app Claude Desktop.</div></div><div class="toc"><div><b>P01</b>Chat pertama: kenalkan diri sebagai ejen Coway</div><div><b>P02</b>Template formula P.K.T.F.C (versi Coway)</div><div><b>P03</b>Biar Claude tanya dulu</div><div><b>P04</b>Ayat iterasi (baiki jawapan)</div><div><b>P05</b>Brand Brain ejen Coway (arahan Project)</div><div><b>P06</b>Profil pelanggan ideal untuk setiap produk</div><div><b>P07</b>Kata kunci carian Threads</div><div><b>P08</b>Nilai post Threads secara manual</div><div><b>P09</b>Draf reply pada post Threads</div><div><b>P10</b>Balas bantahan prospek</div><div><b>P11</b>Follow-up prospek yang senyap</div><div><b>P12</b>Minta Claude rancang sistem dulu</div><div><b>P13</b>Langkah 1: Simpan info bisnes (offer.md)</div><div><b>P14</b>Langkah 2: Sambung bot Telegram</div><div><b>P15</b>Langkah 3: Group Telegram dengan Topics</div><div><b>P16</b>Langkah 4: Uji carian Threads</div><div><b>P17</b>Langkah 5: Tulis RUNBOOK (arahan tetap)</div><div><b>P18</b>Langkah 6: Jadualkan pagi & malam</div><div><b>P19</b>Debug: sistem ada masalah</div><div><b>P20</b>Analisis hasil mingguan</div><div><b>P21</b>BONUS: Idea post Threads ejen Coway</div></div><p class="muted" style="font-size:9pt;margin-top:14pt">Bahan latihan bebas untuk ejen. Bukan bahan rasmi Coway.</p></div><div class="pp"><div class="top"><span class="id">P01</span><h2>Chat pertama: kenalkan diri sebagai ejen Coway</h2></div><div class="when">Bila guna: Hari pertama guna Claude. Untuk nampak apa Claude boleh buat untuk kerja jualan.</div><pre>Hai Claude. Aku <span class="fill">[nama]</span>, ejen jualan Coway di <span class="fill">[kawasan, cth. Shah Alam]</span>.
+Aku jual penapis air, penapis udara, tilam, mesin basuh dan aircon Coway.
 Aku baru mula guna AI.
 
-Terangkan dalam bahasa mudah 5 cara kau boleh bantu bisnes aku setiap hari.
-Untuk setiap cara, beri satu contoh yang spesifik untuk bisnes aku.</pre></div><div class="pp"><div class="top"><span class="id">P02</span><h2>Template formula P.K.T.F.C</h2></div><div class="when">Bila guna: Asas untuk SEMUA prompt. Salin, isi kurungan, guna.</div><pre>Peranan: Kau ialah <span class="fill">[peranan pakar, cth. copywriter jualan 10 tahun]</span>.
-Konteks: <span class="fill">[Info bisnes, siapa audience, apa situasinya]</span>.
-Tugas: <span class="fill">[Apa sebenarnya yang perlu dibuat]</span>.
-Format: <span class="fill">[Panjang, struktur, bahasa, gaya — cth. max 80 patah perkataan, Bahasa Melayu santai]</span>.
-Contoh: <span class="fill">[1–2 contoh gaya yang kau suka]</span>.</pre></div><div class="pp"><div class="top"><span class="id">P03</span><h2>Biar Claude tanya dulu</h2></div><div class="when">Bila guna: Bila kau sendiri tak pasti nak minta apa, atau tugas tu besar.</div><pre>Aku nak <span class="fill">[matlamat aku]</span>.
+Terangkan dalam bahasa mudah 5 cara kau boleh bantu kerja jualan aku setiap hari.
+Untuk setiap cara, beri satu contoh yang spesifik untuk ejen Coway.</pre></div><div class="pp"><div class="top"><span class="id">P02</span><h2>Template formula P.K.T.F.C (versi Coway)</h2></div><div class="when">Bila guna: Asas untuk SEMUA prompt. Salin, isi kurungan, guna.</div><pre>Peranan: Kau ialah <span class="fill">[cth. copywriter jualan produk rumah dengan pengalaman 10 tahun]</span>.
+Konteks: Aku ejen Coway di <span class="fill">[kawasan]</span>. Produk: <span class="fill">[cth. penapis air]</span>.
+         Audience: <span class="fill">[cth. keluarga muda yang baru pindah rumah]</span>.
+Tugas: <span class="fill">[cth. Tulis 3 post Threads tentang kenapa ramai orang pasang penapis air di rumah]</span>.
+Format: <span class="fill">[cth. Bahasa Melayu santai, max 500 aksara, hook di ayat pertama, soalan di hujung]</span>.
+Contoh: <span class="fill">[tampal 1 post kau yang pernah dapat banyak respon]</span>.</pre></div><div class="pp"><div class="top"><span class="id">P03</span><h2>Biar Claude tanya dulu</h2></div><div class="when">Bila guna: Bila tak pasti nak minta apa, atau tugas tu besar.</div><pre>Aku nak <span class="fill">[matlamat, cth. dapat 5 prospek tilam minggu ni]</span>.
 
 Sebelum kau jawab, tanya aku 5 soalan paling penting untuk faham situasi aku.
 Tanya satu soalan pada satu masa, dan tunggu jawapan aku.</pre></div><div class="pp"><div class="top"><span class="id">P04</span><h2>Ayat iterasi (baiki jawapan)</h2></div><div class="when">Bila guna: Lepas Claude beri jawapan pertama. Pilih mana-mana satu.</div><pre>• Pendekkan jadi separuh, kekalkan isi paling penting.
-• Tukar tone jadi lebih santai, macam cakap dengan kawan.
+• Tukar tone jadi lebih santai, macam kawan bagi cadangan.
 • Beri 5 versi lain, setiap satu dengan hook yang berbeza.
 • Apa yang paling lemah dalam jawapan kau tadi? Baiki bahagian tu.
-• Tulis semula untuk orang yang tak pernah dengar pasal produk ni.</pre></div><div class="pp"><div class="top"><span class="id">P05</span><h2>Brand Brain (arahan Project)</h2></div><div class="when">Bila guna: Tampal dalam 'Project instructions' supaya Claude ingat bisnes kau setiap kali chat.</div><pre>Kau ialah pembantu bisnes untuk <span class="fill">[nama bisnes]</span>.
+• Buang apa-apa yang bunyi macam iklan atau template.</pre></div><div class="pp"><div class="top"><span class="id">P05</span><h2>Brand Brain ejen Coway (arahan Project)</h2></div><div class="when">Bila guna: Tampal dalam 'Project instructions'. Upload juga brosur, senarai harga dan FAQ.</div><pre>Kau ialah pembantu jualan untuk <span class="fill">[nama kau]</span>, ejen Coway di <span class="fill">[kawasan servis]</span>.
 
-TENTANG KAMI
-- Produk/servis: <span class="fill">[apa yang kami jual]</span>
-- Harga: <span class="fill">[julat harga]</span>
-- Kelebihan utama: <span class="fill">[3 sebab orang beli dari kami]</span>
+TENTANG AKU
+- Produk: penapis air, penapis udara, tilam, mesin basuh, aircon Coway
+- Model yang aku fokus: <span class="fill">[senarai model]</span>
+- Pakej: <span class="fill">[sewa bulanan / beli tunai / ansuran]</span> — <span class="fill">[harga, jika boleh dikongsi]</span>
+- Promo semasa: <span class="fill">[promo bulan ni + tarikh tamat]</span>
+- Servis &amp; jaminan: <span class="fill">[ikut polisi semasa Coway]</span>
 
-PELANGGAN KAMI
-- Siapa: <span class="fill">[umur, pekerjaan, lokasi]</span>
-- Masalah utama: <span class="fill">[masalah yang produk kami selesaikan]</span>
+PELANGGAN AKU
+- <span class="fill">[cth. keluarga muda, pasangan baru pindah rumah, ibu bapa yang risau kualiti udara]</span>
 
 GAYA BAHASA
-- Bahasa Melayu harian, <span class="fill">[santai / profesional]</span>
-- Panggil pelanggan: <span class="fill">[kau / korang / anda / tuan-puan]</span>
+- Bahasa Melayu santai dan mesra, macam kawan bagi cadangan
+- Panggil pelanggan: <span class="fill">[kau / awak / tuan-puan]</span>
 
 PERATURAN
-- Jangan janji benda yang kami tak tawarkan.
-- Kalau tak pasti, tanya aku dulu sebelum menjawab.</pre></div><div class="pp"><div class="top"><span class="id">P06</span><h2>Bina profil pelanggan ideal (ICP)</h2></div><div class="when">Bila guna: Langkah pertama sebelum cari prospek. Guna dalam Project Brand Brain.</div><pre>Berdasarkan maklumat bisnes dalam project ni, bina profil pelanggan ideal (ICP) aku.
+- Sentiasa jujur bahawa aku ejen Coway, bukan akaun rasmi syarikat.
+- Jangan buat dakwaan kesihatan (cth. &quot;sembuhkan asma&quot;). Sebut fakta produk sahaja.
+- Jangan sebut harga atau promo yang tiada dalam maklumat ni.
+- Jangan kutuk jenama lain.
+- Kalau tak pasti, tanya aku dulu.</pre></div><div class="pp"><div class="top"><span class="id">P06</span><h2>Profil pelanggan ideal untuk setiap produk</h2></div><div class="when">Bila guna: Langkah pertama sebelum cari prospek. Jalankan dalam Project Brand Brain.</div><pre>Berdasarkan maklumat dalam project ni, bina profil pelanggan ideal untuk SETIAP produk
+yang aku jual: penapis air, penapis udara, tilam, mesin basuh, aircon.
 
-Sertakan:
-1. Demografi (umur, pekerjaan, lokasi, pendapatan)
-2. 3 masalah utama yang mereka hadapi
-3. Topik apa yang mereka baca, cari dan bincang di Threads
-4. Ayat yang mereka selalu tulis dalam post atau reply bila ada masalah ni
-5. Tanda-tanda mereka dah sedia untuk membeli
+Untuk setiap produk, beri dalam jadual:
+1. Siapa mereka (umur, situasi hidup)
+2. &quot;Detik pencetus&quot; — apa yang berlaku sampai mereka mula cari produk ni
+   (cth. pindah rumah, anak selalu bersin, aircon rosak)
+3. 5 ayat yang mereka mungkin tulis di Threads bila ada masalah ni (bahasa santai/rojak)
+4. Kebimbangan utama sebelum beli (cth. harga, kontrak sewa, servis)</pre></div><div class="pp"><div class="top"><span class="id">P07</span><h2>Kata kunci carian Threads</h2></div><div class="when">Bila guna: Lepas ada profil pelanggan. Hasilnya akan masuk ke RUNBOOK automation.</div><pre>Berdasarkan jadual profil pelanggan tadi, senaraikan kata kunci carian Threads
+untuk cari orang yang SEDANG CARI produk, atau SEDANG ADA MASALAH yang produk aku selesaikan.
 
-Beri dalam bentuk jadual, kemudian ringkaskan ICP dalam 2 ayat.</pre></div><div class="pp"><div class="top"><span class="id">P07</span><h2>Cari lokasi prospek di Threads</h2></div><div class="when">Bila guna: Lepas ada ICP. Untuk tahu di mana nak cari.</div><pre>Untuk ICP di atas, senaraikan:
-- 15 topik (topic tag) Threads yang prospek aku selalu ikuti atau guna
-- 10 jenis akaun yang pengikut dan orang yang reply post mereka mungkin prospek aku
-- 10 kata kunci carian Threads (ayat yang prospek mungkin tulis dalam post)
+- 4 kata kunci untuk setiap produk (penapis air, penapis udara, tilam, mesin basuh, aircon)
+- 4 kata kunci umum (cth. &quot;baru pindah rumah&quot;)
 
-Untuk setiap satu, terangkan dalam satu ayat kenapa ia sesuai.
-Tandakan 5 yang paling berpotensi dengan ⭐.</pre></div><div class="pp"><div class="top"><span class="id">P08</span><h2>Nilai senarai prospek (manual)</h2></div><div class="when">Bila guna: Lepas kumpul prospek dalam sheet. Tampal beberapa baris sekaligus.</div><pre>Aku akan tampal senarai prospek dari Threads (username, bio, post atau reply yang mereka tulis).
+Guna bahasa yang orang Malaysia betul-betul taip: Melayu, English dan rojak.
+Tandakan ⭐ pada 10 yang paling berpotensi.
+Elakkan kata kunci yang hanya akan jumpa iklan ejen lain.</pre></div><div class="pp"><div class="top"><span class="id">P08</span><h2>Nilai post Threads secara manual</h2></div><div class="when">Bila guna: Lepas cari sendiri di Threads. Tampal beberapa post sekaligus.</div><pre>Aku akan tampal beberapa post Threads (username, lokasi jika ada, isi post, berapa lama dah post).
 
-Untuk setiap prospek, beri:
-- Skor: PANAS / SUAM / SEJUK
+Untuk setiap post, beri:
+- Skor: 🔥 KUAT / 🟡 SEDERHANA / ⚪ LEMAH / ❌ BUANG
+- Produk Coway yang paling sesuai
 - Sebab (1 ayat)
-- Masalah yang mereka mungkin ada
 
-Guna ICP dalam project ni sebagai rujukan.
-Susun dalam jadual, PANAS di atas sekali.
+Kriteria:
+🔥 Jelas sedang cari produk, atau ada masalah yang produk aku selesaikan, di <span class="fill">[kawasan servis]</span>
+🟡 Ada minat atau masalah, tapi lokasi tak pasti atau keperluan kabur
+⚪ Cuma bersembang, tiada niat jelas
+❌ Iklan ejen lain / jenama pesaing, post Indonesia, luar kawasan, lebih 7 hari
 
-Senarai:
-<span class="fill">[tampal di sini]</span></pre></div><div class="pp"><div class="top"><span class="id">P09</span><h2>Mesej DM pertama yang personal</h2></div><div class="when">Bila guna: Untuk prospek PANAS dan SUAM.</div><pre>Tulis mesej DM pertama untuk prospek ini:
+Post:
+<span class="fill">[tampal di sini]</span></pre></div><div class="pp"><div class="top"><span class="id">P09</span><h2>Draf reply pada post Threads</h2></div><div class="when">Bila guna: Untuk prospek 🔥 dan 🟡. Kau yang copy dan reply sendiri.</div><pre>Tulis draf reply untuk post Threads ini:
 Username: <span class="fill">[ ]</span>
-Bio: <span class="fill">[ ]</span>
-Post/reply mereka: <span class="fill">[ ]</span>
+Post: <span class="fill">[ ]</span>
+Produk sesuai: <span class="fill">[ ]</span>
 
 Peraturan:
-- Max 50 patah perkataan
-- Sebut sesuatu yang spesifik dari bio atau post/reply mereka
-- Jangan terus jual atau letak link
-- Akhiri dengan satu soalan ringan
+- 1–3 ayat, Bahasa Melayu santai (rojak OK)
+- Mula dengan respon kepada apa yang dia tulis — tunjuk kau faham masalah dia
+- Beri satu tip atau info berguna, kemudian sebut aku ejen Coway di <span class="fill">[kawasan]</span>
+- Ajak DM dengan lembut
+- Tiada harga, tiada dakwaan kesihatan, max 1 emoji, tak bunyi macam template
 
-Beri 3 versi dengan gaya berbeza.</pre></div><div class="pp"><div class="top"><span class="id">P10</span><h2>Urutan follow-up</h2></div><div class="when">Bila guna: Bila prospek tak balas mesej pertama.</div><pre>Prospek ni tak balas mesej pertama aku:
-<span class="fill">[tampal mesej pertama]</span>
-
-Tulis 3 mesej follow-up untuk hari ke-2, ke-5 dan ke-10.
-Setiap mesej mesti beri nilai baru (tip berguna, testimoni ringkas, atau soalan menarik)
-— jangan cuma tanya &quot;dah baca ke?&quot;.
-Max 40 patah perkataan setiap satu.</pre></div><div class="pp"><div class="top"><span class="id">P11</span><h2>Balas bantahan prospek</h2></div><div class="when">Bila guna: Bila prospek kata mahal, nanti dulu, tak perlu, dsb.</div><pre>Prospek balas: &quot;<span class="fill">[tampal balasan mereka, cth. mahal sangat la]</span>&quot;
+Beri 3 versi.</pre></div><div class="pp"><div class="top"><span class="id">P10</span><h2>Balas bantahan prospek</h2></div><div class="when">Bila guna: Bila prospek kata mahal, dah ada, takut kontrak, nak fikir dulu.</div><pre>Prospek balas: &quot;<span class="fill">[tampal, cth. mahal la sewa bulan-bulan / dah ada filter / takut terikat kontrak]</span>&quot;
+Produk: <span class="fill">[ ]</span>
 
 Beri 3 cara balas yang:
 - jujur dan tak memaksa
-- faham kebimbangan mereka dulu
-- ajak mereka ke langkah kecil seterusnya
+- akui kebimbangan mereka dulu
+- guna fakta dari maklumat dalam project ni SAHAJA
+- ajak ke langkah kecil seterusnya (cth. tengok demo, tanya satu soalan)
 
-Max 60 patah perkataan setiap satu.</pre></div><div class="pp"><div class="top"><span class="id">P12</span><h2>Claude sebagai perunding automation</h2></div><div class="when">Bila guna: Sebelum bina automation. Untuk dapat pelan langkah demi langkah.</div><pre>Aku nak automate kerja ni:
-<span class="fill">[terangkan kerja manual kau langkah demi langkah]</span>
+Max 60 patah perkataan setiap satu.</pre></div><div class="pp"><div class="top"><span class="id">P11</span><h2>Follow-up prospek yang senyap</h2></div><div class="when">Bila guna: Bila prospek dah DM tapi senyap lepas dapat info.</div><pre>Prospek ni dah DM aku, tapi senyap lepas aku bagi maklumat:
+<span class="fill">[tampal perbualan]</span>
 
-Aku guna <span class="fill">[Zapier / Make / n8n / Google Sheets / lain-lain]</span>.
+Tulis 3 mesej follow-up untuk hari ke-2, ke-5 dan ke-10.
+Setiap mesej mesti beri nilai baru: tip berguna, testimoni pelanggan sebenar aku
+(<span class="fill">[tampal testimoni]</span>), atau soalan menarik — bukan &quot;dah fikir ke?&quot;.
+Max 40 patah perkataan setiap satu.</pre></div><div class="pp"><div class="top"><span class="id">P12</span><h2>Minta Claude rancang sistem dulu</h2></div><div class="when">Bila guna: Prompt pertama dalam app Claude Desktop, sebelum bina apa-apa.</div><pre>Aku ejen Coway. Aku nak bina sistem automatik macam ni:
 
-Pecahkan jadi: TRIGGER → LANGKAH → TINDAKAN.
-Untuk setiap langkah, beritahu modul/aplikasi yang perlu dan apa yang perlu diisi.
-Anggap aku langsung tak tahu code. Guna bahasa mudah.</pre></div><div class="pp"><div class="top"><span class="id">P13</span><h2>Automation pertama: balas borang (dalam modul AI)</h2></div><div class="when">Bila guna: Latihan automation pertama: Google Form → Claude → emel.</div><pre>Kau pembantu untuk <span class="fill">[nama bisnes]</span>.
-Seseorang baru isi borang dengan maklumat ini:
-Nama: <span class="var">{{nama}}</span>
-Minat: <span class="var">{{minat}}</span>
-Mesej: <span class="var">{{mesej}}</span>
+Setiap pagi dan malam, kau cari post di Threads dari orang yang sedang cari
+penapis air, penapis udara, tilam, mesin basuh atau aircon di <span class="fill">[kawasan]</span>.
+Tapis yang betul-betul prospek, tulis draf reply untuk setiap satu,
+dan hantar report ke group Telegram aku. Aku sendiri yang akan reply di Threads.
 
-Tulis emel balasan dalam Bahasa Melayu santai, max 120 patah perkataan:
-1. Ucap terima kasih dengan nama mereka
-2. Jawab mesej mereka secara ringkas
-3. Ajak mereka <span class="fill">[langkah seterusnya, cth. WhatsApp kami di 01X-XXX XXXX]</span>
+Sebelum bina apa-apa, terangkan pelan langkah demi langkah dalam bahasa mudah,
+dan senaraikan apa yang aku perlu sediakan sendiri. Anggap aku tak tahu code.</pre></div><div class="pp"><div class="top"><span class="id">P13</span><h2>Langkah 1: Simpan info bisnes (offer.md)</h2></div><div class="when">Bila guna: Dalam app Claude Desktop. Fail ni jadi sumber fakta untuk semua draf reply.</div><pre>Cipta folder projek di <span class="fill">[cth. Documents\coway-lead]</span>.
 
-Tulis isi emel sahaja, tanpa subjek dan tanpa tandatangan.</pre></div><div class="pp"><div class="top"><span class="id">P14</span><h2>Kata kunci untuk tapis post & reply</h2></div><div class="when">Bila guna: Untuk langkah 'Tapis' dalam automation, supaya Claude tak proses post sampah.</div><pre>Senaraikan 30 kata kunci/frasa dalam Bahasa Melayu dan bahasa rojak yang menunjukkan
-seseorang dalam post atau reply Threads sedang ada masalah <span class="fill">[masalah utama ICP]</span>
-atau berminat dengan <span class="fill">[produk/servis]</span>.
+Dalam folder tu, cipta fail offer.md dengan maklumat bisnes aku:
+<span class="fill">[tampal isi Brand Brain dari P05]</span>
 
-Kemudian senaraikan 15 kata kunci yang menunjukkan post/reply TAK relevan
-(spam, promo orang lain, troll).
+Fail ni ialah sumber fakta untuk semua draf reply.
+Jangan sesekali tambah harga, promo atau dakwaan yang tiada dalam fail ni.</pre></div><div class="pp"><div class="top"><span class="id">P14</span><h2>Langkah 2: Sambung bot Telegram</h2></div><div class="when">Bila guna: Selepas cipta bot di @BotFather. JANGAN paste token dalam chat.</div><pre>Aku dah cipta bot Telegram melalui @BotFather. Aku TAK akan paste token dalam chat ni.
 
-Beri setiap senarai dalam satu baris, dipisahkan koma, supaya aku boleh tampal terus dalam filter.</pre></div><div class="pp"><div class="top"><span class="id">P15</span><h2>Penilai prospek automatik → JSON (enjin utama)</h2></div><div class="when">Bila guna: Prompt dalam modul Claude/AI di automation. Output JSON supaya boleh dimasukkan terus ke Google Sheets.</div><pre>Kau penilai prospek untuk <span class="fill">[nama bisnes]</span> yang menjual <span class="fill">[produk/servis]</span>
-kepada <span class="fill">[ICP ringkas, cth. ibu bekerja 25–40 yang nak kurus selepas bersalin]</span>.
+1. Cipta fail .env dalam folder projek dengan baris TELEGRAM_BOT_TOKEN= dan
+   TELEGRAM_CHAT_ID= yang kosong. Aku akan paste token sendiri.
+2. Tulis script untuk cari chat ID aku secara automatik, selepas aku tekan Start pada bot.
+3. Tulis script send-report yang hantar fail atau teks ke Telegram,
+   pecahkan mesej yang panjang, dan jangan sesekali paparkan token.
 
-Nilai prospek Threads ini:
-Username: <span class="var">{{username}}</span>
-Bio: <span class="var">{{bio}}</span>
-Post/reply: <span class="var">{{komen}}</span>
-Post sumber: <span class="var">{{post_sumber}}</span>
+Lepas siap, beritahu aku apa yang perlu aku buat,
+kemudian uji dengan hantar mesej &quot;Ujian berjaya&quot;.</pre></div><div class="pp"><div class="top"><span class="id">P15</span><h2>Langkah 3: Group Telegram dengan Topics</h2></div><div class="when">Bila guna: Selepas cipta group, hidupkan Topics, dan jadikan bot admin.</div><pre>Aku nak report masuk ke satu group Telegram yang ada Topics:
+- 🔎 Prospek Threads — report lead
+- 💡 Bank Idea Content — idea post
 
-Kriteria PANAS: <span class="fill">[cth. sebut masalah secara terus, tanya harga, minta cadangan]</span>
-Kriteria SEJUK: <span class="fill">[cth. akaun pesaing, komen tak berkaitan, spam]</span>
+Aku dah cipta group, hidupkan Topics, jadikan bot admin
+(Manage Topics + Post Messages), dan hantar satu mesej dalam group.
 
-Jawab HANYA dalam JSON yang sah, tanpa teks lain:
-{
-  &quot;skor&quot;: &quot;PANAS&quot; atau &quot;SUAM&quot; atau &quot;SEJUK&quot;,
-  &quot;sebab&quot;: &quot;1 ayat&quot;,
-  &quot;masalah&quot;: &quot;masalah utama yang mungkin mereka ada&quot;,
-  &quot;mesej_dm&quot;: &quot;mesej pertama max 50 patah perkataan, personal, tanpa terus jual, akhiri dengan soalan&quot;
-}</pre></div><div class="pp"><div class="top"><span class="id">P16</span><h2>Ringkasan harian ke WhatsApp/Telegram</h2></div><div class="when">Bila guna: Langkah notifikasi di hujung automation.</div><pre>Ini senarai prospek baru hari ini:
-<span class="var">{{senarai_prospek}}</span>
+Tulis script yang cari group tu, cipta 2 topic di atas, dan simpan ID-nya dalam .env.
+Kemas kini send-report supaya boleh pilih topic. Kemudian uji.</pre></div><div class="pp"><div class="top"><span class="id">P16</span><h2>Langkah 4: Uji carian Threads</h2></div><div class="when">Bila guna: Ujian pertama. Kau login Threads sendiri dalam browser app Claude.</div><pre>Buka Threads dalam browser app ni. Aku akan login sendiri — jangan masukkan kata laluan.
 
-Tulis ringkasan untuk aku baca di telefon:
-- Jumlah PANAS / SUAM / SEJUK
-- 3 prospek PANAS teratas, dengan sebab ringkas
-- Satu cadangan tindakan untuk hari ini
+Lepas aku login, cari 3 kata kunci ni dengan tapisan &quot;Recent&quot;:
+<span class="fill">[3 kata kunci ⭐ dari P07]</span>
 
-Max 100 patah perkataan. Guna emoji secukupnya supaya mudah dibaca.</pre></div><div class="pp"><div class="top"><span class="id">P17</span><h2>Debug: automation gagal</h2></div><div class="when">Bila guna: Bila ada langkah automation yang merah / error.</div><pre>Automation aku gagal.
-Tool: <span class="fill">[Zapier / Make / n8n]</span>
-Langkah yang gagal: <span class="fill">[nama langkah]</span>
-Mesej ralat: <span class="fill">[tampal mesej ralat penuh]</span>
-Setting langkah tu: <span class="fill">[tampal atau terangkan]</span>
+Untuk setiap post yang mungkin prospek, beri:
+username, lokasi, berapa lama dah post, ringkasan keperluan, produk sesuai,
+link post, skor (🔥/🟡/⚪) dan draf reply ikut offer.md.
 
-Terangkan dalam bahasa mudah apa puncanya,
-dan beri langkah demi langkah untuk betulkan.</pre></div><div class="pp"><div class="top"><span class="id">P18</span><h2>Analisis hasil mingguan</h2></div><div class="when">Bila guna: Setiap minggu. Tampal data dari Google Sheets.</div><pre>Ini data prospek minggu ni dari Google Sheets:
-<span class="fill">[tampal data — termasuk kolum Skor dan Status]</span>
+Tunjuk dalam chat ni dulu.
+JANGAN reply, like, follow atau DM sesiapa di Threads.</pre></div><div class="pp"><div class="top"><span class="id">P17</span><h2>Langkah 5: Tulis RUNBOOK (arahan tetap)</h2></div><div class="when">Bila guna: Selepas ujian carian memuaskan. Inilah 'SOP' yang Claude ikut setiap kali run.</div><pre>Tulis fail RUNBOOK.md dalam folder projek. Ini arahan tetap yang kau ikut setiap kali cari lead.
 
-1. Kira kadar balas dan kadar closing ikut skor (PANAS / SUAM / SEJUK).
-2. Apa corak yang kau nampak? (jenis komen, jenis mesej, hari/masa)
-3. Beri 3 cadangan spesifik untuk tingkatkan kadar balas minggu depan.</pre></div><div class="pp"><div class="top"><span class="id">P19</span><h2>BONUS: Post Threads yang tarik prospek</h2></div><div class="when">Bila guna: Supaya prospek datang sendiri ke ruang reply kau.</div><pre>Berdasarkan 3 masalah utama ICP aku, beri 10 idea post Threads
-yang akan buat prospek ideal aku reply.
+1. CARI
+- Guna browser app ni (Threads dah login), tapisan &quot;Recent&quot;.
+- Kata kunci, satu-satu, tunggu 3 saat setiap carian:
+  <span class="fill">[senarai 8–10 kata kunci ⭐]</span>
+- Kalau Threads ter-logout: berhenti, hantar amaran ke topic Prospek. Jangan cuba login.
+
+2. TAPIS — simpan orang yang SEDANG CARI atau ADA MASALAH berkaitan produk Coway aku
+- ✅ Kawasan <span class="fill">[kawasan servis]</span>, atau lokasi tak disebut
+- ❌ Buang: iklan ejen Coway lain &amp; jenama pesaing, post Indonesia, barang jual,
+  post lebih 7 hari, link yang dah ada dalam seen-leads.txt
+
+3. NILAI — 🔥 kuat / 🟡 sederhana / ⚪ lemah, dan produk paling sesuai
+
+4. DRAF REPLY — 1–3 ayat santai, khusus untuk post tu, sebut aku ejen Coway di <span class="fill">[kawasan]</span>,
+   ajak DM. Fakta dari offer.md sahaja. Tiada harga, tiada dakwaan kesihatan.
+
+5. REPORT — simpan dalam reports/TARIKH-pagi.md atau -malam.md, format:
+   🔎 Lead Threads: &lt;tarikh&gt; (&lt;n&gt; lead) - Sesi &lt;Pagi/Malam&gt;
+   ---
+   🔥 1. @username · &lt;lokasi&gt; · &lt;berapa lama&gt; · &lt;produk&gt;
+   &lt;ringkasan keperluan&gt;
+   🔗 &lt;link&gt;
+   👇 Reply:
+   ---
+   &lt;teks reply SAHAJA, dalam mesej berasingan supaya senang copy&gt;
+   ---
+   Kalau tiada lead baru, hantar satu baris: &quot;(0 lead) tiada lead baru&quot;.
+   Hantar ke topic Prospek Threads, kemudian tambah link baru ke seen-leads.txt.
+
+6. IDEA CONTENT (sesi pagi sahaja) — 2 idea post Threads berdasarkan soalan orang hari ni.
+   Semak ideas-log.txt supaya tak berulang. Hantar ke topic Bank Idea Content.
+
+PERATURAN: hanya BACA di Threads. Jangan reply, like, follow atau DM. Jangan paparkan token.</pre></div><div class="pp"><div class="top"><span class="id">P18</span><h2>Langkah 6: Jadualkan pagi & malam</h2></div><div class="when">Bila guna: Langkah terakhir. Lepas ni sistem jalan sendiri.</div><pre>Cipta scheduled task bernama &quot;coway-lead-threads&quot; yang jalan setiap hari
+pukul 9:00 pagi dan 9:00 malam.
+
+Arahan untuk task:
+- Baca RUNBOOK.md dan offer.md dalam folder <span class="fill">[folder projek]</span>, dan ikut RUNBOOK sepenuhnya.
+- Sebelum 3 petang = Sesi Pagi (lead + idea content). Selepas tu = Sesi Malam (lead sahaja).
+- Akhiri dengan ringkasan satu baris: berapa lead baru, berapa yang 🔥, dan sama ada hantar berjaya.
+- Kalau gagal, hantar mesej ralat ringkas ke topic Prospek.
+
+Kemudian jalankan sekali sekarang sebagai ujian.</pre></div><div class="pp"><div class="top"><span class="id">P19</span><h2>Debug: sistem ada masalah</h2></div><div class="when">Bila guna: Bila report tak masuk, lead berulang, atau kualiti lead/reply tak bagus.</div><pre>Run lead tadi ada masalah: [terangkan — cth. tiada report masuk Telegram /
+lead berulang / reply terlalu formal / banyak iklan ejen lain].
+
+Siasat puncanya (semak report, seen-leads.txt dan RUNBOOK),
+terangkan dalam bahasa mudah, kemudian betulkan RUNBOOK atau script
+supaya run seterusnya okay.</pre></div><div class="pp"><div class="top"><span class="id">P20</span><h2>Analisis hasil mingguan</h2></div><div class="when">Bila guna: Setiap hujung minggu, dalam app Claude Desktop.</div><pre>Baca semua report dalam folder reports untuk minggu ni.
+Hasil sebenar aku minggu ni: <span class="fill">[cth. 12 reply, 5 DM, 2 closing — penapis air &amp; tilam]</span>.
+
+1. Kata kunci mana yang paling banyak beri lead 🔥?
+2. Produk mana yang paling banyak permintaan?
+3. Cadangkan 3 perubahan pada RUNBOOK (kata kunci, tapisan, gaya reply) untuk minggu depan.</pre></div><div class="pp"><div class="top"><span class="id">P21</span><h2>BONUS: Idea post Threads ejen Coway</h2></div><div class="when">Bila guna: Supaya prospek datang sendiri ke ruang reply kau.</div><pre>Berdasarkan soalan dan masalah yang orang tulis di Threads minggu ni
+(baca folder reports), beri 10 idea post Threads untuk ejen Coway — 2 untuk setiap produk.
 
 Untuk setiap idea:
-- Ayat pertama (hook) yang buat orang berhenti scroll
-- Isi ringkas (max 500 aksara, had post Threads)
-- Soalan penutup yang dorong orang reply (cth. &quot;Reply &#x27;NAK&#x27; kalau kau pun ...&quot;)</pre></div></body></html>
+- Ayat hook yang buat orang berhenti scroll
+- 3 poin isi (keseluruhan max 500 aksara)
+- Soalan penutup yang dorong orang reply
+
+Tiada dakwaan kesihatan. Tiada harga.</pre></div></body></html>

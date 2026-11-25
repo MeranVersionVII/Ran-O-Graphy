@@ -6,7 +6,7 @@
 import html, json, os, re, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from content import SLIDES, PROMPTS, COURSE_TITLE, COURSE_SUB  # noqa: E402
+from content import SLIDES, PROMPTS, COURSE_TITLE, COURSE_SUB, TEAM, DISCLAIMER  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 P = {p[0]: dict(id=p[0], title=p[1], when=p[2], text=p[3]) for p in PROMPTS}
@@ -41,14 +41,14 @@ def build_slides():
     n = len(SLIDES)
     for i, s in enumerate(SLIDES, 1):
         lay = s["layout"]
-        foot_l = "KELAS CLAUDE AI · TIM KOWE"
+        foot_l = "KELAS CLAUDE AI · " + TEAM.upper()
         if s.get("prompts"):
             foot_l = "Prompt Pack: " + ", ".join(s["prompts"])
         foot = '<div class="foot"><span>%s</span><span>%02d / %02d</span></div>' % (foot_l, i, n)
         if lay == "cover":
             out.append('<section class="slide dark cover"><div class="blob b1"></div><div class="blob b2"></div>'
-                       '<div class="cover-in"><div class="kicker">Kelas Eksklusif · Tim Kowe</div><h1>%s</h1>'
-                       '<p class="lead-d">%s</p></div>%s</section>' % (s["title"], s["body"], foot))
+                       '<div class="cover-in"><div class="kicker">Kelas Eksklusif · %s</div><h1 style="font-size:58px">%s</h1>'
+                       '<p class="lead-d">%s</p></div>%s</section>' % (TEAM, s["title"], s["body"], foot.replace('KELAS CLAUDE AI · ' + TEAM.upper(), DISCLAIMER)))
         elif lay == "section":
             out.append('<section class="slide section"><div class="blob b3"></div><div class="sec-in">'
                        '<div class="kicker">%s</div><h1>%s</h1><p class="lead">%s</p></div>%s</section>'
@@ -114,10 +114,11 @@ def build_notes():
     cover = ('<div class="cover"><div class="kicker">Untuk penceramah sahaja</div><h1>Nota Penceramah</h1>'
              '<p>%s</p><p class="muted">Setiap slide: apa yang perlu diterangkan, soalan untuk peserta, dan bila buat demo live.</p>'
              '<div class="legend"><div><b>Sebelum kelas, sediakan:</b></div>'
-             '<div>☐ Automation kau sendiri berjalan &amp; sedia untuk demo (slide 3 &amp; 31)</div>'
-             '<div>☐ Template Google Sheets prospek + link salinan untuk peserta (slide 18)</div>'
+             '<div>☐ Sistem lead kau sendiri berjalan: group Telegram + report terkini sedia untuk demo</div>'
+             '<div>☐ App Claude Desktop dipasang di laptop demo, dan Threads dah login dalam browser app</div>'
+             '<div>☐ Minta peserta pasang app Claude Desktop &amp; Telegram, dan ada akaun Threads sebelum kelas</div>'
              '<div>☐ Ganti semua teks <span class="fill">[dalam kurungan]</span> di slide dengan maklumat sebenar</div>'
-             '<div>☐ Semak harga Claude &amp; tool automation terkini</div>'
+             '<div>☐ Semak harga Claude, nama menu app Desktop, dan garis panduan pemasaran Coway terkini</div>'
              '<div>☐ Hantar PDF Prompt Pack kepada peserta sebelum kelas mula</div></div></div>') % COURSE_TITLE
     doc = ('<!doctype html><html lang="ms"><head><meta charset="utf-8"><title>Nota Penceramah</title><style>%s</style></head><body>%s%s</body></html>'
            % (DOC_CSS, cover, "".join(rows)))
@@ -126,13 +127,13 @@ def build_notes():
 
 def build_pack():
     toc = "".join('<div><b>%s</b>%s</div>' % (p[0], p[1]) for p in PROMPTS)
-    cover = ('<div class="cover"><div class="kicker">Prompt Pack Peserta · Tim Kowe</div><h1>%s</h1><p>%s</p>'
+    cover = ('<div class="cover"><div class="kicker">Prompt Pack Peserta · ' + TEAM + '</div><h1>%s</h1><p>%s</p>'
              '<div class="legend"><div><b>Cara guna</b></div>'
              '<div>1. Cari nombor prompt yang tertera di bawah slide (cth. P08).</div>'
              '<div>2. Salin keseluruhan prompt ke dalam Claude.</div>'
              '<div>3. Ganti teks <span class="fill">[dalam kurungan]</span> dengan maklumat kau sendiri.</div>'
-             '<div>4. Teks <span class="var">{{kurungan berganda}}</span> diisi automatik oleh tool automation — jangan ubah.</div>'
-             '</div><div class="toc">%s</div></div>') % (COURSE_TITLE, COURSE_SUB, toc)
+             '<div>4. P01–P11: guna di claude.ai (dalam Project Brand Brain). P12–P21: guna dalam app Claude Desktop.</div>'
+             '</div><div class="toc">%s</div><p class="muted" style="font-size:9pt;margin-top:14pt">' + DISCLAIMER + '</p></div>') % (COURSE_TITLE, COURSE_SUB, toc)
     items = "".join('<div class="pp"><div class="top"><span class="id">%s</span><h2>%s</h2></div><div class="when">Bila guna: %s</div><pre>%s</pre></div>'
                     % (p["id"], p["title"], p["when"], fmt_prompt(p["text"])) for p in P.values())
     doc = ('<!doctype html><html lang="ms"><head><meta charset="utf-8"><title>Prompt Pack</title><style>%s</style></head><body>%s%s</body></html>'

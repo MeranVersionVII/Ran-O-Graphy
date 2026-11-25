@@ -69,13 +69,13 @@ Atau buka `slides.html` dalam Chrome → Print → Save as PDF (Background graph
 
 ---
 
-# Kursus: Dari Zero ke Mesin Cari Prospek (`kursus-prospek/`)
+# Kursus Ejen Coway: Dari Zero ke Mesin Cari Prospek Threads (`kursus-prospek/`)
 
 | Fail | Untuk siapa |
 |---|---|
-| `slides.pdf` | Slide untuk ditayang (34 slide) |
+| `slides.pdf` | Slide untuk ditayang (38 slide) |
 | `nota-penceramah.pdf` | Penceramah — apa nak terangkan setiap slide |
-| `prompt-pack.pdf` / `prompt-pack.txt` | Peserta — 19 prompt siap salin |
+| `prompt-pack.pdf` / `prompt-pack.txt` | Peserta — 21 prompt siap salin |
 
 Semua kandungan (slide, nota, prompt) ada dalam `content.py`. Selepas edit:
 
