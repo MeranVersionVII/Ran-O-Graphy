@@ -4,7 +4,7 @@
 Edit fail ini, kemudian jalankan:  python3 build.py && node render.js
 """
 
-PLATFORM = "TikTok"
+PLATFORM = "Threads"
 COURSE_TITLE = "Claude AI: Dari Zero ke Mesin Cari Prospek"
 COURSE_SUB = "Kelas hands-on Tim Kowe — dari tak pernah guna AI sampai automation cari prospek di " + PLATFORM
 
@@ -67,23 +67,23 @@ PERATURAN
 Sertakan:
 1. Demografi (umur, pekerjaan, lokasi, pendapatan)
 2. 3 masalah utama yang mereka hadapi
-3. Apa yang mereka tonton dan cari di TikTok
-4. Ayat yang mereka selalu taip dalam komen bila ada masalah ni
+3. Topik apa yang mereka baca, cari dan bincang di Threads
+4. Ayat yang mereka selalu tulis dalam post atau reply bila ada masalah ni
 5. Tanda-tanda mereka dah sedia untuk membeli
 
 Beri dalam bentuk jadual, kemudian ringkaskan ICP dalam 2 ayat."""),
 
-  ("P07", "Cari lokasi prospek di TikTok", "Lepas ada ICP. Untuk tahu di mana nak cari.",
+  ("P07", "Cari lokasi prospek di Threads", "Lepas ada ICP. Untuk tahu di mana nak cari.",
 """Untuk ICP di atas, senaraikan:
-- 15 hashtag TikTok yang prospek aku selalu guna atau tengok
-- 10 jenis akaun/creator yang pengikutnya mungkin prospek aku
-- 10 kata kunci carian TikTok
+- 15 topik (topic tag) Threads yang prospek aku selalu ikuti atau guna
+- 10 jenis akaun yang pengikut dan orang yang reply post mereka mungkin prospek aku
+- 10 kata kunci carian Threads (ayat yang prospek mungkin tulis dalam post)
 
 Untuk setiap satu, terangkan dalam satu ayat kenapa ia sesuai.
 Tandakan 5 yang paling berpotensi dengan ⭐."""),
 
   ("P08", "Nilai senarai prospek (manual)", "Lepas kumpul prospek dalam sheet. Tampal beberapa baris sekaligus.",
-"""Aku akan tampal senarai prospek dari TikTok (username, bio, komen yang mereka tulis).
+"""Aku akan tampal senarai prospek dari Threads (username, bio, post atau reply yang mereka tulis).
 
 Untuk setiap prospek, beri:
 - Skor: PANAS / SUAM / SEJUK
@@ -100,11 +100,11 @@ Senarai:
 """Tulis mesej DM pertama untuk prospek ini:
 Username: [ ]
 Bio: [ ]
-Komen mereka: [ ]
+Post/reply mereka: [ ]
 
 Peraturan:
 - Max 50 patah perkataan
-- Sebut sesuatu yang spesifik dari bio atau komen mereka
+- Sebut sesuatu yang spesifik dari bio atau post/reply mereka
 - Jangan terus jual atau letak link
 - Akhiri dengan satu soalan ringan
 
@@ -153,12 +153,12 @@ Tulis emel balasan dalam Bahasa Melayu santai, max 120 patah perkataan:
 
 Tulis isi emel sahaja, tanpa subjek dan tanpa tandatangan."""),
 
-  ("P14", "Kata kunci untuk tapis komen", "Untuk langkah 'Tapis' dalam automation, supaya Claude tak proses komen sampah.",
+  ("P14", "Kata kunci untuk tapis post & reply", "Untuk langkah 'Tapis' dalam automation, supaya Claude tak proses post sampah.",
 """Senaraikan 30 kata kunci/frasa dalam Bahasa Melayu dan bahasa rojak yang menunjukkan
-seseorang di komen TikTok sedang ada masalah [masalah utama ICP]
+seseorang dalam post atau reply Threads sedang ada masalah [masalah utama ICP]
 atau berminat dengan [produk/servis].
 
-Kemudian senaraikan 15 kata kunci yang menunjukkan komen TAK relevan
+Kemudian senaraikan 15 kata kunci yang menunjukkan post/reply TAK relevan
 (spam, promo orang lain, troll).
 
 Beri setiap senarai dalam satu baris, dipisahkan koma, supaya aku boleh tampal terus dalam filter."""),
@@ -167,11 +167,11 @@ Beri setiap senarai dalam satu baris, dipisahkan koma, supaya aku boleh tampal t
 """Kau penilai prospek untuk [nama bisnes] yang menjual [produk/servis]
 kepada [ICP ringkas, cth. ibu bekerja 25–40 yang nak kurus selepas bersalin].
 
-Nilai prospek TikTok ini:
+Nilai prospek Threads ini:
 Username: {{username}}
 Bio: {{bio}}
-Komen: {{komen}}
-Video sumber: {{video_sumber}}
+Post/reply: {{komen}}
+Post sumber: {{post_sumber}}
 
 Kriteria PANAS: [cth. sebut masalah secara terus, tanya harga, minta cadangan]
 Kriteria SEJUK: [cth. akaun pesaing, komen tak berkaitan, spam]
@@ -213,14 +213,14 @@ dan beri langkah demi langkah untuk betulkan."""),
 2. Apa corak yang kau nampak? (jenis komen, jenis mesej, hari/masa)
 3. Beri 3 cadangan spesifik untuk tingkatkan kadar balas minggu depan."""),
 
-  ("P19", "BONUS: Content TikTok yang tarik prospek", "Supaya prospek datang sendiri ke ruang komen kau.",
-"""Berdasarkan 3 masalah utama ICP aku, beri 10 idea video TikTok
-yang akan buat prospek ideal aku komen.
+  ("P19", "BONUS: Post Threads yang tarik prospek", "Supaya prospek datang sendiri ke ruang reply kau.",
+"""Berdasarkan 3 masalah utama ICP aku, beri 10 idea post Threads
+yang akan buat prospek ideal aku reply.
 
 Untuk setiap idea:
-- Hook 3 saat pertama
-- Isi ringkas (3 poin)
-- Soalan CTA yang dorong orang komen (cth. "Komen 'NAK' kalau kau pun ...")"""),
+- Ayat pertama (hook) yang buat orang berhenti scroll
+- Isi ringkas (max 500 aksara, had post Threads)
+- Soalan penutup yang dorong orang reply (cth. "Reply 'NAK' kalau kau pun ...")"""),
 ]
 
 # ---------------------------------------------------------------------------
@@ -244,7 +244,7 @@ dict(layout="cover", title=COURSE_TITLE, body=COURSE_SUB,
 
 dict(layout="std", kicker="Kenapa kelas ni", title="Cari prospek cara lama",
   body=cards([
-    ("Scroll berjam-jam", "Buka TikTok, cari komen, salin nama satu-satu."),
+    ("Scroll berjam-jam", "Buka Threads, baca reply, salin nama satu-satu."),
     ("DM yang sama", "Copy-paste mesej sama kepada semua orang. Kadar balas rendah."),
     ("Lupa follow-up", "Prospek panas jadi sejuk sebab tak ada sistem."),
     ("Tak tahu mana berkesan", "Tak ada data — tak tahu apa yang perlu diperbaiki."),
@@ -401,32 +401,32 @@ dict(layout="section", kicker="Bahagian 3", title="Kenal &amp; Nilai Prospek", b
 dict(layout="std", kicker="Bahagian 3 · Langkah 1", title="Siapa prospek ideal kau (ICP)?",
   body='<div class="g2c" style="grid-template-columns:1fr 1.25fr"><div>'
        + '<p class="lead">ICP = <b>Ideal Customer Profile</b>.<br>Kalau tak tahu siapa yang dicari, automation pun tak tahu.</p>'
-       + bullets(["Demografi", "3 masalah utama", "Apa mereka tengok di TikTok", "Ayat yang mereka taip dalam komen", "Tanda sedia membeli"])
+       + bullets(["Demografi", "3 masalah utama", "Apa mereka bincang di Threads", "Ayat yang mereka tulis dalam post &amp; reply", "Tanda sedia membeli"])
        + '</div>' + promptbox("P06", compact=True) + '</div>',
   prompts=["P06"],
   notes=[
     "ICP ialah asas automation. Kriteria PANAS/SUAM/SEJUK nanti datang dari sini.",
-    "Paling penting: point 4 — 'ayat yang mereka taip dalam komen'. Inilah kata kunci yang automation akan cari.",
+    "Paling penting: point 4 — 'ayat yang mereka tulis dalam post & reply'. Inilah kata kunci yang automation akan cari.",
     "Peserta jalankan P06 dalam Project Brand Brain mereka. Minta mereka simpan hasilnya (copy ke dokumen atau upload ke project).",
     "Tanya 1–2 peserta kongsi ICP mereka — betulkan jika terlalu umum ('semua orang' bukan ICP).",
   ]),
 
-dict(layout="std", kicker="Bahagian 3 · Langkah 2", title="Di mana prospek berada di TikTok?",
+dict(layout="std", kicker="Bahagian 3 · Langkah 2", title="Di mana prospek berada di Threads?",
   body=cards([
-    ("💬 Ruang komen", "Komen di video yang bincang masalah ICP kau."),
-    ("#️⃣ Hashtag", "Hashtag niche yang ICP selalu tonton."),
-    ("🎯 Akaun pesaing", "Orang yang tanya soalan di video pesaing."),
-    ("🔴 LIVE", "Penonton yang aktif bertanya semasa live."),
+    ("💬 Ruang reply", "Reply di post yang bincang masalah ICP kau."),
+    ("🏷️ Topic tag", "Topik niche yang ICP selalu ikuti."),
+    ("🎯 Akaun pesaing", "Orang yang tanya soalan di post pesaing."),
+    ("🔍 Carian", "Orang yang sendiri post tentang masalah mereka."),
   ], 4) + promptbox("P07", compact=True, style="margin-top:20px"),
   prompts=["P07"],
   notes=[
-    "Prospek terbaik ialah orang yang SENDIRI sebut masalah mereka dalam komen — mereka dah 'angkat tangan'.",
-    "Komen di video pesaing ialah lombong emas: mereka dah berminat dengan kategori produk kau.",
-    "Peserta jalankan P07, kemudian buka TikTok dan cari 3 hashtag ⭐ yang Claude cadangkan.",
+    "Prospek terbaik ialah orang yang SENDIRI sebut masalah mereka dalam post atau reply — mereka dah 'angkat tangan'.",
+    "Reply di post pesaing ialah lombong emas: mereka dah berminat dengan kategori produk kau.",
+    "Peserta jalankan P07, kemudian buka Threads dan cari 3 topik/kata kunci ⭐ yang Claude cadangkan.",
   ]),
 
 dict(layout="std", kicker="Bahagian 3 · Langkah 3", title="Kumpul prospek dalam Google Sheets",
-  body=table(["Tarikh", "Username", "Bio", "Komen", "Video sumber", "Skor", "Mesej DM", "Status"], [
+  body=table(["Tarikh", "Username", "Bio", "Post/reply", "Post sumber", "Skor", "Mesej DM", "Status"], [
     ["25/11", "@kak_ani", "Ibu 2 anak, KL", "Macam mana nak turun 5kg ni 😭", "link", "", "", "Belum DM"],
     ["25/11", "@miza.h", "Cikgu | Johor", "Berapa harga set ni?", "link", "", "", "Belum DM"],
     ["…", "", "", "", "", "", "", ""],
@@ -434,7 +434,7 @@ dict(layout="std", kicker="Bahagian 3 · Langkah 3", title="Kumpul prospek dalam
   notes=[
     "Tunjuk template Google Sheets ni. Kongsi link template dengan peserta (buat salinan dulu sebelum kelas).",
     "Kolum ni SAMA dengan apa yang automation akan isi nanti — jadi mereka faham struktur data dari awal.",
-    "Bagi 15 minit untuk kumpul 10 prospek secara manual dari TikTok.",
+    "Bagi 15 minit untuk kumpul 10 prospek secara manual dari Threads.",
     "Tanya selepas itu: 'Berapa lama korang ambil?' — ini akan jadi perbandingan bila automation jalan.",
     "Contoh dalam jadual ialah rekaan; ganti dengan contoh dari niche kau sendiri.",
   ]),
@@ -528,8 +528,8 @@ dict(layout="section", kicker="Bahagian 5", title="Mesin Cari Prospek", body="Ga
 
 dict(layout="std", kicker="Bahagian 5 · Senibina", title="5 blok mesin cari prospek",
   body=flow([
-    ("1", "Ambil data", "Komen/prospek dari TikTok masuk ke sistem."),
-    ("2", "Tapis", "Buang spam &amp; komen tak relevan."),
+    ("1", "Ambil data", "Post/reply prospek dari Threads masuk ke sistem."),
+    ("2", "Tapis", "Buang spam &amp; post tak relevan."),
     ("3", "Claude nilai", "Skor + sebab + DM (P15)."),
     ("4", "Simpan", "Satu baris baru di Google Sheets."),
     ("5", "Notifikasi", "Ringkasan ke telefon (P16)."),
@@ -543,7 +543,7 @@ dict(layout="std", kicker="Bahagian 5 · Senibina", title="5 blok mesin cari pro
 
 dict(layout="std", kicker="Bahagian 5 · Blok 1–2", title="Ambil data &amp; tapis",
   body='<div class="g2c"><div class="card"><h3>Blok 1 · Ambil data</h3>'
-       + bullets(["<b>[Terangkan sumber data dalam automation kau]</b>", "Pilihan: senarai manual di Sheets, borang, atau tool pengumpul data", "Setiap prospek = 1 rekod: username, bio, komen, video"], small=True)
+       + bullets(["<b>[Terangkan sumber data dalam automation kau]</b>", "Pilihan: senarai manual di Sheets, borang, atau tool pengumpul data", "Setiap prospek = 1 rekod: username, bio, post/reply, post sumber"], small=True)
        + '</div><div class="card"><h3>Blok 2 · Tapis</h3>'
        + bullets(["Tapis guna kata kunci (P14)", "Buang komen terlalu pendek / emoji sahaja", "Buang duplikat (prospek yang sama)", "Jimat kos — Claude hanya proses yang berpotensi"], small=True)
        + '</div></div>' + promptbox("P14", compact=True, style="margin-top:18px", hide_body=True),
@@ -592,9 +592,9 @@ dict(layout="accent", kicker="Demo &amp; build", title="Jom bina sama-sama",
 
 dict(layout="dark", kicker="Penting", title="Etika &amp; keselamatan akaun",
   body=cards([
-    ("Ikut terma platform", "Jangan guna kaedah ambil data yang dilarang TikTok — akaun boleh disekat."),
+    ("Ikut terma platform", "Jangan guna kaedah ambil data yang dilarang Threads/Meta — akaun boleh disekat."),
     ("Hantar DM secara manual", "Claude tulis draf; manusia hantar. Had DM sehari supaya tak dianggap spam."),
-    ("Personal, bukan spam", "Setiap mesej mesti relevan dengan komen orang tu."),
+    ("Personal, bukan spam", "Setiap mesej mesti relevan dengan post atau reply orang tu."),
     ("Lindungi data (PDPA)", "Simpan data dengan selamat, guna untuk tujuan jualan sahaja, padam bila diminta."),
   ], 2),
   notes=[
@@ -630,7 +630,7 @@ dict(layout="accent", kicker="Penutup", title="Tugasan 7 hari",
   notes=[
     "Beri tugasan konkrit supaya ilmu jadi tabiat.",
     "Minta peserta kongsi screenshot Sheets dan hasil minggu pertama dalam group support.",
-    "Sebut P19 sebagai bonus: content yang betul buat prospek datang sendiri ke ruang komen — automation jadi lebih berkesan.",
+    "Sebut P19 sebagai bonus: content yang betul buat prospek datang sendiri ke ruang reply — automation jadi lebih berkesan.",
     "Tutup dengan sesi soal jawab, dan ingatkan tentang group support.",
   ]),
 ]

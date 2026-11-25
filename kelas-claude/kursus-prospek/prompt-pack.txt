@@ -77,21 +77,21 @@ Berdasarkan maklumat bisnes dalam project ni, bina profil pelanggan ideal (ICP) 
 Sertakan:
 1. Demografi (umur, pekerjaan, lokasi, pendapatan)
 2. 3 masalah utama yang mereka hadapi
-3. Apa yang mereka tonton dan cari di TikTok
-4. Ayat yang mereka selalu taip dalam komen bila ada masalah ni
+3. Topik apa yang mereka baca, cari dan bincang di Threads
+4. Ayat yang mereka selalu tulis dalam post atau reply bila ada masalah ni
 5. Tanda-tanda mereka dah sedia untuk membeli
 
 Beri dalam bentuk jadual, kemudian ringkaskan ICP dalam 2 ayat.
 
 ============================================================
 
-P07 — Cari lokasi prospek di TikTok
+P07 — Cari lokasi prospek di Threads
 Bila guna: Lepas ada ICP. Untuk tahu di mana nak cari.
 ------------------------------------------------------------
 Untuk ICP di atas, senaraikan:
-- 15 hashtag TikTok yang prospek aku selalu guna atau tengok
-- 10 jenis akaun/creator yang pengikutnya mungkin prospek aku
-- 10 kata kunci carian TikTok
+- 15 topik (topic tag) Threads yang prospek aku selalu ikuti atau guna
+- 10 jenis akaun yang pengikut dan orang yang reply post mereka mungkin prospek aku
+- 10 kata kunci carian Threads (ayat yang prospek mungkin tulis dalam post)
 
 Untuk setiap satu, terangkan dalam satu ayat kenapa ia sesuai.
 Tandakan 5 yang paling berpotensi dengan ⭐.
@@ -101,7 +101,7 @@ Tandakan 5 yang paling berpotensi dengan ⭐.
 P08 — Nilai senarai prospek (manual)
 Bila guna: Lepas kumpul prospek dalam sheet. Tampal beberapa baris sekaligus.
 ------------------------------------------------------------
-Aku akan tampal senarai prospek dari TikTok (username, bio, komen yang mereka tulis).
+Aku akan tampal senarai prospek dari Threads (username, bio, post atau reply yang mereka tulis).
 
 Untuk setiap prospek, beri:
 - Skor: PANAS / SUAM / SEJUK
@@ -122,11 +122,11 @@ Bila guna: Untuk prospek PANAS dan SUAM.
 Tulis mesej DM pertama untuk prospek ini:
 Username: [ ]
 Bio: [ ]
-Komen mereka: [ ]
+Post/reply mereka: [ ]
 
 Peraturan:
 - Max 50 patah perkataan
-- Sebut sesuatu yang spesifik dari bio atau komen mereka
+- Sebut sesuatu yang spesifik dari bio atau post/reply mereka
 - Jangan terus jual atau letak link
 - Akhiri dengan satu soalan ringan
 
@@ -193,14 +193,14 @@ Tulis isi emel sahaja, tanpa subjek dan tanpa tandatangan.
 
 ============================================================
 
-P14 — Kata kunci untuk tapis komen
-Bila guna: Untuk langkah 'Tapis' dalam automation, supaya Claude tak proses komen sampah.
+P14 — Kata kunci untuk tapis post & reply
+Bila guna: Untuk langkah 'Tapis' dalam automation, supaya Claude tak proses post sampah.
 ------------------------------------------------------------
 Senaraikan 30 kata kunci/frasa dalam Bahasa Melayu dan bahasa rojak yang menunjukkan
-seseorang di komen TikTok sedang ada masalah [masalah utama ICP]
+seseorang dalam post atau reply Threads sedang ada masalah [masalah utama ICP]
 atau berminat dengan [produk/servis].
 
-Kemudian senaraikan 15 kata kunci yang menunjukkan komen TAK relevan
+Kemudian senaraikan 15 kata kunci yang menunjukkan post/reply TAK relevan
 (spam, promo orang lain, troll).
 
 Beri setiap senarai dalam satu baris, dipisahkan koma, supaya aku boleh tampal terus dalam filter.
@@ -213,11 +213,11 @@ Bila guna: Prompt dalam modul Claude/AI di automation. Output JSON supaya boleh 
 Kau penilai prospek untuk [nama bisnes] yang menjual [produk/servis]
 kepada [ICP ringkas, cth. ibu bekerja 25–40 yang nak kurus selepas bersalin].
 
-Nilai prospek TikTok ini:
+Nilai prospek Threads ini:
 Username: {{username}}
 Bio: {{bio}}
-Komen: {{komen}}
-Video sumber: {{video_sumber}}
+Post/reply: {{komen}}
+Post sumber: {{post_sumber}}
 
 Kriteria PANAS: [cth. sebut masalah secara terus, tanya harga, minta cadangan]
 Kriteria SEJUK: [cth. akaun pesaing, komen tak berkaitan, spam]
@@ -273,15 +273,15 @@ Ini data prospek minggu ni dari Google Sheets:
 
 ============================================================
 
-P19 — BONUS: Content TikTok yang tarik prospek
-Bila guna: Supaya prospek datang sendiri ke ruang komen kau.
+P19 — BONUS: Post Threads yang tarik prospek
+Bila guna: Supaya prospek datang sendiri ke ruang reply kau.
 ------------------------------------------------------------
-Berdasarkan 3 masalah utama ICP aku, beri 10 idea video TikTok
-yang akan buat prospek ideal aku komen.
+Berdasarkan 3 masalah utama ICP aku, beri 10 idea post Threads
+yang akan buat prospek ideal aku reply.
 
 Untuk setiap idea:
-- Hook 3 saat pertama
-- Isi ringkas (3 poin)
-- Soalan CTA yang dorong orang komen (cth. "Komen 'NAK' kalau kau pun ...")
+- Ayat pertama (hook) yang buat orang berhenti scroll
+- Isi ringkas (max 500 aksara, had post Threads)
+- Soalan penutup yang dorong orang reply (cth. "Reply 'NAK' kalau kau pun ...")
 
 ============================================================
