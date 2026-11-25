@@ -1,0 +1,376 @@
+<title>Hub Prospek Ejen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one-column work queue — sticky header with two views (Prospek / Bank Content), summary strip, then filterable cards. */
+:root {
+  --bg: #f4f7f8;
+  --surface: #ffffff;
+  --surface-2: #eaf0f2;
+  --line: #d6e0e4;
+  --fg: #142126;
+  --muted: #5a6d74;
+  --accent: #0f7c8c;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcf0f2;
+  --hot: #c2412a;
+  --warm: #b97a12;
+  --cold: #6b7f86;
+  --ok: #2f8551;
+  --ok-soft: #e1f2e7;
+  --display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1719; --surface: #172225; --surface-2: #1e2c30; --line: #2b3c41;
+    --fg: #e5eef0; --muted: #93a8ae; --accent: #43b6c4; --accent-ink: #0b1416; --accent-soft: #163a40;
+    --hot: #ef7a5f; --warm: #e2ad4a; --cold: #8da2a8; --ok: #5fc287; --ok-soft: #183526;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1719; --surface: #172225; --surface-2: #1e2c30; --line: #2b3c41;
+  --fg: #e5eef0; --muted: #93a8ae; --accent: #43b6c4; --accent-ink: #0b1416; --accent-soft: #163a40;
+  --hot: #ef7a5f; --warm: #e2ad4a; --cold: #8da2a8; --ok: #5fc287; --ok-soft: #183526;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.5; margin: 0; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding-block: 12px; }
+.brand { display: flex; flex-direction: column; min-width: 0; margin-right: auto; }
+.brand h1 { font-family: var(--display); font-size: 20px; line-height: 1.15; margin: 0; letter-spacing: -.01em; }
+.brand span { font-size: 12px; color: var(--muted); }
+.tabs { display: flex; gap: 4px; background: var(--surface-2); padding: 4px; border-radius: 10px; }
+.tabs a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 14px; padding: 7px 14px; border-radius: 7px; }
+.tabs a[aria-current="page"] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+main .wrap { padding-block: 18px 48px; display: flex; flex-direction: column; gap: 16px; }
+.banner { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 10px 14px; font-size: 13.5px; color: var(--muted); }
+.banner.warn { border-color: var(--warm); }
+.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-width: 0; }
+.stat b { display: block; font-family: var(--display); font-size: 24px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--muted); }
+.stat.hot b { color: var(--hot); }
+@media (max-width: 560px) { .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.filters { display: flex; flex-direction: column; gap: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: inherit; font-size: 13px; font-weight: 500; border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.chip .n { opacity: .7; margin-left: 4px; font-variant-numeric: tabular-nums; }
+.list { display: flex; flex-direction: column; gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; border-left: 4px solid var(--cold); }
+.card.kuat { border-left-color: var(--hot); }
+.card.sederhana { border-left-color: var(--warm); }
+.card.done { opacity: .72; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 13px; color: var(--muted); }
+.meta .user { color: var(--fg); font-weight: 700; font-size: 15px; overflow-wrap: anywhere; }
+.pill { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .02em; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--fg); }
+.pill.score-kuat { background: var(--hot); color: #fff; }
+.pill.score-sederhana { background: var(--warm); color: #fff; }
+.pill.score-lemah { background: var(--cold); color: #fff; }
+.pill.ex { background: transparent; border: 1px dashed var(--muted); color: var(--muted); }
+.summary { margin: 0; overflow-wrap: anywhere; }
+.reply { background: var(--accent-soft); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+.reply p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; user-select: all; }
+.reply .lbl, .label { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.btn { font: inherit; font-size: 13.5px; font-weight: 600; border-radius: 8px; padding: 7px 12px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.danger { color: var(--hot); }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn:focus-visible, .chip:focus-visible, .tabs a:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+select, input, textarea { font: inherit; font-size: 14px; color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; max-width: 100%; }
+.status-sel { margin-left: auto; }
+.empty { text-align: center; padding: 36px 16px; color: var(--muted); background: var(--surface); border: 1px dashed var(--line); border-radius: 12px; }
+.empty h2 { font-family: var(--display); color: var(--fg); font-size: 18px; margin: 0 0 6px; }
+.empty p { margin: 0 auto; max-width: 46ch; }
+.points { margin: 0; padding-left: 20px; }
+.points li { overflow-wrap: anywhere; }
+.hook { font-family: var(--display); font-size: 17px; font-weight: 600; margin: 0; line-height: 1.3; overflow-wrap: anywhere; }
+form.add { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 10px; }
+form.add .row { display: grid; gap: 4px; }
+form.add .row2 { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
+details.addwrap summary { cursor: pointer; font-weight: 600; color: var(--accent); list-style: none; }
+details.addwrap summary::-webkit-details-marker { display: none; }
+.toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 8px 14px; border-radius: 8px; font-size: 13.5px; font-weight: 600; z-index: 20; }
+@media (prefers-reduced-motion: no-preference) { .card { transition: opacity .2s; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <h1>Hub Prospek Ejen</h1>
+      <span>Lead Threads &amp; bank content · penapis air · penapis udara · tilam · mesin basuh · aircon</span>
+    </div>
+    <nav class="tabs" aria-label="Paparan">
+      <a href="#prospek" id="tab-prospek">Prospek</a>
+      <a href="#content" id="tab-content">Bank Content</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div id="banner" class="banner" hidden></div>
+
+    <section id="view-prospek">
+      <div class="stats" id="stats"></div>
+      <div class="filters" style="margin-top:14px">
+        <div class="chips" id="status-chips" aria-label="Tapis status"></div>
+        <div class="chips" id="product-chips" aria-label="Tapis produk"></div>
+      </div>
+      <div class="list" id="lead-list" style="margin-top:14px"></div>
+    </section>
+
+    <section id="view-content" hidden>
+      <details class="addwrap">
+        <summary>+ Tambah idea sendiri</summary>
+        <form class="add" id="idea-form" style="margin-top:10px">
+          <div class="row"><label class="label" for="idea-hook">Hook (ayat pertama)</label><input id="idea-hook" required maxlength="200" placeholder="cth. Air paip rumah baru keruh? Ini 3 sebab biasa"></div>
+          <div class="row"><label class="label" for="idea-points">Isi (satu poin satu baris)</label><textarea id="idea-points" rows="3" maxlength="800"></textarea></div>
+          <div class="row2">
+            <div class="row"><label class="label" for="idea-product">Produk</label><select id="idea-product"></select></div>
+            <button class="btn primary" type="submit" id="idea-submit">Simpan idea</button>
+          </div>
+        </form>
+      </details>
+      <div class="chips" id="idea-chips" style="margin-top:14px" aria-label="Tapis idea"></div>
+      <div class="list" id="idea-list" style="margin-top:14px"></div>
+    </section>
+
+    <div class="toolbar" id="toolbar"></div>
+  </div>
+</main>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function () {
+  const PRODUCTS = [
+    ["penapis-air", "Penapis air"], ["penapis-udara", "Penapis udara"], ["tilam", "Tilam"],
+    ["mesin-basuh", "Mesin basuh"], ["aircon", "Aircon"], ["lain", "Lain-lain"],
+  ];
+  const PNAME = Object.fromEntries(PRODUCTS);
+  const SCORE = { kuat: "🔥 Kuat", sederhana: "🟡 Sederhana", lemah: "⚪ Lemah" };
+  const SRANK = { kuat: 0, sederhana: 1, lemah: 2 };
+  const LSTATUS = [["baru", "Belum reply"], ["dah-reply", "Dah reply"], ["dm", "Dapat DM"], ["closing", "Closing"], ["abai", "Abaikan"]];
+  const ISTATUS = [["idea", "Idea"], ["draf", "Draf"], ["dah-post", "Dah post"]];
+  const STATUS_FILTERS = [
+    ["perlu", "Perlu reply", l => l.status === "baru" || !l.status],
+    ["proses", "Dah reply / DM", l => l.status === "dah-reply" || l.status === "dm"],
+    ["closing", "Closing", l => l.status === "closing"],
+    ["semua", "Semua", l => true],
+  ];
+
+  const S = { leads: [], ideas: [], leadsLoaded: false, ideasLoaded: false,
+    fStatus: "perlu", fProduct: "semua", fIdea: "belum", db: null, readOnly: false, pending: new Set(), confirm: null };
+
+  // ---- helpers ----
+  function h(tag, attrs, ...kids) {
+    const el = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (v == null || v === false) continue;
+      if (k === "class") el.className = v;
+      else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+      else el.setAttribute(k, v === true ? "" : v);
+    }
+    for (const k of kids.flat()) if (k != null && k !== false) el.append(k instanceof Node ? k : document.createTextNode(String(k)));
+    return el;
+  }
+  const str = v => (typeof v === "string" ? v : v == null ? "" : String(v));
+  const safeUrl = u => (typeof u === "string" && u.startsWith("https://") ? u : null);
+  function ago(iso) {
+    const t = Date.parse(iso); if (!t) return "";
+    const m = Math.round((Date.now() - t) / 60000);
+    if (m < 60) return m <= 1 ? "baru tadi" : m + " minit lepas";
+    const hr = Math.round(m / 60); if (hr < 24) return hr + " jam lepas";
+    const d = Math.round(hr / 24); return d + " hari lepas";
+  }
+  let toastT;
+  function toast(msg) { const t = document.getElementById("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => (t.hidden = true), 1800); }
+  function banner(msg, warn) { const b = document.getElementById("banner"); b.hidden = !msg; b.textContent = msg || ""; b.classList.toggle("warn", !!warn); }
+  async function copy(text, el) {
+    try { await navigator.clipboard.writeText(text); toast("Disalin"); }
+    catch (_) {
+      if (el) { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+      toast("Teks dipilih — tekan Copy");
+    }
+  }
+  function prodSelect(id, value) {
+    const sel = h("select", { id });
+    for (const [k, n] of PRODUCTS) { const o = h("option", { value: k }, n); if (k === value) o.selected = true; sel.append(o); }
+    return sel;
+  }
+
+  // ---- writes ----
+  async function write(path, fn, okMsg) {
+    if (!S.db || S.readOnly || S.pending.has(path)) return;
+    S.pending.add(path); render();
+    try { await fn(S.db.doc(path)); if (okMsg) toast(okMsg); }
+    catch (e) {
+      if (e && e.code === "invalid_argument") { S.readOnly = true; banner("Kau hanya boleh lihat data ni — perubahan tak disimpan.", true); }
+      else if (e && e.code === "quota_exceeded") banner("Storan penuh. Padam lead lama atau idea yang dah tak perlu.", true);
+      else toast("Tak dapat simpan. Cuba lagi.");
+    } finally { S.pending.delete(path); render(); }
+  }
+
+  // ---- render: prospek ----
+  function renderStats() {
+    const L = S.leads, c = s => L.filter(l => (l.status || "baru") === s).length;
+    const hotNew = L.filter(l => (l.status || "baru") === "baru" && l.score === "kuat").length;
+    const items = [["hot", hotNew, "🔥 belum reply"], ["", c("baru"), "Belum reply"], ["", c("dah-reply"), "Dah reply"], ["", c("dm"), "Dapat DM"], ["", c("closing"), "Closing"]];
+    document.getElementById("stats").replaceChildren(...items.map(([cl, n, t]) => h("div", { class: "stat " + cl }, h("b", {}, n), h("span", {}, t))));
+  }
+  function renderChips() {
+    const sc = document.getElementById("status-chips");
+    sc.replaceChildren(...STATUS_FILTERS.map(([k, n, f]) => h("button", { class: "chip", type: "button", "aria-pressed": String(S.fStatus === k), onclick: () => { S.fStatus = k; render(); } }, n, h("span", { class: "n" }, S.leads.filter(f).length))));
+    const pc = document.getElementById("product-chips");
+    const present = PRODUCTS.filter(([k]) => S.leads.some(l => (l.product || "lain") === k));
+    pc.replaceChildren(
+      h("button", { class: "chip", type: "button", "aria-pressed": String(S.fProduct === "semua"), onclick: () => { S.fProduct = "semua"; render(); } }, "Semua produk"),
+      ...present.map(([k, n]) => h("button", { class: "chip", type: "button", "aria-pressed": String(S.fProduct === k), onclick: () => { S.fProduct = k; render(); } }, n)));
+  }
+  function leadCard(l) {
+    const path = "leads/" + l.id, busy = S.pending.has(path), st = l.status || "baru";
+    const url = safeUrl(l.url);
+    const replyP = h("p", {}, str(l.reply));
+    const sel = h("select", { class: "status-sel", "aria-label": "Status lead", disabled: busy || S.readOnly || !S.db,
+      onchange: e => write(path, d => d.update({ status: e.target.value, updatedAt: new Date().toISOString() }), "Status dikemas kini") });
+    for (const [k, n] of LSTATUS) { const o = h("option", { value: k }, n); if (k === st) o.selected = true; sel.append(o); }
+    return h("article", { class: "card " + (l.score || "lemah") + (st === "closing" || st === "abai" ? " done" : "") },
+      h("div", { class: "meta" },
+        h("span", { class: "user" }, "@" + str(l.username).replace(/^@/, "")),
+        l.score && h("span", { class: "pill score-" + l.score }, SCORE[l.score] || l.score),
+        h("span", { class: "pill" }, PNAME[l.product] || "Lain-lain"),
+        l.location && h("span", {}, str(l.location)),
+        l.postedAge && h("span", {}, "post " + str(l.postedAge)),
+        l.example && h("span", { class: "pill ex" }, "Contoh")),
+      l.summary && h("p", { class: "summary" }, str(l.summary)),
+      l.reply && h("div", { class: "reply" }, h("span", { class: "lbl" }, "Draf reply"), replyP),
+      h("div", { class: "actions" },
+        l.reply && h("button", { class: "btn primary", type: "button", onclick: () => copy(str(l.reply), replyP) }, "Salin reply"),
+        url && h("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, "Buka post ↗"),
+        h("span", { class: "meta" }, [l.session ? "Sesi " + str(l.session) : "", ago(l.foundAt)].filter(Boolean).join(" · ")),
+        sel));
+  }
+  function renderLeads() {
+    const f = STATUS_FILTERS.find(x => x[0] === S.fStatus)[2];
+    const rows = S.leads.filter(f).filter(l => S.fProduct === "semua" || (l.product || "lain") === S.fProduct)
+      .sort((a, b) => (SRANK[a.score] ?? 3) - (SRANK[b.score] ?? 3) || str(b.foundAt).localeCompare(str(a.foundAt)));
+    const list = document.getElementById("lead-list");
+    if (!S.leadsLoaded) { list.replaceChildren(h("div", { class: "empty" }, h("p", {}, "Memuatkan lead…"))); return; }
+    if (!S.leads.length) {
+      list.replaceChildren(h("div", { class: "empty" }, h("h2", {}, "Belum ada lead"),
+        h("p", {}, "Lead dari Threads muncul di sini selepas carian berjadual pukul 9 pagi dan 9 malam. Setiap lead ada link post dan draf reply yang sedia disalin.")));
+      return;
+    }
+    list.replaceChildren(...(rows.length ? rows.map(leadCard) : [h("div", { class: "empty" }, h("p", {}, "Tiada lead dalam tapisan ni."))]));
+  }
+
+  // ---- render: bank content ----
+  const IDEA_FILTERS = [["belum", "Belum post", i => i.status !== "dah-post"], ["dah-post", "Dah post", i => i.status === "dah-post"], ["semua", "Semua", i => true]];
+  function ideaCard(i) {
+    const path = "ideas/" + i.id, busy = S.pending.has(path), st = i.status || "idea";
+    const pts = Array.isArray(i.points) ? i.points.map(str).filter(Boolean) : [];
+    const text = [str(i.hook), ...pts.map(p => "• " + p)].join("\n");
+    const sel = h("select", { class: "status-sel", "aria-label": "Status idea", disabled: busy || S.readOnly || !S.db,
+      onchange: e => write(path, d => d.update({ status: e.target.value }), "Status dikemas kini") });
+    for (const [k, n] of ISTATUS) { const o = h("option", { value: k }, n); if (k === st) o.selected = true; sel.append(o); }
+    const confirming = S.confirm === path;
+    const body = h("div", {}, h("p", { class: "hook" }, str(i.hook)), pts.length ? h("ul", { class: "points" }, pts.map(p => h("li", {}, p))) : null);
+    return h("article", { class: "card" + (st === "dah-post" ? " done" : "") },
+      h("div", { class: "meta" }, h("span", { class: "pill" }, PNAME[i.product] || "Umum"), i.example && h("span", { class: "pill ex" }, "Contoh"),
+        h("span", {}, i.source === "manual" ? "Ditambah sendiri" : "Dari carian Threads"), h("span", {}, ago(i.createdAt))),
+      body,
+      h("div", { class: "actions" },
+        h("button", { class: "btn primary", type: "button", onclick: () => copy(text, body) }, "Salin"),
+        h("button", { class: "btn danger", type: "button", disabled: busy || S.readOnly || !S.db,
+          onclick: () => { if (confirming) { S.confirm = null; write(path, d => d.delete(), "Idea dipadam"); } else { S.confirm = path; render(); } } },
+          confirming ? "Tekan sekali lagi untuk padam" : "Padam"),
+        sel));
+  }
+  function renderIdeas() {
+    const ic = document.getElementById("idea-chips");
+    ic.replaceChildren(...IDEA_FILTERS.map(([k, n, f]) => h("button", { class: "chip", type: "button", "aria-pressed": String(S.fIdea === k), onclick: () => { S.fIdea = k; render(); } }, n, h("span", { class: "n" }, S.ideas.filter(f).length))));
+    const list = document.getElementById("idea-list");
+    if (!S.ideasLoaded) { list.replaceChildren(h("div", { class: "empty" }, h("p", {}, "Memuatkan idea…"))); return; }
+    if (!S.ideas.length) {
+      list.replaceChildren(h("div", { class: "empty" }, h("h2", {}, "Bank content kosong"),
+        h("p", {}, "Setiap sesi pagi, 2 idea post Threads ditambah di sini berdasarkan soalan yang orang tanya. Kau juga boleh tambah idea sendiri di atas.")));
+      return;
+    }
+    const f = IDEA_FILTERS.find(x => x[0] === S.fIdea)[2];
+    const rows = S.ideas.filter(f).sort((a, b) => str(b.createdAt).localeCompare(str(a.createdAt)));
+    list.replaceChildren(...(rows.length ? rows.map(ideaCard) : [h("div", { class: "empty" }, h("p", {}, "Tiada idea dalam tapisan ni."))]));
+  }
+
+  function renderToolbar() {
+    const tb = document.getElementById("toolbar");
+    const ex = [...S.leads.filter(l => l.example).map(l => "leads/" + l.id), ...S.ideas.filter(i => i.example).map(i => "ideas/" + i.id)];
+    if (!ex.length || S.readOnly || !S.db) { tb.replaceChildren(); return; }
+    const confirming = S.confirm === "__examples";
+    tb.replaceChildren(h("span", {}, ex.length + " data contoh dipaparkan."),
+      h("button", { class: "btn danger", type: "button", onclick: async () => {
+        if (!confirming) { S.confirm = "__examples"; render(); return; }
+        S.confirm = null;
+        for (const p of ex) { try { await S.db.doc(p).delete(); } catch (_) {} }
+        toast("Data contoh dibuang");
+      } }, confirming ? "Tekan sekali lagi untuk buang" : "Buang data contoh"));
+  }
+
+  function route() {
+    const v = location.hash === "#content" ? "content" : "prospek";
+    document.getElementById("view-prospek").hidden = v !== "prospek";
+    document.getElementById("view-content").hidden = v !== "content";
+    document.getElementById("tab-prospek").setAttribute("aria-current", v === "prospek" ? "page" : "false");
+    document.getElementById("tab-content").setAttribute("aria-current", v === "content" ? "page" : "false");
+  }
+  function render() { renderStats(); renderChips(); renderLeads(); renderIdeas(); renderToolbar(); }
+
+  // ---- idea form ----
+  const form = document.getElementById("idea-form");
+  document.getElementById("idea-product").replaceWith(prodSelect("idea-product", "penapis-air"));
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!S.db || S.readOnly) { toast("Tak dapat simpan di paparan ni"); return; }
+    const hook = document.getElementById("idea-hook").value.trim();
+    if (!hook) return;
+    const points = document.getElementById("idea-points").value.split("\n").map(s => s.trim()).filter(Boolean).slice(0, 8);
+    const btn = document.getElementById("idea-submit"); btn.disabled = true;
+    try {
+      await S.db.collection("ideas").add({ hook, points, product: document.getElementById("idea-product").value, status: "idea", source: "manual", createdAt: new Date().toISOString() });
+      form.reset(); toast("Idea disimpan");
+    } catch (err) { toast(err && err.code === "invalid_argument" ? "Kau hanya boleh lihat data ni" : "Tak dapat simpan. Cuba lagi."); }
+    finally { btn.disabled = false; }
+  });
+
+  window.addEventListener("hashchange", route);
+  route(); render();
+
+  // ---- data ----
+  (async () => {
+    let tries = 0;
+    while (!(window.claude && window.claude.use) && tries++ < 50) await new Promise(r => setTimeout(r, 200));
+    let db = null;
+    try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; } catch (_) { db = null; }
+    if (!db) { S.leadsLoaded = S.ideasLoaded = true; banner("Data tak dapat dimuatkan di paparan ni. Buka page ni di claude.ai selepas log masuk.", true); render(); return; }
+    S.db = db;
+    const timer = setTimeout(() => { if (!S.leadsLoaded) banner("Data belum dapat dicapai. Semak sambungan internet.", true); }, 10000);
+    const onErr = e => { clearTimeout(timer); S.leadsLoaded = S.ideasLoaded = true; banner(e && e.code === "revoked" ? "" : "Sambungan data terputus. Muat semula page.", true); render(); };
+    db.collection("leads").orderBy("foundAt", "desc").limit(500).onSnapshot(snap => {
+      S.leads = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      if (!snap.metadata.fromCache) { clearTimeout(timer); if (!S.readOnly) banner(""); }
+      S.leadsLoaded = true; render();
+    }, onErr);
+    db.collection("ideas").orderBy("createdAt", "desc").limit(500).onSnapshot(snap => {
+      S.ideas = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      S.ideasLoaded = true; render();
+    }, onErr);
+  })();
+})();
+</script>
