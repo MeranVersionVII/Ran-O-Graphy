@@ -255,6 +255,7 @@ details.addwrap summary::-webkit-details-marker { display: none; }
       h("div", { class: "actions" },
         l.reply && h("button", { class: "btn primary", type: "button", onclick: () => copy(str(l.reply), replyP) }, "Salin reply"),
         url && h("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, "Buka post ↗"),
+        !url && l.example && h("span", { class: "meta" }, "Contoh rekaan: tiada post sebenar"),
         h("span", { class: "meta" }, [l.session ? "Sesi " + str(l.session) : "", ago(l.foundAt)].filter(Boolean).join(" · ")),
         sel));
   }
