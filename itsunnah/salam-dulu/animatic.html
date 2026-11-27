@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ms"><head><meta charset="utf-8">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { width:1080px; height:1920px; overflow:hidden; background:#1f2a22; font-family:"Inter",sans-serif; }
+.sc { position:absolute; inset:0; opacity:0; overflow:hidden; }
+.bg { position:absolute; inset:-80px; background-size:cover; background-position:center; filter:blur(38px) brightness(.78) saturate(1.1); }
+.fr { position:absolute; left:0; top:489px; width:1080px; height:942px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,.35); }
+.fr img { width:100%; height:100%; object-fit:cover; transform-origin:50% 50%; }
+.tx { position:absolute; left:60px; right:60px; top:250px; display:flex; justify-content:center; }
+.tx span { background:#fffaf0; color:#3d4a3a; font-weight:800; font-size:64px; line-height:1.15; padding:22px 40px; border-radius:40px; box-shadow:0 10px 30px rgba(0,0,0,.25); text-align:center; }
+.sub { position:absolute; left:70px; right:70px; top:1500px; text-align:center; color:#fff; font-weight:700; font-size:56px; line-height:1.25; text-shadow:0 3px 12px rgba(0,0,0,.6); opacity:0; }
+.end { position:absolute; left:60px; right:60px; top:1530px; text-align:center; color:#fffaf0; }
+.end b { display:block; font-size:84px; font-weight:800; letter-spacing:-.01em; }
+.end i { display:block; font-style:normal; font-size:50px; font-weight:600; color:#f3c9a8; margin-top:10px; }
+</style></head><body>
+<!-- data-s/e: masa babak; data-z: zoom mula,akhir; data-px/py: anjakan (px) mula->akhir -->
+<div class="sc" data-s="0" data-e="3" data-z="1.0,1.10" data-p="0,40,0,-10"><div class="bg" style="background-image:url(panels/1.jpg)"></div><div class="fr"><img src="panels/1.jpg"></div>
+  <div class="tx it" data-in="0.3"><span>Bila sampai rumah…</span></div></div>
+<div class="sc" data-s="3" data-e="6" data-z="1.04,1.14" data-p="0,0,-60,10"><div class="bg" style="background-image:url(panels/2.jpg)"></div><div class="fr"><img src="panels/2.jpg"></div>
+  <div class="sub" data-a="0.6" data-b="2.8">🔔 <i style="font-style:italic">ding-dong</i></div></div>
+<div class="sc" data-s="6" data-e="10" data-z="1.02,1.08" data-p="0,0,0,0"><div class="bg" style="background-image:url(panels/3.jpg)"></div><div class="fr"><img src="panels/3.jpg"></div>
+  <div class="tx it" data-in="0.3"><span>1. Beri salam</span></div>
+  <div class="sub" data-a="0.3" data-b="2.0">"Assalamualaikum!"</div>
+  <div class="sub" data-a="2.1" data-b="3.9">"Assalamualaikum."</div></div>
+<div class="sc" data-s="10" data-e="14" data-z="1.0,1.07" data-p="30,0,-20,0"><div class="bg" style="background-image:url(panels/4.jpg)"></div><div class="fr"><img src="panels/4.jpg"></div>
+  <div class="tx it" data-in="0.3"><span>2. Tunggu dengan sopan</span></div>
+  <div class="sub" data-a="0.4" data-b="3.8">"Waalaikumsalam. Jemput masuk."</div></div>
+<div class="sc" data-s="14" data-e="19" data-z="1.0,1.10" data-p="0,20,0,-20"><div class="bg" style="background-image:url(panels/5.jpg)"></div><div class="fr"><img src="panels/5.jpg"></div>
+  <div class="tx it" data-in="0.3"><span>Salam dulu 🤍</span></div>
+  <div class="sub" data-a="0.6" data-b="4.6">Salam dulu, baru masuk.</div></div>
+<div class="sc" data-s="19" data-e="24" data-z="1.06,1.0" data-p="0,0,0,0"><div class="bg" style="background-image:url(panels/6.jpg)"></div><div class="fr"><img src="panels/6.jpg"></div>
+  <div class="tx it" data-in="0.2"><span>"Jom cuba hari ini!"</span></div>
+  <div class="end it" data-in="1.2"><b>Itsunnah</b><i>Adab kecil, kesan besar</i></div></div>
+<script>
+const TOTAL=24, XF=0.35;
+const ease=x=>x<=0?0:x>=1?1:1-Math.pow(1-x,3);
+const io=x=>x<=0?0:x>=1?1:(x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2);
+const S=[...document.querySelectorAll('.sc')].map(el=>{const [z0,z1]=el.dataset.z.split(',').map(Number);const [x0,y0,x1,y1]=el.dataset.p.split(',').map(Number);
+ return {el,s:+el.dataset.s,e:+el.dataset.e,z0,z1,x0,y0,x1,y1,img:el.querySelector('.fr img'),its:[...el.querySelectorAll('.it')],subs:[...el.querySelectorAll('.sub')]}});
+window.render=function(t){for(const c of S){let o=0;
+ if(t>=c.s-XF&&t<=c.e+XF){const a=c.s===0?1:ease((t-c.s+XF)/(2*XF));const b=c.e>=TOTAL?1:1-ease((t-c.e+XF)/(2*XF));o=Math.min(a,b);}
+ c.el.style.opacity=o; if(!o) continue;
+ const k=io((t-c.s)/(c.e-c.s)); const z=c.z0+(c.z1-c.z0)*k;
+ c.img.style.transform=`translate(${c.x0+(c.x1-c.x0)*k}px,${c.y0+(c.y1-c.y0)*k}px) scale(${z})`;
+ for(const i of c.its){const p=ease((t-c.s-(+i.dataset.in))/0.45);i.style.opacity=p;i.style.transform=`translateY(${(1-p)*30}px)`;}
+ for(const s of c.subs){const lt=t-c.s,a=+s.dataset.a,b=+s.dataset.b;s.style.opacity=Math.min(ease((lt-a)/0.2),1-ease((lt-b)/0.2));}
+}};
+window.TOTAL=TOTAL; render(0);
+</script></body></html>
